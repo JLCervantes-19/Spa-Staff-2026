@@ -449,6 +449,28 @@
 
   // Init
   await cargarCitas()
+
+  // ——— Realtime: nuevas citas asignadas a esta empleada ———
+  supabase
+    .channel(`citas-empleada-${empleada.id}`)
+    .on('postgres_changes', {
+      event:  'INSERT',
+      schema: 'public',
+      table:  'citas',
+      filter: `empleado_id=eq.${empleada.id}`,
+    }, () => {
+      showToast('✦ Nueva cita asignada', 'success')
+      cargarCitas()
+    })
+    .on('postgres_changes', {
+      event:  'UPDATE',
+      schema: 'public',
+      table:  'citas',
+      filter: `empleado_id=eq.${empleada.id}`,
+    }, () => {
+      cargarCitas()
+    })
+    .subscribe()
 </script>
 
 </body>

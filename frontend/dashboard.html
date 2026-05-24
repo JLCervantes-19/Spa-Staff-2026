@@ -259,6 +259,17 @@
     }).join('')
   }
 
+  // Realtime — recarga dashboard al recibir nueva cita
+  supabase
+    .channel(`dashboard-empleada-${empleada.id}`)
+    .on('postgres_changes', {
+      event:  'INSERT',
+      schema: 'public',
+      table:  'citas',
+      filter: `empleado_id=eq.${empleada.id}`,
+    }, () => window.location.reload())
+    .subscribe()
+
   // Logout
   document.getElementById('btn-logout').addEventListener('click', async () => {
     if (confirm('¿Cerrar sesión?')) await logout()
