@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>Mi Perfil — Serenità Staff</title>
+  <meta name="theme-color" content="#522566" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <link rel="manifest" href="/manifest.json" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Jost:wght@300;400;500;600&family=Cinzel:wght@400;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/css/staff.css" />
+</head>
+<body>
+
+<!-- TOP NAV -->
+<nav class="top-nav">
+  <div class="top-nav-brand">
+    Mi perfil
+    <span>Serenità Staff</span>
+  </div>
+  <div class="top-nav-actions">
+    <button id="btn-logout" class="btn-icon" aria-label="Cerrar sesión">
+      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+    </button>
+  </div>
+</nav>
+
+<!-- PERFIL HERO -->
+<div class="perfil-hero" id="perfil-hero">
+  <div class="perfil-avatar-wrapper">
+    <div id="perfil-avatar" class="perfil-avatar" style="display:flex;align-items:center;justify-content:center;font-family:var(--font-display);font-size:2rem;color:var(--purple-dark)"></div>
+    <button class="perfil-avatar-btn" id="btn-editar-foto" aria-label="Cambiar foto">
+      <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
+    </button>
+  </div>
+  <div style="position:relative;z-index:1">
+    <h1 id="perfil-nombre" class="heading-display" style="font-size:1.6rem;color:var(--white);text-align:center"></h1>
+    <p id="perfil-email" style="font-size:0.78rem;color:rgba(255,255,255,0.5);text-align:center;margin-top:4px"></p>
+  </div>
+  <div id="perfil-servicios-chips" style="display:flex;flex-wrap:wrap;gap:6px;justify-content:center;position:relative;z-index:1"></div>
+</div>
+
+<!-- MAIN -->
+<main class="main-content" style="padding-top:0">
+  <div class="page-container" style="padding-top:24px">
+
+    <!-- DESCRIPCIÓN / BIO -->
+    <div class="card mb-16">
+      <div class="card-header" style="display:flex;align-items:center;justify-content:space-between">
+        <p class="heading-accent">Sobre mí</p>
+        <button id="btn-editar-bio" style="font-size:0.72rem;color:var(--lilac);font-weight:500">Editar</button>
+      </div>
+      <div class="card-body" id="bio-display">
+        <p id="perfil-descripcion" style="font-size:0.88rem;color:var(--text-medium);line-height:1.7;font-style:italic"></p>
+      </div>
+      <!-- Formulario editar bio (oculto) -->
+      <div class="card-body hidden" id="bio-form">
+        <div class="field-group mb-12">
+          <label class="field-label" for="input-descripcion">Descripción</label>
+          <textarea id="input-descripcion" class="input-field" rows="4" placeholder="Cuéntale a tus clientes sobre ti y tu experiencia…" maxlength="500" style="resize:none"></textarea>
+          <p style="font-size:0.65rem;color:var(--text-medium);opacity:0.5;text-align:right;margin-top:4px"><span id="bio-count">0</span>/500</p>
+        </div>
+        <div style="display:flex;gap:8px">
+          <button id="btn-guardar-bio" class="btn-primary" style="width:auto;padding:10px 20px;font-size:0.65rem">Guardar</button>
+          <button id="btn-cancelar-bio" class="btn-secondary" style="width:auto;padding:10px 20px;font-size:0.65rem">Cancelar</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- INFO DE CONTACTO (solo lectura) -->
+    <div class="card mb-16">
+      <div class="card-header">
+        <p class="heading-accent">Información de contacto</p>
+      </div>
+      <div class="card-body" style="display:flex;flex-direction:column;gap:14px">
+        <div style="display:flex;align-items:center;gap:12px">
+          <div style="width:36px;height:36px;border-radius:10px;background:var(--lilac-pale);display:flex;align-items:center;justify-content:center;flex-shrink:0">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" stroke="var(--lilac)" stroke-width="2" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          </div>
+          <div>
+            <p style="font-family:var(--font-accent);font-size:0.58rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--text-medium);opacity:0.6;margin-bottom:2px">Email</p>
+            <p id="info-email" style="font-size:0.88rem;color:var(--text-dark)"></p>
+          </div>
+        </div>
+        <div style="display:flex;align-items:center;gap:12px">
+          <div style="width:36px;height:36px;border-radius:10px;background:var(--lilac-pale);display:flex;align-items:center;justify-content:center;flex-shrink:0">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" stroke="var(--lilac)" stroke-width="2" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          </div>
+          <div>
+            <p style="font-family:var(--font-accent);font-size:0.58rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--text-medium);opacity:0.6;margin-bottom:2px">Teléfono</p>
+            <p id="info-telefono" style="font-size:0.88rem;color:var(--text-dark)"></p>
+          </div>
+        </div>
+        <p style="font-size:0.72rem;color:var(--text-medium);opacity:0.5;border-top:1px solid var(--lilac-pale);padding-top:10px">
+          Para modificar tu información de contacto, escríbele a tu administradora.
+        </p>
+      </div>
+    </div>
+
+    <!-- FOTO URL -->
+    <div class="card mb-16">
+      <div class="card-header" style="display:flex;align-items:center;justify-content:space-between">
+        <p class="heading-accent">Foto de perfil</p>
+        <button id="btn-editar-fotourl" style="font-size:0.72rem;color:var(--lilac);font-weight:500">Editar</button>
+      </div>
+      <div class="card-body" id="fotourl-display">
+        <p id="perfil-fotourl-label" style="font-size:0.82rem;color:var(--text-medium);opacity:0.6">Sin foto configurada</p>
+      </div>
+      <div class="card-body hidden" id="fotourl-form">
+        <div class="field-group mb-12">
+          <label class="field-label" for="input-fotourl">URL de la foto</label>
+          <input id="input-fotourl" type="url" class="input-field" placeholder="https://..." />
+        </div>
+        <p style="font-size:0.72rem;color:var(--text-medium);opacity:0.6;margin-bottom:12px">
+          Sube tu foto a un servicio como Google Drive o Cloudinary y pega la URL pública aquí.
+        </p>
+        <div style="display:flex;gap:8px">
+          <button id="btn-guardar-foto" class="btn-primary" style="width:auto;padding:10px 20px;font-size:0.65rem">Guardar</button>
+          <button id="btn-cancelar-fotourl" class="btn-secondary" style="width:auto;padding:10px 20px;font-size:0.65rem">Cancelar</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- CAMBIAR CONTRASEÑA -->
+    <div class="card mb-24">
+      <div class="card-header" style="display:flex;align-items:center;justify-content:space-between">
+        <p class="heading-accent">Seguridad</p>
+        <button id="btn-cambiar-pass" style="font-size:0.72rem;color:var(--lilac);font-weight:500">Cambiar contraseña</button>
+      </div>
+      <div class="card-body hidden" id="pass-form">
+        <div style="display:flex;flex-direction:column;gap:14px;margin-bottom:16px">
+          <div class="field-group">
+            <label class="field-label" for="new-pass">Nueva contraseña</label>
+            <input id="new-pass" type="password" class="input-field" placeholder="Mínimo 8 caracteres" autocomplete="new-password" />
+          </div>
+          <div class="field-group">
+            <label class="field-label" for="confirm-pass">Confirmar contraseña</label>
+            <input id="confirm-pass" type="password" class="input-field" placeholder="Repite la contraseña" autocomplete="new-password" />
+          </div>
+        </div>
+        <div id="pass-error" style="background:rgba(239,68,68,0.1);border:1px solid rgba(239,68,68,0.2);color:#dc2626;padding:10px 14px;border-radius:8px;font-size:0.82rem;margin-bottom:12px;display:none"></div>
+        <div style="display:flex;gap:8px">
+          <button id="btn-guardar-pass" class="btn-primary" style="width:auto;padding:10px 20px;font-size:0.65rem">Guardar</button>
+          <button id="btn-cancelar-pass" class="btn-secondary" style="width:auto;padding:10px 20px;font-size:0.65rem">Cancelar</button>
+        </div>
+      </div>
+      <div class="card-body" id="pass-info">
+        <div style="display:flex;align-items:center;gap:10px">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" stroke="var(--lilac)" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+          <p style="font-size:0.82rem;color:var(--text-medium)">Contraseña configurada correctamente</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- LOGOUT -->
+    <button id="btn-logout-footer" style="width:100%;padding:14px;background:rgba(239,68,68,0.06);border:1px solid rgba(239,68,68,0.15);border-radius:12px;color:#dc2626;font-size:0.72rem;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;display:flex;align-items:center;justify-content:center;gap:8px;margin-bottom:24px;transition:all 0.2s">
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+      Cerrar sesión
+    </button>
+
+  </div>
+</main>
+
+<!-- BOTTOM NAV -->
+<nav class="bottom-nav">
+  <a href="/dashboard.html" class="nav-item">
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+    Inicio
+  </a>
+  <a href="/citas.html" class="nav-item">
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+    Mis citas
+  </a>
+  <a href="/perfil.html" class="nav-item active">
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+    Perfil
+  </a>
+</nav>
+
+<script type="module">
+  import { requireAuth, logout, getEmpleadaProfile, cambiarPassword } from '/js/auth.js'
+  import { supabase } from '/js/supabase-client.js'
+  import { iniciales, sanitizeText, showToast } from '/js/utils.js'
+
+  const session = await requireAuth()
+  if (!session) throw new Error()
+
+  let empleada = await getEmpleadaProfile()
+  if (!empleada) { window.location.href = '/index.html'; throw new Error() }
+
+  // ——— Render perfil ————————————————————————————————————
+  function renderPerfil() {
+    const nombreCompleto = [empleada.nombre, empleada.apellido].filter(Boolean).join(' ')
+    document.getElementById('perfil-nombre').textContent = nombreCompleto
+
+    // Avatar
+    const avatarEl = document.getElementById('perfil-avatar')
+    if (empleada.foto_url) {
+      avatarEl.innerHTML = `<img src="${empleada.foto_url}" style="width:96px;height:96px;border-radius:50%;object-fit:cover" alt="Foto" onerror="this.outerHTML='${iniciales(empleada.nombre, empleada.apellido)}'" />`
+    } else {
+      avatarEl.textContent = iniciales(empleada.nombre, empleada.apellido)
+    }
+
+    document.getElementById('perfil-email').textContent = empleada.email || ''
+    document.getElementById('info-email').textContent = empleada.email || '—'
+    document.getElementById('info-telefono').textContent = empleada.telefono || '—'
+
+    // Descripción
+    const desc = empleada.descripcion
+    document.getElementById('perfil-descripcion').textContent = desc || 'Sin descripción aún. Haz clic en "Editar" para agregar una bio.'
+    document.getElementById('perfil-descripcion').style.fontStyle = desc ? 'normal' : 'italic'
+
+    // Foto URL label
+    document.getElementById('perfil-fotourl-label').textContent = empleada.foto_url || 'Sin foto configurada'
+
+    // Especialidades chips
+    const chips = document.getElementById('perfil-servicios-chips')
+    if (empleada.especialidades?.length) {
+      chips.innerHTML = empleada.especialidades.map(s =>
+        `<span style="padding:4px 12px;background:rgba(255,255,255,0.12);border-radius:20px;font-size:0.7rem;color:rgba(255,255,255,0.7);letter-spacing:0.05em">${s}</span>`
+      ).join('')
+    }
+  }
+
+  renderPerfil()
+
+  // ——— Editar bio ————————————————————————————————————————
+  document.getElementById('btn-editar-bio').addEventListener('click', () => {
+    document.getElementById('bio-display').classList.add('hidden')
+    document.getElementById('bio-form').classList.remove('hidden')
+    const ta = document.getElementById('input-descripcion')
+    ta.value = empleada.descripcion || ''
+    document.getElementById('bio-count').textContent = ta.value.length
+  })
+
+  document.getElementById('input-descripcion').addEventListener('input', function() {
+    document.getElementById('bio-count').textContent = this.value.length
+  })
+
+  document.getElementById('btn-cancelar-bio').addEventListener('click', () => {
+    document.getElementById('bio-form').classList.add('hidden')
+    document.getElementById('bio-display').classList.remove('hidden')
+  })
+
+  document.getElementById('btn-guardar-bio').addEventListener('click', async () => {
+    const desc = sanitizeText(document.getElementById('input-descripcion').value.trim())
+    const btn = document.getElementById('btn-guardar-bio')
+    btn.disabled = true; btn.textContent = 'Guardando…'
+
+    const { error } = await supabase
+      .from('empleados')
+      .update({ descripcion: desc })
+      .eq('id', empleada.id)
+
+    if (error) {
+      showToast('Error al guardar. Intenta de nuevo.', 'error')
+      btn.disabled = false; btn.textContent = 'Guardar'
+      return
+    }
+
+    empleada.descripcion = desc
+    document.getElementById('bio-form').classList.add('hidden')
+    document.getElementById('bio-display').classList.remove('hidden')
+    renderPerfil()
+    showToast('Bio actualizada', 'success')
+    btn.disabled = false; btn.textContent = 'Guardar'
+  })
+
+  // ——— Editar foto URL ———————————————————————————————————
+  document.getElementById('btn-editar-foto').addEventListener('click', () => {
+    document.getElementById('fotourl-display').classList.add('hidden')
+    document.getElementById('fotourl-form').classList.remove('hidden')
+    document.getElementById('btn-editar-fotourl').textContent = ''
+    document.getElementById('input-fotourl').value = empleada.foto_url || ''
+    document.getElementById('input-fotourl').focus()
+  })
+
+  document.getElementById('btn-editar-fotourl').addEventListener('click', () => {
+    document.getElementById('fotourl-display').classList.add('hidden')
+    document.getElementById('fotourl-form').classList.remove('hidden')
+    document.getElementById('input-fotourl').value = empleada.foto_url || ''
+  })
+
+  document.getElementById('btn-cancelar-fotourl').addEventListener('click', () => {
+    document.getElementById('fotourl-form').classList.add('hidden')
+    document.getElementById('fotourl-display').classList.remove('hidden')
+    document.getElementById('btn-editar-fotourl').textContent = 'Editar'
+  })
+
+  document.getElementById('btn-guardar-foto').addEventListener('click', async () => {
+    const url = document.getElementById('input-fotourl').value.trim()
+    // Validar que sea URL válida o vacía
+    if (url && !/^https?:\/\/.+/.test(url)) {
+      showToast('La URL debe comenzar con http:// o https://', 'error')
+      return
+    }
+    const btn = document.getElementById('btn-guardar-foto')
+    btn.disabled = true; btn.textContent = 'Guardando…'
+
+    const { error } = await supabase
+      .from('empleados')
+      .update({ foto_url: url || null })
+      .eq('id', empleada.id)
+
+    if (error) {
+      showToast('Error al guardar. Intenta de nuevo.', 'error')
+      btn.disabled = false; btn.textContent = 'Guardar'
+      return
+    }
+
+    empleada.foto_url = url || null
+    document.getElementById('fotourl-form').classList.add('hidden')
+    document.getElementById('fotourl-display').classList.remove('hidden')
+    document.getElementById('btn-editar-fotourl').textContent = 'Editar'
+    renderPerfil()
+    showToast('Foto actualizada', 'success')
+    btn.disabled = false; btn.textContent = 'Guardar'
+  })
+
+  // ——— Cambiar contraseña ————————————————————————————————
+  document.getElementById('btn-cambiar-pass').addEventListener('click', () => {
+    document.getElementById('pass-info').classList.add('hidden')
+    document.getElementById('pass-form').classList.remove('hidden')
+  })
+
+  document.getElementById('btn-cancelar-pass').addEventListener('click', () => {
+    document.getElementById('pass-form').classList.add('hidden')
+    document.getElementById('pass-info').classList.remove('hidden')
+    document.getElementById('new-pass').value = ''
+    document.getElementById('confirm-pass').value = ''
+    document.getElementById('pass-error').style.display = 'none'
+  })
+
+  document.getElementById('btn-guardar-pass').addEventListener('click', async () => {
+    const newPass     = document.getElementById('new-pass').value
+    const confirmPass = document.getElementById('confirm-pass').value
+    const errEl = document.getElementById('pass-error')
+    errEl.style.display = 'none'
+
+    if (newPass.length < 8) {
+      errEl.textContent = 'La contraseña debe tener al menos 8 caracteres.'
+      errEl.style.display = 'block'; return
+    }
+    if (newPass !== confirmPass) {
+      errEl.textContent = 'Las contraseñas no coinciden.'
+      errEl.style.display = 'block'; return
+    }
+
+    const btn = document.getElementById('btn-guardar-pass')
+    btn.disabled = true; btn.textContent = 'Guardando…'
+
+    try {
+      await cambiarPassword(newPass)
+      document.getElementById('pass-form').classList.add('hidden')
+      document.getElementById('pass-info').classList.remove('hidden')
+      document.getElementById('new-pass').value = ''
+      document.getElementById('confirm-pass').value = ''
+      showToast('Contraseña actualizada exitosamente', 'success')
+    } catch (err) {
+      errEl.textContent = err.message
+      errEl.style.display = 'block'
+    } finally {
+      btn.disabled = false; btn.textContent = 'Guardar'
+    }
+  })
+
+  // ——— Logout ————————————————————————————————————————————
+  const doLogout = async () => { if (confirm('¿Cerrar sesión?')) await logout() }
+  document.getElementById('btn-logout').addEventListener('click', doLogout)
+  document.getElementById('btn-logout-footer').addEventListener('click', doLogout)
+</script>
+
+</body>
+</html>

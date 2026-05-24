@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>Mis Citas — Serenità Staff</title>
+  <meta name="theme-color" content="#522566" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <link rel="manifest" href="/manifest.json" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Jost:wght@300;400;500;600&family=Cinzel:wght@400;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/css/staff.css" />
+</head>
+<body>
+
+<!-- TOP NAV -->
+<nav class="top-nav">
+  <div class="top-nav-brand">
+    Mis citas
+    <span>Serenità Staff</span>
+  </div>
+  <div class="top-nav-actions">
+    <button id="btn-logout" class="btn-icon" aria-label="Cerrar sesión">
+      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+    </button>
+  </div>
+</nav>
+
+<!-- MAIN CONTENT -->
+<main class="main-content">
+  <div class="page-container">
+
+    <!-- VISTAS -->
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px">
+      <div class="view-toggle">
+        <button id="view-lista"    class="view-btn active" aria-label="Vista lista">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg>
+        </button>
+        <button id="view-calendar" class="view-btn" aria-label="Vista calendario">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+        </button>
+        <button id="view-agenda"   class="view-btn" aria-label="Vista agenda">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg>
+        </button>
+      </div>
+      <span id="total-label" style="font-size:0.72rem;color:var(--text-medium);opacity:0.6"></span>
+    </div>
+
+    <!-- FILTROS DE FECHA -->
+    <div class="filter-bar mb-12">
+      <button class="filter-chip active" data-fecha="hoy">Hoy</button>
+      <button class="filter-chip" data-fecha="semana">Esta semana</button>
+      <button class="filter-chip" data-fecha="mes">Este mes</button>
+      <button class="filter-chip" data-fecha="todas">Todas</button>
+    </div>
+
+    <!-- FILTROS DE ESTADO -->
+    <div class="filter-bar mb-16">
+      <button class="filter-chip active" data-estado="todos" style="font-size:0.65rem">Todos</button>
+      <button class="filter-chip" data-estado="pendiente" style="font-size:0.65rem">Pendientes</button>
+      <button class="filter-chip" data-estado="realizada" style="font-size:0.65rem">Realizadas</button>
+      <button class="filter-chip" data-estado="atrasada" style="font-size:0.65rem">Atrasadas</button>
+      <button class="filter-chip" data-estado="no_asistio" style="font-size:0.65rem">No asistió</button>
+      <button class="filter-chip" data-estado="cancelada" style="font-size:0.65rem">Canceladas</button>
+    </div>
+
+    <!-- CONTENIDO: LISTA -->
+    <div id="view-lista-content">
+      <div id="citas-list" style="display:flex;flex-direction:column;gap:10px">
+        <div class="skeleton" style="height:100px"></div>
+        <div class="skeleton" style="height:100px"></div>
+        <div class="skeleton" style="height:100px"></div>
+      </div>
+    </div>
+
+    <!-- CONTENIDO: CALENDARIO -->
+    <div id="view-calendar-content" class="hidden">
+      <div class="calendar-mini mb-16">
+        <div class="calendar-header">
+          <h3 class="calendar-title" id="cal-month-label">Mayo 2026</h3>
+          <div class="calendar-nav">
+            <button class="calendar-nav-btn" id="cal-prev">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
+            </button>
+            <button class="calendar-nav-btn" id="cal-today" style="padding:0 8px;font-size:0.7rem;font-weight:500;color:var(--text-medium)">Hoy</button>
+            <button class="calendar-nav-btn" id="cal-next">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
+            </button>
+          </div>
+        </div>
+        <div class="calendar-weekdays">
+          <div class="calendar-weekday">Do</div>
+          <div class="calendar-weekday">Lu</div>
+          <div class="calendar-weekday">Ma</div>
+          <div class="calendar-weekday">Mi</div>
+          <div class="calendar-weekday">Ju</div>
+          <div class="calendar-weekday">Vi</div>
+          <div class="calendar-weekday">Sa</div>
+        </div>
+        <div class="calendar-days" id="cal-days"></div>
+      </div>
+      <div id="cal-citas-dia" style="display:flex;flex-direction:column;gap:10px">
+        <p style="text-align:center;font-size:0.82rem;color:var(--text-medium);opacity:0.5;padding:20px">Selecciona un día para ver las citas</p>
+      </div>
+    </div>
+
+    <!-- CONTENIDO: AGENDA (TIMELINE) -->
+    <div id="view-agenda-content" class="hidden">
+      <div id="agenda-fecha-label" style="font-family:var(--font-display);font-size:1.1rem;color:var(--text-dark);margin-bottom:16px;font-weight:400"></div>
+      <div class="timeline" id="agenda-timeline"></div>
+    </div>
+
+  </div>
+</main>
+
+<!-- BOTTOM NAV -->
+<nav class="bottom-nav">
+  <a href="/dashboard.html" class="nav-item">
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+    Inicio
+  </a>
+  <a href="/citas.html" class="nav-item active">
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+    Mis citas
+  </a>
+  <a href="/perfil.html" class="nav-item">
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+    Perfil
+  </a>
+</nav>
+
+<script type="module">
+  import { requireAuth, logout, getEmpleadaProfile } from '/js/auth.js'
+  import { supabase } from '/js/supabase-client.js'
+  import { formatFecha, formatFechaCorta, formatHora, isToday, isThisWeek, isThisMonth, ESTADOS, showToast } from '/js/utils.js'
+
+  const session = await requireAuth()
+  if (!session) throw new Error()
+
+  const empleada = await getEmpleadaProfile()
+  if (!empleada) { window.location.href = '/index.html'; throw new Error() }
+
+  // Estado de filtros
+  let filtroFecha  = 'hoy'
+  let filtroEstado = 'todos'
+  let vistaActual  = 'lista'
+  let todasCitas   = []
+  let calCurrentDate = new Date()
+  let calSelectedDate = new Date().toISOString().split('T')[0]
+
+  // ——— Cargar citas ———————————————————————————————————————
+  async function cargarCitas() {
+    const { data, error } = await supabase
+      .from('citas')
+      .select(`
+        id, fecha, hora_inicio, hora_fin, estado, notas,
+        clientes(id, nombre, telefono),
+        servicios(id, nombre, duracion_min, precio)
+      `)
+      .eq('empleado_id', empleada.id)
+      .order('fecha', { ascending: true })
+      .order('hora_inicio', { ascending: true })
+
+    if (error) { showToast('Error al cargar las citas', 'error'); return }
+    todasCitas = data || []
+    renderVista()
+  }
+
+  // ——— Filtrar citas ————————————————————————————————————
+  function filtrarCitas() {
+    let resultado = todasCitas
+
+    // Filtro de fecha
+    if (filtroFecha === 'hoy') {
+      const hoy = new Date().toISOString().split('T')[0]
+      resultado = resultado.filter(c => c.fecha === hoy)
+    } else if (filtroFecha === 'semana') {
+      resultado = resultado.filter(c => isThisWeek(c.fecha))
+    } else if (filtroFecha === 'mes') {
+      resultado = resultado.filter(c => isThisMonth(c.fecha))
+    }
+
+    // Filtro de estado
+    if (filtroEstado !== 'todos') {
+      resultado = resultado.filter(c => (c.estado || 'pendiente') === filtroEstado)
+    }
+
+    return resultado
+  }
+
+  // ——— Render vista lista ————————————————————————————————
+  function renderLista() {
+    const citas = filtrarCitas()
+    const el = document.getElementById('citas-list')
+    document.getElementById('total-label').textContent = `${citas.length} cita${citas.length !== 1 ? 's' : ''}`
+
+    if (citas.length === 0) {
+      el.innerHTML = `
+        <div class="empty-state">
+          <div class="empty-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" fill="none" stroke="var(--lilac)" stroke-width="1.5" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+          </div>
+          <p style="font-family:var(--font-display);font-size:1.2rem;color:var(--text-dark)">Sin citas</p>
+          <p style="font-size:0.82rem;color:var(--text-medium);opacity:0.6">No hay citas con los filtros seleccionados</p>
+        </div>
+      `
+      return
+    }
+
+    // Agrupar por fecha
+    const grupos = {}
+    citas.forEach(c => {
+      if (!grupos[c.fecha]) grupos[c.fecha] = []
+      grupos[c.fecha].push(c)
+    })
+
+    el.innerHTML = Object.entries(grupos).map(([fecha, citasDia]) => `
+      <div style="margin-bottom:4px">
+        <p style="font-family:var(--font-accent);font-size:0.62rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--lilac);margin-bottom:8px">
+          ${isToday(fecha) ? '✦ Hoy — ' : ''}${formatFecha(fecha)}
+        </p>
+        <div style="display:flex;flex-direction:column;gap:8px">
+          ${citasDia.map(c => citaCardHTML(c)).join('')}
+        </div>
+      </div>
+    `).join('<div style="height:12px"></div>')
+  }
+
+  function citaCardHTML(c) {
+    const estado = c.estado || 'pendiente'
+    return `
+      <a href="/cita-detalle.html?id=${c.id}" style="text-decoration:none">
+        <div class="cita-card ${estado}">
+          <div class="cita-header">
+            <div style="flex:1;min-width:0">
+              <p class="cita-nombre" style="white-space:nowrap;overflow:hidden;text-overflow:ellipsis">${c.clientes?.nombre || '—'}</p>
+              <p class="cita-servicio">${c.servicios?.nombre || '—'}</p>
+            </div>
+            <span class="estado-chip ${estado}" style="flex-shrink:0"><span class="dot"></span>${ESTADOS[estado]?.label || estado}</span>
+          </div>
+          <div class="cita-footer">
+            <div class="cita-meta">
+              <span class="cita-hora">
+                <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                ${formatHora(c.hora_inicio)} ${c.hora_fin ? '— ' + formatHora(c.hora_fin) : ''}
+              </span>
+            </div>
+            ${c.servicios?.duracion_min ? `<span style="font-size:0.72rem;color:var(--text-medium);opacity:0.5">${c.servicios.duracion_min} min</span>` : ''}
+          </div>
+        </div>
+      </a>
+    `
+  }
+
+  // ——— Render calendario ————————————————————————————————
+  function renderCalendar() {
+    const year  = calCurrentDate.getFullYear()
+    const month = calCurrentDate.getMonth()
+    const label = calCurrentDate.toLocaleDateString('es-CO', { month: 'long', year: 'numeric' })
+    document.getElementById('cal-month-label').textContent = label.charAt(0).toUpperCase() + label.slice(1)
+
+    const firstDay = new Date(year, month, 1).getDay()
+    const daysInMonth = new Date(year, month + 1, 0).getDate()
+    const today = new Date().toISOString().split('T')[0]
+
+    // Fechas con citas de este empleada en este mes
+    const fechasConCitas = new Set(
+      todasCitas
+        .filter(c => {
+          const d = new Date(c.fecha + 'T00:00:00')
+          return d.getFullYear() === year && d.getMonth() === month
+        })
+        .map(c => c.fecha)
+    )
+
+    const daysEl = document.getElementById('cal-days')
+    let html = ''
+
+    // Espacios vacíos antes del primer día
+    for (let i = 0; i < firstDay; i++) {
+      html += `<div class="calendar-day empty"></div>`
+    }
+
+    // Días del mes
+    for (let d = 1; d <= daysInMonth; d++) {
+      const dateStr = `${year}-${String(month + 1).padStart(2, '0')}-${String(d).padStart(2, '0')}`
+      const isT = dateStr === today
+      const isSel = dateStr === calSelectedDate
+      const hasCitas = fechasConCitas.has(dateStr)
+      const cls = [
+        'calendar-day',
+        isT ? 'today' : '',
+        isSel ? 'selected' : '',
+        hasCitas ? 'has-citas' : '',
+      ].filter(Boolean).join(' ')
+      html += `<div class="${cls}" data-date="${dateStr}">${d}</div>`
+    }
+
+    daysEl.innerHTML = html
+
+    // Eventos
+    daysEl.querySelectorAll('.calendar-day:not(.empty)').forEach(el => {
+      el.addEventListener('click', () => {
+        calSelectedDate = el.dataset.date
+        renderCalendar()
+        renderCitasDia(calSelectedDate)
+      })
+    })
+
+    renderCitasDia(calSelectedDate)
+  }
+
+  function renderCitasDia(fecha) {
+    const el = document.getElementById('cal-citas-dia')
+    const citasDia = todasCitas.filter(c => c.fecha === fecha)
+    if (citasDia.length === 0) {
+      el.innerHTML = `<p style="text-align:center;font-size:0.82rem;color:var(--text-medium);opacity:0.5;padding:20px">Sin citas este día</p>`
+      return
+    }
+    el.innerHTML = `
+      <p style="font-family:var(--font-accent);font-size:0.62rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--lilac);margin-bottom:10px">${formatFecha(fecha)}</p>
+      ${citasDia.map(c => citaCardHTML(c)).join('')}
+    `
+  }
+
+  // ——— Render agenda / timeline ——————————————————————————
+  function renderAgenda() {
+    const fechaFiltro = filtroFecha === 'hoy'
+      ? new Date().toISOString().split('T')[0]
+      : calSelectedDate
+
+    const citas = todasCitas.filter(c => c.fecha === fechaFiltro)
+    document.getElementById('agenda-fecha-label').textContent = formatFecha(fechaFiltro)
+
+    const timelineEl = document.getElementById('agenda-timeline')
+    if (citas.length === 0) {
+      timelineEl.innerHTML = `<div class="empty-state"><p style="font-size:0.82rem;color:var(--text-medium);opacity:0.6">No hay citas para este día</p></div>`
+      return
+    }
+
+    // Horas de 8am a 8pm
+    const hours = Array.from({ length: 13 }, (_, i) => i + 8)
+    timelineEl.innerHTML = hours.map(h => {
+      const hora24 = `${String(h).padStart(2, '0')}:00`
+      const citasHora = citas.filter(c => c.hora_inicio && parseInt(c.hora_inicio.split(':')[0]) === h)
+      const hasCita = citasHora.length > 0
+      return `
+        <div class="timeline-hour">
+          <span class="timeline-time">${h > 12 ? h - 12 : h}${h >= 12 ? 'PM' : 'AM'}</span>
+          <div class="timeline-line">
+            <div class="timeline-dot ${hasCita ? 'has-cita' : ''}"></div>
+            <div class="timeline-connector"></div>
+          </div>
+          <div class="timeline-content">
+            ${citasHora.map(c => {
+              const estado = c.estado || 'pendiente'
+              return `
+                <a href="/cita-detalle.html?id=${c.id}" style="text-decoration:none">
+                  <div class="timeline-cita-card ${estado}" style="border-left-color:var(--estado-${estado === 'no_asistio' ? 'no-asistio' : estado})">
+                    <p style="font-family:var(--font-display);font-size:0.95rem;color:var(--text-dark)">${c.clientes?.nombre || '—'}</p>
+                    <p style="font-size:0.75rem;color:var(--text-medium)">${c.servicios?.nombre || '—'} · ${formatHora(c.hora_inicio)}</p>
+                  </div>
+                </a>
+              `
+            }).join('')}
+          </div>
+        </div>
+      `
+    }).join('')
+  }
+
+  // ——— Switch vistas ————————————————————————————————————
+  function renderVista() {
+    if (vistaActual === 'lista')    renderLista()
+    else if (vistaActual === 'calendar') renderCalendar()
+    else if (vistaActual === 'agenda')   renderAgenda()
+  }
+
+  document.getElementById('view-lista').addEventListener('click', () => {
+    vistaActual = 'lista'
+    document.querySelectorAll('.view-btn').forEach(b => b.classList.remove('active'))
+    document.getElementById('view-lista').classList.add('active')
+    document.getElementById('view-lista-content').classList.remove('hidden')
+    document.getElementById('view-calendar-content').classList.add('hidden')
+    document.getElementById('view-agenda-content').classList.add('hidden')
+    renderLista()
+  })
+  document.getElementById('view-calendar').addEventListener('click', () => {
+    vistaActual = 'calendar'
+    document.querySelectorAll('.view-btn').forEach(b => b.classList.remove('active'))
+    document.getElementById('view-calendar').classList.add('active')
+    document.getElementById('view-lista-content').classList.add('hidden')
+    document.getElementById('view-calendar-content').classList.remove('hidden')
+    document.getElementById('view-agenda-content').classList.add('hidden')
+    renderCalendar()
+  })
+  document.getElementById('view-agenda').addEventListener('click', () => {
+    vistaActual = 'agenda'
+    document.querySelectorAll('.view-btn').forEach(b => b.classList.remove('active'))
+    document.getElementById('view-agenda').classList.add('active')
+    document.getElementById('view-lista-content').classList.add('hidden')
+    document.getElementById('view-calendar-content').classList.add('hidden')
+    document.getElementById('view-agenda-content').classList.remove('hidden')
+    renderAgenda()
+  })
+
+  // ——— Filtros de fecha ————————————————————————————————
+  document.querySelectorAll('[data-fecha]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      filtroFecha = btn.dataset.fecha
+      document.querySelectorAll('[data-fecha]').forEach(b => b.classList.remove('active'))
+      btn.classList.add('active')
+      renderVista()
+    })
+  })
+
+  // ——— Filtros de estado ———————————————————————————————
+  document.querySelectorAll('[data-estado]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      filtroEstado = btn.dataset.estado
+      document.querySelectorAll('[data-estado]').forEach(b => b.classList.remove('active'))
+      btn.classList.add('active')
+      renderVista()
+    })
+  })
+
+  // ——— Calendario nav ——————————————————————————————————
+  document.getElementById('cal-prev').addEventListener('click', () => {
+    calCurrentDate.setMonth(calCurrentDate.getMonth() - 1)
+    renderCalendar()
+  })
+  document.getElementById('cal-next').addEventListener('click', () => {
+    calCurrentDate.setMonth(calCurrentDate.getMonth() + 1)
+    renderCalendar()
+  })
+  document.getElementById('cal-today').addEventListener('click', () => {
+    calCurrentDate = new Date()
+    calSelectedDate = new Date().toISOString().split('T')[0]
+    renderCalendar()
+  })
+
+  // Logout
+  document.getElementById('btn-logout').addEventListener('click', async () => {
+    if (confirm('¿Cerrar sesión?')) await logout()
+  })
+
+  // Init
+  await cargarCitas()
+</script>
+
+</body>
+</html>
