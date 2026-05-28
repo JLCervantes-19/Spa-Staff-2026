@@ -345,7 +345,7 @@
     const hours = Array.from({ length: 13 }, (_, i) => i + 8)
     timelineEl.innerHTML = hours.map(h => {
       const hora24 = `${String(h).padStart(2, '0')}:00`
-      const citasHora = citas.filter(c => c.hora_inicio && parseInt(c.hora_inicio.split(':')[0]) === h)
+      const citasHora = citas.filter(c => c.hora_inicio && parseInt(c.hora_inicio.split(':')[0], 10) === h)
       const hasCita = citasHora.length > 0
       return `
         <div class="timeline-hour">

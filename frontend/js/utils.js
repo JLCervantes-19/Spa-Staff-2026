@@ -23,9 +23,9 @@ export function formatFechaCorta(fecha) {
 }
 
 export function formatHora(hora) {
-  if (!hora) return '—'
+  if (!hora || typeof hora !== 'string' || !hora.includes(':')) return '—'
   const [h, m] = hora.split(':')
-  const hNum = parseInt(h)
+  const hNum = parseInt(h, 10)
   const ampm = hNum >= 12 ? 'PM' : 'AM'
   const h12 = hNum % 12 || 12
   return `${h12}:${m} ${ampm}`
