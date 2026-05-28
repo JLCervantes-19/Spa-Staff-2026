@@ -33,23 +33,24 @@ Tienes acceso completo vía MCP de Supabase. Puedes hacer cambios directos a la 
 **Proyecto:** `jhan-cervantes-projects/spa-staff-2026`  
 **Scope/Team:** `jhan-cervantes-projects`  
 **GitHub:** `JLCervantes-19/Spa-Staff-2026`  
-**Último deployment prod:** https://spa-staff-2026-jjhwj01bd-jhan-cervantes-projects.vercel.app
+**URL Producción:** https://spa-staff-2026.vercel.app  
+**URL por equipo:** https://spa-staff-2026-jhan-cervantes-projects.vercel.app
 
 ```bash
 # Ver deployments
 vercel ls --scope jhan-cervantes-projects
 
-# Ver logs de un deployment específico
-vercel logs https://spa-staff-2026-jjhwj01bd-jhan-cervantes-projects.vercel.app
+# Ver logs del último deployment
+vercel logs https://spa-staff-2026-jhan-cervantes-projects.vercel.app
 
 # Ver logs en tiempo real
-vercel logs --follow https://spa-staff-2026-jjhwj01bd-jhan-cervantes-projects.vercel.app
+vercel logs --follow https://spa-staff-2026-jhan-cervantes-projects.vercel.app
 
-# Inspeccionar un deployment
-vercel inspect https://spa-staff-2026-jjhwj01bd-jhan-cervantes-projects.vercel.app
+# Inspeccionar producción
+vercel inspect https://spa-staff-2026.vercel.app
 
 # Nuevo deploy
-cd "/Users/macuser/Desktop/LANDING PROYECTS/Spa_OhDiosas/SISTEMA WEB/staff-app" && vercel --prod
+cd "/Users/macuser/Desktop/LANDING PROYECTS/Spa_OhDiosas/SISTEMA WEB/staff-app" && vercel --prod --scope jhan-cervantes-projects
 ```
 
 ## Render — Infraestructura
