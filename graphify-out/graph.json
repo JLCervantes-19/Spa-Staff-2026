@@ -1,0 +1,2147 @@
+{
+  "directed": false,
+  "multigraph": false,
+  "graph": {
+    "hyperedges": [
+      {
+        "id": "frontend_js_modules",
+        "label": "Frontend JS Module Trio (supabase-client, auth, utils)",
+        "nodes": [
+          "frontend_supabase_client",
+          "frontend_auth",
+          "frontend_utils"
+        ],
+        "relation": "form",
+        "confidence": "EXTRACTED",
+        "confidence_score": 0.95,
+        "source_file": "frontend/js/auth.js"
+      },
+      {
+        "id": "protected_pages",
+        "label": "Protected Pages requiring Auth Guard",
+        "nodes": [
+          "page_dashboard",
+          "page_citas",
+          "page_cita_detalle",
+          "page_perfil"
+        ],
+        "relation": "implement",
+        "confidence": "EXTRACTED",
+        "confidence_score": 1.0,
+        "source_file": "frontend/js/auth.js"
+      },
+      {
+        "id": "supabase_rls_tables",
+        "label": "Supabase Tables with Staff RLS Policies",
+        "nodes": [
+          "db_schema",
+          "concept_rls",
+          "frontend_supabase_client"
+        ],
+        "relation": "implement",
+        "confidence": "EXTRACTED",
+        "confidence_score": 0.95,
+        "source_file": "database/schema_staff.sql"
+      },
+      {
+        "id": "pwa_components",
+        "label": "PWA Infrastructure (SW + manifest + mobile-first pages)",
+        "nodes": [
+          "frontend_sw",
+          "page_index",
+          "page_dashboard",
+          "page_citas",
+          "page_perfil"
+        ],
+        "relation": "participate_in",
+        "confidence": "INFERRED",
+        "confidence_score": 0.85,
+        "source_file": "frontend/sw.js"
+      },
+      {
+        "id": "server_side_supabase",
+        "label": "Server-side Supabase Service Role Stack",
+        "nodes": [
+          "api_index",
+          "server_js",
+          "config_supabase"
+        ],
+        "relation": "implement",
+        "confidence": "EXTRACTED",
+        "confidence_score": 1.0,
+        "source_file": "api/index.js"
+      },
+      {
+        "id": "staff_app_brand_icons_set",
+        "label": "Staff App PWA Brand Icons Set",
+        "nodes": [
+          "icon_192",
+          "icon_512",
+          "icon_maskable_192",
+          "icon_maskable_512"
+        ],
+        "relation": "implement",
+        "confidence": "EXTRACTED",
+        "confidence_score": 1.0,
+        "source_file": "frontend/icons/icon-512.png"
+      },
+      {
+        "id": "spa_oh_diosas_brand_palette",
+        "label": "Spa Oh Diosas Brand Color Palette (Green + Gold + Off-White)",
+        "nodes": [
+          "brand_color_forest_green",
+          "brand_color_warm_gold",
+          "brand_color_off_white"
+        ],
+        "relation": "form",
+        "confidence": "EXTRACTED",
+        "confidence_score": 0.95,
+        "source_file": "frontend/icons/icon-512.png"
+      },
+      {
+        "id": "standard_vs_maskable_icon_pair_192",
+        "label": "192px Standard vs Maskable Icon Pair",
+        "nodes": [
+          "icon_192",
+          "icon_maskable_192",
+          "icon_layout_two_tone_split",
+          "maskable_icon_design"
+        ],
+        "relation": "participate_in",
+        "confidence": "INFERRED",
+        "confidence_score": 0.95,
+        "source_file": "frontend/icons/icon-maskable-192.png"
+      },
+      {
+        "id": "standard_vs_maskable_icon_pair_512",
+        "label": "512px Standard vs Maskable Icon Pair",
+        "nodes": [
+          "icon_512",
+          "icon_maskable_512",
+          "icon_layout_two_tone_split",
+          "maskable_icon_design"
+        ],
+        "relation": "participate_in",
+        "confidence": "INFERRED",
+        "confidence_score": 0.95,
+        "source_file": "frontend/icons/icon-maskable-512.png"
+      }
+    ]
+  },
+  "nodes": [
+    {
+      "label": "server.js",
+      "file_type": "code",
+      "source_file": "server.js",
+      "source_location": "L1",
+      "id": "server_js",
+      "community": 2,
+      "norm_label": "server.js"
+    },
+    {
+      "label": "__filename",
+      "file_type": "code",
+      "source_file": "server.js",
+      "source_location": "L7",
+      "id": "staff_app_server_filename",
+      "community": 2,
+      "norm_label": "__filename"
+    },
+    {
+      "label": "__dirname",
+      "file_type": "code",
+      "source_file": "server.js",
+      "source_location": "L8",
+      "id": "staff_app_server_dirname",
+      "community": 2,
+      "norm_label": "__dirname"
+    },
+    {
+      "label": "app",
+      "file_type": "code",
+      "source_file": "server.js",
+      "source_location": "L10",
+      "id": "staff_app_server_app",
+      "community": 2,
+      "norm_label": "app"
+    },
+    {
+      "label": "sw.js",
+      "file_type": "code",
+      "source_file": "frontend/sw.js",
+      "source_location": "L1",
+      "id": "frontend_sw_js",
+      "community": 6,
+      "norm_label": "sw.js"
+    },
+    {
+      "label": "STATIC_ASSETS",
+      "file_type": "code",
+      "source_file": "frontend/sw.js",
+      "source_location": "L4",
+      "id": "frontend_sw_static_assets",
+      "community": 6,
+      "norm_label": "static_assets"
+    },
+    {
+      "label": "url",
+      "file_type": "code",
+      "source_file": "frontend/sw.js",
+      "source_location": "L23",
+      "id": "frontend_sw_url",
+      "community": 6,
+      "norm_label": "url"
+    },
+    {
+      "label": "clone",
+      "file_type": "code",
+      "source_file": "frontend/sw.js",
+      "source_location": "L43",
+      "id": "frontend_sw_clone",
+      "community": 6,
+      "norm_label": "clone"
+    },
+    {
+      "label": "auth.js",
+      "file_type": "code",
+      "source_file": "frontend/js/auth.js",
+      "source_location": "L1",
+      "id": "frontend_js_auth_js",
+      "community": 0,
+      "norm_label": "auth.js"
+    },
+    {
+      "label": "getAttempts()",
+      "file_type": "code",
+      "source_file": "frontend/js/auth.js",
+      "source_location": "L11",
+      "id": "js_auth_getattempts",
+      "community": 0,
+      "norm_label": "getattempts()"
+    },
+    {
+      "label": "recordAttempt()",
+      "file_type": "code",
+      "source_file": "frontend/js/auth.js",
+      "source_location": "L19",
+      "id": "js_auth_recordattempt",
+      "community": 0,
+      "norm_label": "recordattempt()"
+    },
+    {
+      "label": "clearAttempts()",
+      "file_type": "code",
+      "source_file": "frontend/js/auth.js",
+      "source_location": "L31",
+      "id": "js_auth_clearattempts",
+      "community": 0,
+      "norm_label": "clearattempts()"
+    },
+    {
+      "label": "isRateLimited()",
+      "file_type": "code",
+      "source_file": "frontend/js/auth.js",
+      "source_location": "L35",
+      "id": "js_auth_isratelimited",
+      "community": 0,
+      "norm_label": "isratelimited()"
+    },
+    {
+      "label": "login()",
+      "file_type": "code",
+      "source_file": "frontend/js/auth.js",
+      "source_location": "L42",
+      "id": "js_auth_login",
+      "community": 0,
+      "norm_label": "login()"
+    },
+    {
+      "label": "logout()",
+      "file_type": "code",
+      "source_file": "frontend/js/auth.js",
+      "source_location": "L76",
+      "id": "js_auth_logout",
+      "community": 0,
+      "norm_label": "logout()"
+    },
+    {
+      "label": "getSession()",
+      "file_type": "code",
+      "source_file": "frontend/js/auth.js",
+      "source_location": "L85",
+      "id": "js_auth_getsession",
+      "community": 0,
+      "norm_label": "getsession()"
+    },
+    {
+      "label": "getEmpleadaProfile()",
+      "file_type": "code",
+      "source_file": "frontend/js/auth.js",
+      "source_location": "L91",
+      "id": "js_auth_getempleadaprofile",
+      "community": 0,
+      "norm_label": "getempleadaprofile()"
+    },
+    {
+      "label": "requireAuth()",
+      "file_type": "code",
+      "source_file": "frontend/js/auth.js",
+      "source_location": "L106",
+      "id": "js_auth_requireauth",
+      "community": 0,
+      "norm_label": "requireauth()"
+    },
+    {
+      "label": "redirectIfAuth()",
+      "file_type": "code",
+      "source_file": "frontend/js/auth.js",
+      "source_location": "L116",
+      "id": "js_auth_redirectifauth",
+      "community": 0,
+      "norm_label": "redirectifauth()"
+    },
+    {
+      "label": "cambiarPassword()",
+      "file_type": "code",
+      "source_file": "frontend/js/auth.js",
+      "source_location": "L124",
+      "id": "js_auth_cambiarpassword",
+      "community": 0,
+      "norm_label": "cambiarpassword()"
+    },
+    {
+      "label": "utils.js",
+      "file_type": "code",
+      "source_file": "frontend/js/utils.js",
+      "source_location": "L1",
+      "id": "frontend_js_utils_js",
+      "community": 1,
+      "norm_label": "utils.js"
+    },
+    {
+      "label": "ESTADOS",
+      "file_type": "code",
+      "source_file": "frontend/js/utils.js",
+      "source_location": "L5",
+      "id": "js_utils_estados",
+      "community": 1,
+      "norm_label": "estados"
+    },
+    {
+      "label": "formatFecha()",
+      "file_type": "code",
+      "source_file": "frontend/js/utils.js",
+      "source_location": "L13",
+      "id": "js_utils_formatfecha",
+      "community": 1,
+      "norm_label": "formatfecha()"
+    },
+    {
+      "label": "formatFechaCorta()",
+      "file_type": "code",
+      "source_file": "frontend/js/utils.js",
+      "source_location": "L19",
+      "id": "js_utils_formatfechacorta",
+      "community": 1,
+      "norm_label": "formatfechacorta()"
+    },
+    {
+      "label": "formatHora()",
+      "file_type": "code",
+      "source_file": "frontend/js/utils.js",
+      "source_location": "L25",
+      "id": "js_utils_formathora",
+      "community": 1,
+      "norm_label": "formathora()"
+    },
+    {
+      "label": "iniciales()",
+      "file_type": "code",
+      "source_file": "frontend/js/utils.js",
+      "source_location": "L34",
+      "id": "js_utils_iniciales",
+      "community": 1,
+      "norm_label": "iniciales()"
+    },
+    {
+      "label": "sanitizeText()",
+      "file_type": "code",
+      "source_file": "frontend/js/utils.js",
+      "source_location": "L40",
+      "id": "js_utils_sanitizetext",
+      "community": 1,
+      "norm_label": "sanitizetext()"
+    },
+    {
+      "label": "isToday()",
+      "file_type": "code",
+      "source_file": "frontend/js/utils.js",
+      "source_location": "L47",
+      "id": "js_utils_istoday",
+      "community": 1,
+      "norm_label": "istoday()"
+    },
+    {
+      "label": "isThisWeek()",
+      "file_type": "code",
+      "source_file": "frontend/js/utils.js",
+      "source_location": "L53",
+      "id": "js_utils_isthisweek",
+      "community": 1,
+      "norm_label": "isthisweek()"
+    },
+    {
+      "label": "isThisMonth()",
+      "file_type": "code",
+      "source_file": "frontend/js/utils.js",
+      "source_location": "L66",
+      "id": "js_utils_isthismonth",
+      "community": 1,
+      "norm_label": "isthismonth()"
+    },
+    {
+      "label": "todayISO()",
+      "file_type": "code",
+      "source_file": "frontend/js/utils.js",
+      "source_location": "L73",
+      "id": "js_utils_todayiso",
+      "community": 1,
+      "norm_label": "todayiso()"
+    },
+    {
+      "label": "showToast()",
+      "file_type": "code",
+      "source_file": "frontend/js/utils.js",
+      "source_location": "L79",
+      "id": "js_utils_showtoast",
+      "community": 1,
+      "norm_label": "showtoast()"
+    },
+    {
+      "label": "avatarHTML()",
+      "file_type": "code",
+      "source_file": "frontend/js/utils.js",
+      "source_location": "L97",
+      "id": "js_utils_avatarhtml",
+      "community": 1,
+      "norm_label": "avatarhtml()"
+    },
+    {
+      "label": "avatarInitialesHTML()",
+      "file_type": "code",
+      "source_file": "frontend/js/utils.js",
+      "source_location": "L104",
+      "id": "js_utils_avatarinitialeshtml",
+      "community": 1,
+      "norm_label": "avatarinitialeshtml()"
+    },
+    {
+      "label": "supabase-client.js",
+      "file_type": "code",
+      "source_file": "frontend/js/supabase-client.js",
+      "source_location": "L1",
+      "id": "frontend_js_supabase_client_js",
+      "community": 0,
+      "norm_label": "supabase-client.js"
+    },
+    {
+      "label": "supabase",
+      "file_type": "code",
+      "source_file": "frontend/js/supabase-client.js",
+      "source_location": "L9",
+      "id": "js_supabase_client_supabase",
+      "community": 0,
+      "norm_label": "supabase"
+    },
+    {
+      "label": "supabase.js",
+      "file_type": "code",
+      "source_file": "config/supabase.js",
+      "source_location": "L1",
+      "id": "config_supabase_js",
+      "community": 2,
+      "norm_label": "supabase.js"
+    },
+    {
+      "label": "getSupabaseClient()",
+      "file_type": "code",
+      "source_file": "config/supabase.js",
+      "source_location": "L5",
+      "id": "config_supabase_getsupabaseclient",
+      "community": 2,
+      "norm_label": "getsupabaseclient()"
+    },
+    {
+      "label": "index.js",
+      "file_type": "code",
+      "source_file": "api/index.js",
+      "source_location": "L1",
+      "id": "api_index_js",
+      "community": 2,
+      "norm_label": "index.js"
+    },
+    {
+      "label": "API Entry Point (api/index.js)",
+      "file_type": "code",
+      "source_file": "api/index.js",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "api_index",
+      "community": 2,
+      "norm_label": "api entry point (api/index.js)"
+    },
+    {
+      "label": "Supabase Server Client (config/supabase.js)",
+      "file_type": "code",
+      "source_file": "config/supabase.js",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "config_supabase",
+      "community": 2,
+      "norm_label": "supabase server client (config/supabase.js)"
+    },
+    {
+      "label": "Supabase Browser Client (frontend/js/supabase-client.js)",
+      "file_type": "code",
+      "source_file": "frontend/js/supabase-client.js",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "frontend_supabase_client",
+      "community": 3,
+      "norm_label": "supabase browser client (frontend/js/supabase-client.js)"
+    },
+    {
+      "label": "Auth Helpers (frontend/js/auth.js)",
+      "file_type": "code",
+      "source_file": "frontend/js/auth.js",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "frontend_auth",
+      "community": 3,
+      "norm_label": "auth helpers (frontend/js/auth.js)"
+    },
+    {
+      "label": "Shared Utilities (frontend/js/utils.js)",
+      "file_type": "code",
+      "source_file": "frontend/js/utils.js",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "frontend_utils",
+      "community": 3,
+      "norm_label": "shared utilities (frontend/js/utils.js)"
+    },
+    {
+      "label": "Service Worker PWA (frontend/sw.js)",
+      "file_type": "code",
+      "source_file": "frontend/sw.js",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "frontend_sw",
+      "community": 5,
+      "norm_label": "service worker pwa (frontend/sw.js)"
+    },
+    {
+      "label": "Login Page (frontend/index.html)",
+      "file_type": "code",
+      "source_file": "frontend/index.html",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "page_index",
+      "community": 3,
+      "norm_label": "login page (frontend/index.html)"
+    },
+    {
+      "label": "Dashboard Page (frontend/dashboard.html)",
+      "file_type": "code",
+      "source_file": "frontend/dashboard.html",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "page_dashboard",
+      "community": 3,
+      "norm_label": "dashboard page (frontend/dashboard.html)"
+    },
+    {
+      "label": "Citas Page (frontend/citas.html)",
+      "file_type": "code",
+      "source_file": "frontend/citas.html",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "page_citas",
+      "community": 3,
+      "norm_label": "citas page (frontend/citas.html)"
+    },
+    {
+      "label": "Cita Detalle Page (frontend/cita-detalle.html)",
+      "file_type": "code",
+      "source_file": "frontend/cita-detalle.html",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "page_cita_detalle",
+      "community": 3,
+      "norm_label": "cita detalle page (frontend/cita-detalle.html)"
+    },
+    {
+      "label": "Perfil Page (frontend/perfil.html)",
+      "file_type": "code",
+      "source_file": "frontend/perfil.html",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "page_perfil",
+      "community": 3,
+      "norm_label": "perfil page (frontend/perfil.html)"
+    },
+    {
+      "label": "Staff DB Schema & RLS Policies (database/schema_staff.sql)",
+      "file_type": "code",
+      "source_file": "database/schema_staff.sql",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "db_schema",
+      "community": 5,
+      "norm_label": "staff db schema & rls policies (database/schema_staff.sql)"
+    },
+    {
+      "label": "Staff App README",
+      "file_type": "document",
+      "source_file": "README.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "doc_readme",
+      "community": 5,
+      "norm_label": "staff app readme"
+    },
+    {
+      "label": "Staff App CLAUDE.md Config",
+      "file_type": "document",
+      "source_file": "CLAUDE.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "doc_claude",
+      "community": 2,
+      "norm_label": "staff app claude.md config"
+    },
+    {
+      "label": "PWA \u2014 Progressive Web App (mobile-first staff portal)",
+      "file_type": "rationale",
+      "source_file": "README.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "concept_pwa",
+      "community": 5,
+      "norm_label": "pwa \u2014 progressive web app (mobile-first staff portal)"
+    },
+    {
+      "label": "Row Level Security \u2014 cada empleada solo ve sus propios datos",
+      "file_type": "rationale",
+      "source_file": "database/schema_staff.sql",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "concept_rls",
+      "community": 5,
+      "norm_label": "row level security \u2014 cada empleada solo ve sus propios datos"
+    },
+    {
+      "label": "Client-side Rate Limiting \u2014 m\u00e1x 10 intentos de login / 15 min",
+      "file_type": "rationale",
+      "source_file": "frontend/js/auth.js",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "concept_rate_limiting",
+      "community": 5,
+      "norm_label": "client-side rate limiting \u2014 max 10 intentos de login / 15 min"
+    },
+    {
+      "label": "Supabase Realtime \u2014 suscripci\u00f3n postgres_changes en citas",
+      "file_type": "rationale",
+      "source_file": "frontend/dashboard.html",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "concept_realtime",
+      "community": 3,
+      "norm_label": "supabase realtime \u2014 suscripcion postgres_changes en citas"
+    },
+    {
+      "label": "Estados de Cita \u2014 pendiente, realizada, atrasada, no_asistio, cancelada",
+      "file_type": "rationale",
+      "source_file": "frontend/js/utils.js",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "concept_estados_citas",
+      "community": 3,
+      "norm_label": "estados de cita \u2014 pendiente, realizada, atrasada, no_asistio, cancelada"
+    },
+    {
+      "label": "Auth Guard Pattern \u2014 requireAuth / redirectIfAuth protegen rutas",
+      "file_type": "rationale",
+      "source_file": "frontend/js/auth.js",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "concept_auth_guard",
+      "community": 3,
+      "norm_label": "auth guard pattern \u2014 requireauth / redirectifauth protegen rutas"
+    },
+    {
+      "label": "Service Worker Cache Strategy \u2014 CSS cache-first, HTML/Supabase network-first",
+      "file_type": "rationale",
+      "source_file": "frontend/sw.js",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "concept_service_worker_cache",
+      "community": 5,
+      "norm_label": "service worker cache strategy \u2014 css cache-first, html/supabase network-first"
+    },
+    {
+      "label": "Supabase Project \u2014 whouejjrpjcvoueyajbu (BD_Spa's_Startup)",
+      "file_type": "rationale",
+      "source_file": "CLAUDE.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "concept_supabase_project",
+      "community": 2,
+      "norm_label": "supabase project \u2014 whouejjrpjcvoueyajbu (bd_spa's_startup)"
+    },
+    {
+      "label": "Vercel Deployment \u2014 jhan-cervantes-projects/spa-staff-2026",
+      "file_type": "rationale",
+      "source_file": "CLAUDE.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "concept_vercel_deploy",
+      "community": 2,
+      "norm_label": "vercel deployment \u2014 jhan-cervantes-projects/spa-staff-2026"
+    },
+    {
+      "label": "Tres vistas de citas \u2014 Lista, Calendario, Agenda/Timeline",
+      "file_type": "rationale",
+      "source_file": "frontend/citas.html",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "concept_three_views",
+      "community": 3,
+      "norm_label": "tres vistas de citas \u2014 lista, calendario, agenda/timeline"
+    },
+    {
+      "label": "WhatsApp Contact Link \u2014 empleada puede contactar cliente desde cita-detalle",
+      "file_type": "rationale",
+      "source_file": "frontend/cita-detalle.html",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "concept_whatsapp_contact",
+      "community": 3,
+      "norm_label": "whatsapp contact link \u2014 empleada puede contactar cliente desde cita-detalle"
+    },
+    {
+      "label": "Service Role Key \u2014 solo en servidor (config/supabase.js), nunca en frontend",
+      "file_type": "rationale",
+      "source_file": "config/supabase.js",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "concept_service_role_key",
+      "community": 2,
+      "norm_label": "service role key \u2014 solo en servidor (config/supabase.js), nunca en frontend"
+    },
+    {
+      "label": "PWA Icon 192x192",
+      "file_type": "image",
+      "source_file": "frontend/icons/icon-192.png",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "icon_192",
+      "community": 4,
+      "norm_label": "pwa icon 192x192"
+    },
+    {
+      "label": "PWA Icon 512x512",
+      "file_type": "image",
+      "source_file": "frontend/icons/icon-512.png",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "icon_512",
+      "community": 4,
+      "norm_label": "pwa icon 512x512"
+    },
+    {
+      "label": "PWA Maskable Icon 192x192",
+      "file_type": "image",
+      "source_file": "frontend/icons/icon-maskable-192.png",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "icon_maskable_192",
+      "community": 4,
+      "norm_label": "pwa maskable icon 192x192"
+    },
+    {
+      "label": "PWA Maskable Icon 512x512",
+      "file_type": "image",
+      "source_file": "frontend/icons/icon-maskable-512.png",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "icon_maskable_512",
+      "community": 4,
+      "norm_label": "pwa maskable icon 512x512"
+    },
+    {
+      "label": "Brand Color: Forest Green (#2D4A2D approx.)",
+      "file_type": "rationale",
+      "source_file": "frontend/icons/icon-512.png",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "brand_color_forest_green",
+      "community": 4,
+      "norm_label": "brand color: forest green (#2d4a2d approx.)"
+    },
+    {
+      "label": "Brand Color: Warm Gold / Sandy Tan (#C9A96E approx.)",
+      "file_type": "rationale",
+      "source_file": "frontend/icons/icon-512.png",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "brand_color_warm_gold",
+      "community": 4,
+      "norm_label": "brand color: warm gold / sandy tan (#c9a96e approx.)"
+    },
+    {
+      "label": "Brand Color: Off-White / Cream Background (#F5F3EE approx.)",
+      "file_type": "rationale",
+      "source_file": "frontend/icons/icon-maskable-192.png",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "brand_color_off_white",
+      "community": 4,
+      "norm_label": "brand color: off-white / cream background (#f5f3ee approx.)"
+    },
+    {
+      "label": "Staff App PWA Icon Design System",
+      "file_type": "rationale",
+      "source_file": "frontend/icons/icon-512.png",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "pwa_icon_design_system",
+      "community": 4,
+      "norm_label": "staff app pwa icon design system"
+    },
+    {
+      "label": "Spa Oh Diosas Brand Identity",
+      "file_type": "rationale",
+      "source_file": "frontend/icons/icon-512.png",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "brand_identity_spa_oh_diosas",
+      "community": 4,
+      "norm_label": "spa oh diosas brand identity"
+    },
+    {
+      "label": "Icon Layout: Two-Tone Horizontal Split (Green upper / Gold lower)",
+      "file_type": "rationale",
+      "source_file": "frontend/icons/icon-512.png",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "icon_layout_two_tone_split",
+      "community": 4,
+      "norm_label": "icon layout: two-tone horizontal split (green upper / gold lower)"
+    },
+    {
+      "label": "Maskable Icon Design: Centered Rectangle on Off-White Canvas",
+      "file_type": "rationale",
+      "source_file": "frontend/icons/icon-maskable-512.png",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "maskable_icon_design",
+      "community": 4,
+      "norm_label": "maskable icon design: centered rectangle on off-white canvas"
+    }
+  ],
+  "links": [
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "server.js",
+      "source_location": "L7",
+      "weight": 1.0,
+      "source": "server_js",
+      "target": "staff_app_server_filename",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "server.js",
+      "source_location": "L8",
+      "weight": 1.0,
+      "source": "server_js",
+      "target": "staff_app_server_dirname",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "server.js",
+      "source_location": "L10",
+      "weight": 1.0,
+      "source": "server_js",
+      "target": "staff_app_server_app",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "api/index.js",
+      "source_location": "L2",
+      "weight": 1.0,
+      "source": "api_index_js",
+      "target": "server_js",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "api/index.js",
+      "source_location": "line 2",
+      "weight": 1.0,
+      "source": "api_index",
+      "target": "server_js"
+    },
+    {
+      "relation": "references",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "server.js",
+      "source_location": "static serve frontend/",
+      "weight": 0.85,
+      "source": "server_js",
+      "target": "frontend_sw"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/sw.js",
+      "source_location": "L4",
+      "weight": 1.0,
+      "source": "frontend_sw_js",
+      "target": "frontend_sw_static_assets",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/sw.js",
+      "source_location": "L23",
+      "weight": 1.0,
+      "source": "frontend_sw_js",
+      "target": "frontend_sw_url",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/sw.js",
+      "source_location": "L43",
+      "weight": 1.0,
+      "source": "frontend_sw_js",
+      "target": "frontend_sw_clone",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/js/auth.js",
+      "source_location": "L4",
+      "weight": 1.0,
+      "source": "frontend_js_auth_js",
+      "target": "frontend_js_supabase_client_js",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/js/auth.js",
+      "source_location": "L4",
+      "weight": 1.0,
+      "source": "frontend_js_auth_js",
+      "target": "js_supabase_client_supabase",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/js/auth.js",
+      "source_location": "L11",
+      "weight": 1.0,
+      "source": "frontend_js_auth_js",
+      "target": "js_auth_getattempts",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/js/auth.js",
+      "source_location": "L19",
+      "weight": 1.0,
+      "source": "frontend_js_auth_js",
+      "target": "js_auth_recordattempt",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/js/auth.js",
+      "source_location": "L31",
+      "weight": 1.0,
+      "source": "frontend_js_auth_js",
+      "target": "js_auth_clearattempts",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/js/auth.js",
+      "source_location": "L35",
+      "weight": 1.0,
+      "source": "frontend_js_auth_js",
+      "target": "js_auth_isratelimited",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/js/auth.js",
+      "source_location": "L42",
+      "weight": 1.0,
+      "source": "frontend_js_auth_js",
+      "target": "js_auth_login",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/js/auth.js",
+      "source_location": "L76",
+      "weight": 1.0,
+      "source": "frontend_js_auth_js",
+      "target": "js_auth_logout",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/js/auth.js",
+      "source_location": "L85",
+      "weight": 1.0,
+      "source": "frontend_js_auth_js",
+      "target": "js_auth_getsession",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/js/auth.js",
+      "source_location": "L91",
+      "weight": 1.0,
+      "source": "frontend_js_auth_js",
+      "target": "js_auth_getempleadaprofile",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/js/auth.js",
+      "source_location": "L106",
+      "weight": 1.0,
+      "source": "frontend_js_auth_js",
+      "target": "js_auth_requireauth",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/js/auth.js",
+      "source_location": "L116",
+      "weight": 1.0,
+      "source": "frontend_js_auth_js",
+      "target": "js_auth_redirectifauth",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/js/auth.js",
+      "source_location": "L124",
+      "weight": 1.0,
+      "source": "frontend_js_auth_js",
+      "target": "js_auth_cambiarpassword",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/js/auth.js",
+      "source_location": "L20",
+      "weight": 1.0,
+      "source": "js_auth_recordattempt",
+      "target": "js_auth_getattempts",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/js/auth.js",
+      "source_location": "L36",
+      "weight": 1.0,
+      "source": "js_auth_isratelimited",
+      "target": "js_auth_getattempts",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/js/auth.js",
+      "source_location": "L49",
+      "weight": 1.0,
+      "source": "js_auth_login",
+      "target": "js_auth_recordattempt",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/js/auth.js",
+      "source_location": "L53",
+      "weight": 1.0,
+      "source": "js_auth_login",
+      "target": "js_auth_clearattempts",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/js/auth.js",
+      "source_location": "L77",
+      "weight": 1.0,
+      "source": "js_auth_logout",
+      "target": "js_auth_clearattempts",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/js/auth.js",
+      "source_location": "L43",
+      "weight": 1.0,
+      "source": "js_auth_login",
+      "target": "js_auth_isratelimited",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/js/auth.js",
+      "source_location": "L107",
+      "weight": 1.0,
+      "source": "js_auth_requireauth",
+      "target": "js_auth_getsession",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/js/auth.js",
+      "source_location": "L117",
+      "weight": 1.0,
+      "source": "js_auth_redirectifauth",
+      "target": "js_auth_getsession",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/js/utils.js",
+      "source_location": "L5",
+      "weight": 1.0,
+      "source": "frontend_js_utils_js",
+      "target": "js_utils_estados",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/js/utils.js",
+      "source_location": "L13",
+      "weight": 1.0,
+      "source": "frontend_js_utils_js",
+      "target": "js_utils_formatfecha",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/js/utils.js",
+      "source_location": "L19",
+      "weight": 1.0,
+      "source": "frontend_js_utils_js",
+      "target": "js_utils_formatfechacorta",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/js/utils.js",
+      "source_location": "L25",
+      "weight": 1.0,
+      "source": "frontend_js_utils_js",
+      "target": "js_utils_formathora",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/js/utils.js",
+      "source_location": "L34",
+      "weight": 1.0,
+      "source": "frontend_js_utils_js",
+      "target": "js_utils_iniciales",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/js/utils.js",
+      "source_location": "L40",
+      "weight": 1.0,
+      "source": "frontend_js_utils_js",
+      "target": "js_utils_sanitizetext",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/js/utils.js",
+      "source_location": "L47",
+      "weight": 1.0,
+      "source": "frontend_js_utils_js",
+      "target": "js_utils_istoday",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/js/utils.js",
+      "source_location": "L53",
+      "weight": 1.0,
+      "source": "frontend_js_utils_js",
+      "target": "js_utils_isthisweek",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/js/utils.js",
+      "source_location": "L66",
+      "weight": 1.0,
+      "source": "frontend_js_utils_js",
+      "target": "js_utils_isthismonth",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/js/utils.js",
+      "source_location": "L73",
+      "weight": 1.0,
+      "source": "frontend_js_utils_js",
+      "target": "js_utils_todayiso",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/js/utils.js",
+      "source_location": "L79",
+      "weight": 1.0,
+      "source": "frontend_js_utils_js",
+      "target": "js_utils_showtoast",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/js/utils.js",
+      "source_location": "L97",
+      "weight": 1.0,
+      "source": "frontend_js_utils_js",
+      "target": "js_utils_avatarhtml",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/js/utils.js",
+      "source_location": "L104",
+      "weight": 1.0,
+      "source": "frontend_js_utils_js",
+      "target": "js_utils_avatarinitialeshtml",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/js/utils.js",
+      "source_location": "L105",
+      "weight": 1.0,
+      "source": "js_utils_avatarinitialeshtml",
+      "target": "js_utils_iniciales",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/js/utils.js",
+      "source_location": "L99",
+      "weight": 1.0,
+      "source": "js_utils_avatarhtml",
+      "target": "js_utils_avatarinitialeshtml",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/js/supabase-client.js",
+      "source_location": "L9",
+      "weight": 1.0,
+      "source": "frontend_js_supabase_client_js",
+      "target": "js_supabase_client_supabase",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "config/supabase.js",
+      "source_location": "L5",
+      "weight": 1.0,
+      "source": "config_supabase_js",
+      "target": "config_supabase_getsupabaseclient",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "api/index.js",
+      "source_location": "L1",
+      "weight": 1.0,
+      "source": "api_index_js",
+      "target": "config_supabase_js",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "api/index.js",
+      "source_location": "line 1",
+      "weight": 1.0,
+      "source": "api_index",
+      "target": "config_supabase"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "config/supabase.js",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "concept_service_role_key",
+      "target": "config_supabase"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "config/supabase.js",
+      "source_location": "line 7-8",
+      "weight": 1.0,
+      "source": "config_supabase",
+      "target": "concept_supabase_project"
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "frontend/js/auth.js",
+      "source_location": "line 4",
+      "weight": 1.0,
+      "source": "frontend_auth",
+      "target": "frontend_supabase_client"
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "frontend/dashboard.html",
+      "source_location": "script import",
+      "weight": 1.0,
+      "source": "page_dashboard",
+      "target": "frontend_supabase_client"
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "frontend/citas.html",
+      "source_location": "script import",
+      "weight": 1.0,
+      "source": "page_citas",
+      "target": "frontend_supabase_client"
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "frontend/cita-detalle.html",
+      "source_location": "script import",
+      "weight": 1.0,
+      "source": "page_cita_detalle",
+      "target": "frontend_supabase_client"
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "frontend/perfil.html",
+      "source_location": "script import",
+      "weight": 1.0,
+      "source": "page_perfil",
+      "target": "frontend_supabase_client"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "frontend/js/supabase-client.js",
+      "source_location": "line 6-7",
+      "weight": 1.0,
+      "source": "frontend_supabase_client",
+      "target": "concept_supabase_project"
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "frontend/index.html",
+      "source_location": "script import",
+      "weight": 1.0,
+      "source": "page_index",
+      "target": "frontend_auth"
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "frontend/dashboard.html",
+      "source_location": "script import",
+      "weight": 1.0,
+      "source": "page_dashboard",
+      "target": "frontend_auth"
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "frontend/citas.html",
+      "source_location": "script import",
+      "weight": 1.0,
+      "source": "page_citas",
+      "target": "frontend_auth"
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "frontend/cita-detalle.html",
+      "source_location": "script import",
+      "weight": 1.0,
+      "source": "page_cita_detalle",
+      "target": "frontend_auth"
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "frontend/perfil.html",
+      "source_location": "script import",
+      "weight": 1.0,
+      "source": "page_perfil",
+      "target": "frontend_auth"
+    },
+    {
+      "relation": "implements",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "frontend/js/auth.js",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "frontend_auth",
+      "target": "concept_rate_limiting"
+    },
+    {
+      "relation": "implements",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "frontend/js/auth.js",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "frontend_auth",
+      "target": "concept_auth_guard"
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "frontend/dashboard.html",
+      "source_location": "script import",
+      "weight": 1.0,
+      "source": "page_dashboard",
+      "target": "frontend_utils"
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "frontend/citas.html",
+      "source_location": "script import",
+      "weight": 1.0,
+      "source": "page_citas",
+      "target": "frontend_utils"
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "frontend/cita-detalle.html",
+      "source_location": "script import",
+      "weight": 1.0,
+      "source": "page_cita_detalle",
+      "target": "frontend_utils"
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "frontend/perfil.html",
+      "source_location": "script import",
+      "weight": 1.0,
+      "source": "page_perfil",
+      "target": "frontend_utils"
+    },
+    {
+      "relation": "implements",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "frontend/js/utils.js",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "frontend_utils",
+      "target": "concept_estados_citas"
+    },
+    {
+      "relation": "implements",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "frontend/sw.js",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "frontend_sw",
+      "target": "concept_pwa"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "frontend/sw.js",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "concept_service_worker_cache",
+      "target": "frontend_sw"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "frontend/index.html",
+      "source_location": "window.location.href redirect",
+      "weight": 1.0,
+      "source": "page_index",
+      "target": "page_dashboard"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "frontend/dashboard.html",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "concept_realtime",
+      "target": "page_dashboard"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "frontend/dashboard.html",
+      "source_location": "nav link",
+      "weight": 1.0,
+      "source": "page_dashboard",
+      "target": "page_citas"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "frontend/dashboard.html",
+      "source_location": "nav link",
+      "weight": 1.0,
+      "source": "page_dashboard",
+      "target": "page_perfil"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "frontend/dashboard.html",
+      "source_location": "proxima cita link",
+      "weight": 1.0,
+      "source": "page_dashboard",
+      "target": "page_cita_detalle"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "frontend/citas.html",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "concept_realtime",
+      "target": "page_citas"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "frontend/citas.html",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "concept_three_views",
+      "target": "page_citas"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "frontend/cita-detalle.html",
+      "source_location": "back nav link",
+      "weight": 1.0,
+      "source": "page_cita_detalle",
+      "target": "page_citas"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "frontend/cita-detalle.html",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "concept_whatsapp_contact",
+      "target": "page_cita_detalle"
+    },
+    {
+      "relation": "implements",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "database/schema_staff.sql",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "db_schema",
+      "target": "concept_rls"
+    },
+    {
+      "relation": "conceptually_related_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.9,
+      "source_file": "README.md",
+      "source_location": null,
+      "weight": 0.9,
+      "source": "db_schema",
+      "target": "doc_readme"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "README.md",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "doc_readme",
+      "target": "concept_pwa"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "README.md",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "doc_readme",
+      "target": "concept_rls"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "README.md",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "doc_readme",
+      "target": "concept_rate_limiting"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "CLAUDE.md",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "doc_claude",
+      "target": "concept_supabase_project"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "CLAUDE.md",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "doc_claude",
+      "target": "concept_vercel_deploy"
+    },
+    {
+      "relation": "implements",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "frontend/icons/icon-192.png",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "icon_192",
+      "target": "pwa_icon_design_system"
+    },
+    {
+      "relation": "implements",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "frontend/icons/icon-192.png",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "icon_192",
+      "target": "icon_layout_two_tone_split"
+    },
+    {
+      "relation": "semantically_similar_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "frontend/icons/icon-maskable-192.png",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "icon_maskable_192",
+      "target": "icon_192"
+    },
+    {
+      "relation": "implements",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "frontend/icons/icon-512.png",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "icon_512",
+      "target": "pwa_icon_design_system"
+    },
+    {
+      "relation": "implements",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "frontend/icons/icon-512.png",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "icon_512",
+      "target": "icon_layout_two_tone_split"
+    },
+    {
+      "relation": "semantically_similar_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "frontend/icons/icon-maskable-512.png",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "icon_maskable_512",
+      "target": "icon_512"
+    },
+    {
+      "relation": "implements",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "frontend/icons/icon-maskable-192.png",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "icon_maskable_192",
+      "target": "pwa_icon_design_system"
+    },
+    {
+      "relation": "implements",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "frontend/icons/icon-maskable-192.png",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "icon_maskable_192",
+      "target": "maskable_icon_design"
+    },
+    {
+      "relation": "implements",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "frontend/icons/icon-maskable-512.png",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "icon_maskable_512",
+      "target": "pwa_icon_design_system"
+    },
+    {
+      "relation": "implements",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "frontend/icons/icon-maskable-512.png",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "icon_maskable_512",
+      "target": "maskable_icon_design"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "frontend/icons/icon-512.png",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "icon_layout_two_tone_split",
+      "target": "brand_color_forest_green"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "frontend/icons/icon-maskable-192.png",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "maskable_icon_design",
+      "target": "brand_color_forest_green"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "INFERRED",
+      "confidence_score": 0.95,
+      "source_file": "frontend/icons/icon-512.png",
+      "source_location": null,
+      "weight": 0.95,
+      "source": "brand_color_forest_green",
+      "target": "brand_identity_spa_oh_diosas"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "frontend/icons/icon-512.png",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "icon_layout_two_tone_split",
+      "target": "brand_color_warm_gold"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "INFERRED",
+      "confidence_score": 0.95,
+      "source_file": "frontend/icons/icon-512.png",
+      "source_location": null,
+      "weight": 0.95,
+      "source": "brand_color_warm_gold",
+      "target": "brand_identity_spa_oh_diosas"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "frontend/icons/icon-maskable-192.png",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "maskable_icon_design",
+      "target": "brand_color_off_white"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "INFERRED",
+      "confidence_score": 0.95,
+      "source_file": "frontend/icons/icon-512.png",
+      "source_location": null,
+      "weight": 0.95,
+      "source": "pwa_icon_design_system",
+      "target": "brand_identity_spa_oh_diosas"
+    }
+  ],
+  "hyperedges": [
+    {
+      "id": "frontend_js_modules",
+      "label": "Frontend JS Module Trio (supabase-client, auth, utils)",
+      "nodes": [
+        "frontend_supabase_client",
+        "frontend_auth",
+        "frontend_utils"
+      ],
+      "relation": "form",
+      "confidence": "EXTRACTED",
+      "confidence_score": 0.95,
+      "source_file": "frontend/js/auth.js"
+    },
+    {
+      "id": "protected_pages",
+      "label": "Protected Pages requiring Auth Guard",
+      "nodes": [
+        "page_dashboard",
+        "page_citas",
+        "page_cita_detalle",
+        "page_perfil"
+      ],
+      "relation": "implement",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "frontend/js/auth.js"
+    },
+    {
+      "id": "supabase_rls_tables",
+      "label": "Supabase Tables with Staff RLS Policies",
+      "nodes": [
+        "db_schema",
+        "concept_rls",
+        "frontend_supabase_client"
+      ],
+      "relation": "implement",
+      "confidence": "EXTRACTED",
+      "confidence_score": 0.95,
+      "source_file": "database/schema_staff.sql"
+    },
+    {
+      "id": "pwa_components",
+      "label": "PWA Infrastructure (SW + manifest + mobile-first pages)",
+      "nodes": [
+        "frontend_sw",
+        "page_index",
+        "page_dashboard",
+        "page_citas",
+        "page_perfil"
+      ],
+      "relation": "participate_in",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "frontend/sw.js"
+    },
+    {
+      "id": "server_side_supabase",
+      "label": "Server-side Supabase Service Role Stack",
+      "nodes": [
+        "api_index",
+        "server_js",
+        "config_supabase"
+      ],
+      "relation": "implement",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "api/index.js"
+    },
+    {
+      "id": "staff_app_brand_icons_set",
+      "label": "Staff App PWA Brand Icons Set",
+      "nodes": [
+        "icon_192",
+        "icon_512",
+        "icon_maskable_192",
+        "icon_maskable_512"
+      ],
+      "relation": "implement",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "frontend/icons/icon-512.png"
+    },
+    {
+      "id": "spa_oh_diosas_brand_palette",
+      "label": "Spa Oh Diosas Brand Color Palette (Green + Gold + Off-White)",
+      "nodes": [
+        "brand_color_forest_green",
+        "brand_color_warm_gold",
+        "brand_color_off_white"
+      ],
+      "relation": "form",
+      "confidence": "EXTRACTED",
+      "confidence_score": 0.95,
+      "source_file": "frontend/icons/icon-512.png"
+    },
+    {
+      "id": "standard_vs_maskable_icon_pair_192",
+      "label": "192px Standard vs Maskable Icon Pair",
+      "nodes": [
+        "icon_192",
+        "icon_maskable_192",
+        "icon_layout_two_tone_split",
+        "maskable_icon_design"
+      ],
+      "relation": "participate_in",
+      "confidence": "INFERRED",
+      "confidence_score": 0.95,
+      "source_file": "frontend/icons/icon-maskable-192.png"
+    },
+    {
+      "id": "standard_vs_maskable_icon_pair_512",
+      "label": "512px Standard vs Maskable Icon Pair",
+      "nodes": [
+        "icon_512",
+        "icon_maskable_512",
+        "icon_layout_two_tone_split",
+        "maskable_icon_design"
+      ],
+      "relation": "participate_in",
+      "confidence": "INFERRED",
+      "confidence_score": 0.95,
+      "source_file": "frontend/icons/icon-maskable-512.png"
+    }
+  ],
+  "built_at_commit": "0c8135a6b544c6f2734d0310fd8c84494e0cdf58"
+}
