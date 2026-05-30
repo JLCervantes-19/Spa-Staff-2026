@@ -8,6 +8,9 @@ export const ESTADOS = {
   atrasada:    { label: 'Atrasada',    icon: '⏰', color: '#f59e0b' },
   no_asistio:  { label: 'No asistió',  icon: '❌', color: '#ef4444' },
   cancelada:   { label: 'Cancelada',   icon: '🚫', color: '#9ca3af' },
+  confirmada:  { label: 'Confirmada',  icon: '🔵', color: '#3b82f6' },
+  en_proceso:  { label: 'En proceso',  icon: '🔄', color: '#f59e0b' },
+  reagendada:  { label: 'Reagendada',  icon: '📅', color: '#8b5cf6' },
 }
 
 export function formatFecha(fecha) {

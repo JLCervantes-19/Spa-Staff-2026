@@ -146,10 +146,6 @@
     <div class="divider"></div>
 
     <div class="estado-grid">
-      <button class="estado-option pendiente"  data-estado="pendiente">
-        <span class="estado-icon">📋</span>
-        <span class="estado-label">Pendiente</span>
-      </button>
       <button class="estado-option realizada"  data-estado="realizada">
         <span class="estado-icon">✅</span>
         <span class="estado-label">Realizada</span>
@@ -157,6 +153,10 @@
       <button class="estado-option atrasada"   data-estado="atrasada">
         <span class="estado-icon">⏰</span>
         <span class="estado-label">Atrasada</span>
+      </button>
+      <button class="estado-option en_proceso" data-estado="en_proceso">
+        <span class="estado-icon">🔄</span>
+        <span class="estado-label">En proceso</span>
       </button>
       <button class="estado-option no_asistio" data-estado="no_asistio">
         <span class="estado-icon">❌</span>
@@ -232,10 +232,13 @@
     // Estado banner
     const colors = {
       pendiente:  ['#AD74C3', '#F8EDFB'],
+      confirmada: ['#3b82f6', '#eff6ff'],
+      en_proceso: ['#d97706', '#fffbeb'],
       realizada:  ['#16a34a', '#f0fdf4'],
       atrasada:   ['#d97706', '#fffbeb'],
       no_asistio: ['#dc2626', '#fef2f2'],
       cancelada:  ['#6b7280', '#f9fafb'],
+      reagendada: ['#8b5cf6', '#f5f3ff'],
     }
     const [textColor, bgColor] = colors[estado] || colors.pendiente
     const banner = document.getElementById('estado-banner')
