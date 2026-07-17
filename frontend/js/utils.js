@@ -2,15 +2,14 @@
 // utils.js — Utilidades compartidas
 // ============================================================
 
+// Estados canónicos del sistema (sincronizados con el CHECK de la tabla citas)
 export const ESTADOS = {
-  pendiente:   { label: 'Pendiente',   icon: '📋', color: '#AD74C3' },
-  realizada:   { label: 'Realizada',   icon: '✅', color: '#22c55e' },
-  atrasada:    { label: 'Atrasada',    icon: '⏰', color: '#f59e0b' },
-  no_asistio:  { label: 'No asistió',  icon: '❌', color: '#ef4444' },
-  cancelada:   { label: 'Cancelada',   icon: '🚫', color: '#9ca3af' },
-  confirmada:  { label: 'Confirmada',  icon: '🔵', color: '#3b82f6' },
-  en_proceso:  { label: 'En proceso',  icon: '🔄', color: '#f59e0b' },
-  reagendada:  { label: 'Reagendada',  icon: '📅', color: '#8b5cf6' },
+  pendiente:         { label: 'Pendiente',           icon: '📋', color: '#AD74C3' },
+  confirmada:        { label: 'Confirmada',          icon: '🔵', color: '#3b82f6' },
+  completada:        { label: 'Completada',          icon: '✅', color: '#22c55e' },
+  no_asistio:        { label: 'No asistió',          icon: '❌', color: '#ef4444' },
+  cancelada_cliente: { label: 'Cancelada (cliente)', icon: '🚫', color: '#f97316' },
+  cancelada_admin:   { label: 'Cancelada (admin)',   icon: '🚫', color: '#9ca3af' },
 }
 
 export function formatFecha(fecha) {
@@ -47,16 +46,22 @@ export function sanitizeText(str) {
   }).slice(0, 1000)
 }
 
+// Fecha actual en la zona horaria del spa (Bogotá).
+// No usar toISOString(): devuelve la fecha UTC y desde las 7 PM
+// hora Colombia salta al día siguiente.
+function hoyBogota() {
+  return new Date(new Date().toLocaleString('en-US', { timeZone: 'America/Bogota' }))
+}
+
 export function isToday(fecha) {
   if (!fecha) return false
-  const today = new Date().toISOString().split('T')[0]
-  return fecha === today
+  return fecha === todayISO()
 }
 
 export function isThisWeek(fecha) {
   if (!fecha) return false
   const d = new Date(fecha + 'T00:00:00')
-  const now = new Date()
+  const now = hoyBogota()
   const startOfWeek = new Date(now)
   startOfWeek.setDate(now.getDate() - now.getDay())
   startOfWeek.setHours(0, 0, 0, 0)
@@ -69,12 +74,13 @@ export function isThisWeek(fecha) {
 export function isThisMonth(fecha) {
   if (!fecha) return false
   const d = new Date(fecha + 'T00:00:00')
-  const now = new Date()
+  const now = hoyBogota()
   return d.getFullYear() === now.getFullYear() && d.getMonth() === now.getMonth()
 }
 
 export function todayISO() {
-  return new Date().toISOString().split('T')[0]
+  const d = hoyBogota()
+  return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`
 }
 
 // Toast global

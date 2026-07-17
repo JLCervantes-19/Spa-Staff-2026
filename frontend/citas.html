@@ -61,10 +61,10 @@
     <div class="filter-bar mb-16">
       <button class="filter-chip active" data-estado="todos" style="font-size:0.65rem">Todos</button>
       <button class="filter-chip" data-estado="pendiente" style="font-size:0.65rem">Pendientes</button>
-      <button class="filter-chip" data-estado="realizada" style="font-size:0.65rem">Realizadas</button>
-      <button class="filter-chip" data-estado="atrasada" style="font-size:0.65rem">Atrasadas</button>
+      <button class="filter-chip" data-estado="confirmada" style="font-size:0.65rem">Confirmadas</button>
+      <button class="filter-chip" data-estado="completada" style="font-size:0.65rem">Completadas</button>
       <button class="filter-chip" data-estado="no_asistio" style="font-size:0.65rem">No asistió</button>
-      <button class="filter-chip" data-estado="cancelada" style="font-size:0.65rem">Canceladas</button>
+      <button class="filter-chip" data-estado="canceladas" style="font-size:0.65rem">Canceladas</button>
     </div>
 
     <!-- CONTENIDO: LISTA -->
@@ -135,7 +135,7 @@
 <script type="module">
   import { requireAuth, logout, getEmpleadaProfile } from '/js/auth.js'
   import { supabase } from '/js/supabase-client.js'
-  import { formatFecha, formatFechaCorta, formatHora, isToday, isThisWeek, isThisMonth, ESTADOS, showToast } from '/js/utils.js'
+  import { formatFecha, formatFechaCorta, formatHora, isToday, isThisWeek, isThisMonth, todayISO, ESTADOS, showToast } from '/js/utils.js'
 
   const session = await requireAuth()
   if (!session) throw new Error()
@@ -149,7 +149,7 @@
   let vistaActual  = 'lista'
   let todasCitas   = []
   let calCurrentDate = new Date()
-  let calSelectedDate = new Date().toISOString().split('T')[0]
+  let calSelectedDate = todayISO()
 
   // ——— Cargar citas ———————————————————————————————————————
   async function cargarCitas() {
@@ -157,7 +157,7 @@
       .from('citas')
       .select(`
         id, fecha, hora_inicio, hora_fin, estado, notas,
-        clientes(id, nombre, telefono),
+        clientes(id, nombre),
         servicios(id, nombre, duracion_min, precio)
       `)
       .eq('empleado_id', empleada.id)
@@ -175,7 +175,7 @@
 
     // Filtro de fecha
     if (filtroFecha === 'hoy') {
-      const hoy = new Date().toISOString().split('T')[0]
+      const hoy = todayISO()
       resultado = resultado.filter(c => c.fecha === hoy)
     } else if (filtroFecha === 'semana') {
       resultado = resultado.filter(c => isThisWeek(c.fecha))
@@ -183,8 +183,10 @@
       resultado = resultado.filter(c => isThisMonth(c.fecha))
     }
 
-    // Filtro de estado
-    if (filtroEstado !== 'todos') {
+    // Filtro de estado ("canceladas" agrupa ambas variantes)
+    if (filtroEstado === 'canceladas') {
+      resultado = resultado.filter(c => ['cancelada_cliente', 'cancelada_admin'].includes(c.estado))
+    } else if (filtroEstado !== 'todos') {
       resultado = resultado.filter(c => (c.estado || 'pendiente') === filtroEstado)
     }
 
@@ -264,7 +266,7 @@
 
     const firstDay = new Date(year, month, 1).getDay()
     const daysInMonth = new Date(year, month + 1, 0).getDate()
-    const today = new Date().toISOString().split('T')[0]
+    const today = todayISO()
 
     // Fechas con citas de este empleada en este mes
     const fechasConCitas = new Set(
@@ -329,7 +331,7 @@
   // ——— Render agenda / timeline ——————————————————————————
   function renderAgenda() {
     const fechaFiltro = filtroFecha === 'hoy'
-      ? new Date().toISOString().split('T')[0]
+      ? todayISO()
       : calSelectedDate
 
     const citas = todasCitas.filter(c => c.fecha === fechaFiltro)
@@ -359,7 +361,7 @@
               const estado = c.estado || 'pendiente'
               return `
                 <a href="/cita-detalle.html?id=${c.id}" style="text-decoration:none">
-                  <div class="timeline-cita-card ${estado}" style="border-left-color:var(--estado-${estado === 'no_asistio' ? 'no-asistio' : estado})">
+                  <div class="timeline-cita-card ${estado}" style="border-left-color:${ESTADOS[estado]?.color || '#9ca3af'}">
                     <p style="font-family:var(--font-display);font-size:0.95rem;color:var(--text-dark)">${c.clientes?.nombre || '—'}</p>
                     <p style="font-size:0.75rem;color:var(--text-medium)">${c.servicios?.nombre || '—'} · ${formatHora(c.hora_inicio)}</p>
                   </div>
@@ -438,7 +440,7 @@
   })
   document.getElementById('cal-today').addEventListener('click', () => {
     calCurrentDate = new Date()
-    calSelectedDate = new Date().toISOString().split('T')[0]
+    calSelectedDate = todayISO()
     renderCalendar()
   })
 

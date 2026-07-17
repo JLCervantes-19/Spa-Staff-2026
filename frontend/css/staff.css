@@ -26,17 +26,19 @@
   --shadow-card: 0 4px 20px rgba(82, 37, 102, 0.1);
 
   /* Estados de citas */
-  --estado-pendiente:  #AD74C3;
-  --estado-realizada:  #22c55e;
-  --estado-atrasada:   #f59e0b;
-  --estado-no-asistio: #ef4444;
-  --estado-cancelada:  #9ca3af;
+  --estado-pendiente:   #AD74C3;
+  --estado-confirmada:  #3b82f6;
+  --estado-completada:  #22c55e;
+  --estado-no-asistio:  #ef4444;
+  --estado-cancelada-c: #f97316;
+  --estado-cancelada-a: #9ca3af;
 
-  --estado-pendiente-bg:  rgba(173, 116, 195, 0.12);
-  --estado-realizada-bg:  rgba(34, 197, 94, 0.12);
-  --estado-atrasada-bg:   rgba(245, 158, 11, 0.12);
-  --estado-no-asistio-bg: rgba(239, 68, 68, 0.12);
-  --estado-cancelada-bg:  rgba(156, 163, 175, 0.12);
+  --estado-pendiente-bg:   rgba(173, 116, 195, 0.12);
+  --estado-confirmada-bg:  rgba(59, 130, 246, 0.12);
+  --estado-completada-bg:  rgba(34, 197, 94, 0.12);
+  --estado-no-asistio-bg:  rgba(239, 68, 68, 0.12);
+  --estado-cancelada-c-bg: rgba(249, 115, 22, 0.12);
+  --estado-cancelada-a-bg: rgba(156, 163, 175, 0.12);
 
   /* Layout */
   --nav-height: 64px;
@@ -239,11 +241,12 @@ input, textarea, select { font-family: var(--font-body); }
   font-size: 0.65rem; font-weight: 600;
   letter-spacing: 0.1em; text-transform: uppercase;
 }
-.estado-chip.pendiente  { background: var(--estado-pendiente-bg);  color: var(--estado-pendiente); }
-.estado-chip.realizada  { background: var(--estado-realizada-bg);  color: var(--estado-realizada); }
-.estado-chip.atrasada   { background: var(--estado-atrasada-bg);   color: var(--estado-atrasada); }
-.estado-chip.no_asistio { background: var(--estado-no-asistio-bg); color: var(--estado-no-asistio); }
-.estado-chip.cancelada  { background: var(--estado-cancelada-bg);  color: var(--estado-cancelada); }
+.estado-chip.pendiente         { background: var(--estado-pendiente-bg);   color: var(--estado-pendiente); }
+.estado-chip.confirmada        { background: var(--estado-confirmada-bg);  color: var(--estado-confirmada); }
+.estado-chip.completada        { background: var(--estado-completada-bg);  color: var(--estado-completada); }
+.estado-chip.no_asistio        { background: var(--estado-no-asistio-bg);  color: var(--estado-no-asistio); }
+.estado-chip.cancelada_cliente { background: var(--estado-cancelada-c-bg); color: var(--estado-cancelada-c); }
+.estado-chip.cancelada_admin   { background: var(--estado-cancelada-a-bg); color: var(--estado-cancelada-a); }
 .dot {
   width: 6px; height: 6px; border-radius: 50%; background: currentColor;
 }
@@ -266,11 +269,12 @@ input, textarea, select { font-family: var(--font-body); }
   position: absolute; top: 0; left: 0; bottom: 0;
   width: 4px;
 }
-.cita-card.pendiente::before  { background: var(--estado-pendiente); }
-.cita-card.realizada::before  { background: var(--estado-realizada); }
-.cita-card.atrasada::before   { background: var(--estado-atrasada); }
-.cita-card.no_asistio::before { background: var(--estado-no-asistio); }
-.cita-card.cancelada::before  { background: var(--estado-cancelada); }
+.cita-card.pendiente::before         { background: var(--estado-pendiente); }
+.cita-card.confirmada::before        { background: var(--estado-confirmada); }
+.cita-card.completada::before        { background: var(--estado-completada); }
+.cita-card.no_asistio::before        { background: var(--estado-no-asistio); }
+.cita-card.cancelada_cliente::before { background: var(--estado-cancelada-c); }
+.cita-card.cancelada_admin::before   { background: var(--estado-cancelada-a); }
 .cita-card:hover { box-shadow: 0 8px 28px rgba(82, 37, 102, 0.14); transform: translateY(-2px); }
 .cita-card:active { transform: translateY(0); }
 
@@ -425,16 +429,10 @@ input, textarea, select { font-family: var(--font-body); }
   font-size: 0.65rem; font-weight: 600; letter-spacing: 0.1em;
   text-transform: uppercase;
 }
-.estado-option.pendiente  { color: var(--estado-pendiente); }
-.estado-option.realizada  { color: var(--estado-realizada); }
-.estado-option.atrasada   { color: var(--estado-atrasada); }
+.estado-option.completada { color: var(--estado-completada); }
 .estado-option.no_asistio { color: var(--estado-no-asistio); }
-.estado-option.cancelada  { color: var(--estado-cancelada); }
-.estado-option.selected.pendiente  { background: var(--estado-pendiente-bg); }
-.estado-option.selected.realizada  { background: var(--estado-realizada-bg); }
-.estado-option.selected.atrasada   { background: var(--estado-atrasada-bg); }
+.estado-option.selected.completada { background: var(--estado-completada-bg); }
 .estado-option.selected.no_asistio { background: var(--estado-no-asistio-bg); }
-.estado-option.selected.cancelada  { background: var(--estado-cancelada-bg); }
 
 /* ——— CALENDAR MINI ——————————————————————————————————————— */
 .calendar-mini {

@@ -156,13 +156,14 @@
     document.getElementById('hero-especialidades').textContent = empleada.especialidades.join(' · ')
   }
 
-  // Cargar citas
-  const hoy = new Date().toISOString().split('T')[0]
+  // Cargar citas (fecha en zona horaria de Bogotá — no usar toISOString)
+  const ahoraBog = new Date(new Date().toLocaleString('en-US', { timeZone: 'America/Bogota' }))
+  const hoy = `${ahoraBog.getFullYear()}-${String(ahoraBog.getMonth() + 1).padStart(2, '0')}-${String(ahoraBog.getDate()).padStart(2, '0')}`
   const { data: citas } = await supabase
     .from('citas')
     .select(`
       id, fecha, hora_inicio, hora_fin, estado, notas,
-      clientes(id, nombre, telefono),
+      clientes(id, nombre),
       servicios(id, nombre, duracion_min)
     `)
     .eq('empleado_id', empleada.id)
@@ -172,9 +173,10 @@
   const todasCitas = citas || []
 
   // Contadores
-  const citasHoy    = todasCitas.filter(c => c.fecha === hoy)
-  const citasSemana = todasCitas.filter(c => isThisWeek(c.fecha))
-  const pendientes  = todasCitas.filter(c => c.estado === 'pendiente' || !c.estado)
+  const INACTIVAS   = ['cancelada_cliente', 'cancelada_admin', 'no_asistio']
+  const citasHoy    = todasCitas.filter(c => c.fecha === hoy && !INACTIVAS.includes(c.estado))
+  const citasSemana = todasCitas.filter(c => isThisWeek(c.fecha) && !INACTIVAS.includes(c.estado))
+  const pendientes  = todasCitas.filter(c => ['pendiente', 'confirmada'].includes(c.estado || 'pendiente') && c.fecha >= hoy)
 
   document.getElementById('hoy-count').textContent      = citasHoy.length
   document.getElementById('semana-count').textContent   = citasSemana.length
@@ -183,7 +185,7 @@
   // Próxima cita (la primera pendiente a partir de ahora)
   const ahora = new Date()
   const proxima = todasCitas.find(c => {
-    if (c.estado === 'cancelada' || c.estado === 'realizada') return false
+    if (!['pendiente', 'confirmada'].includes(c.estado || 'pendiente')) return false
     const fechaHora = new Date(`${c.fecha}T${c.hora_inicio || '00:00'}`)
     return fechaHora >= ahora
   })

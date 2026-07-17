@@ -59,19 +59,13 @@
         <p class="heading-accent">Cliente</p>
       </div>
       <div class="card-body">
-        <div style="display:flex;align-items:center;gap:14px;margin-bottom:16px">
+        <div style="display:flex;align-items:center;gap:14px">
           <div id="cliente-avatar" style="width:48px;height:48px;border-radius:50%;background:var(--lilac-pale);display:flex;align-items:center;justify-content:center;font-family:var(--font-display);font-size:1.2rem;color:var(--purple-dark);flex-shrink:0;border:2px solid rgba(173,116,195,0.2)"></div>
           <div>
             <p id="det-cliente-nombre" class="heading-display" style="font-size:1.15rem;color:var(--text-dark)"></p>
-            <p id="det-cliente-telefono" style="font-size:0.82rem;color:var(--text-medium);margin-top:2px"></p>
+            <p style="font-size:0.72rem;color:var(--text-medium);opacity:0.6;margin-top:2px">Si necesitas contactar al cliente, comunícate con administración</p>
           </div>
         </div>
-        <!-- Tel botón -->
-        <a id="link-whatsapp" href="#" target="_blank"
-          style="display:flex;align-items:center;gap:8px;padding:10px 16px;background:rgba(37,211,102,0.08);border:1px solid rgba(37,211,102,0.2);border-radius:10px;color:#16a34a;font-size:0.78rem;font-weight:500;text-decoration:none;transition:all 0.2s">
-          <svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.123.554 4.117 1.526 5.847L.057 23.5l5.816-1.524A11.934 11.934 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.894a9.868 9.868 0 01-5.034-1.378l-.361-.214-3.741.98.999-3.648-.235-.374A9.851 9.851 0 012.106 12C2.106 6.58 6.58 2.106 12 2.106S21.894 6.58 21.894 12 17.42 21.894 12 21.894z"/></svg>
-          Contactar por WhatsApp
-        </a>
       </div>
     </div>
 
@@ -145,26 +139,16 @@
     <p style="font-size:0.82rem;color:var(--text-medium);margin-bottom:8px" id="modal-cliente-nombre"></p>
     <div class="divider"></div>
 
+    <!-- El staff solo puede marcar el resultado de la cita.
+         Las cancelaciones se gestionan desde el dashboard (admin) o la web (cliente). -->
     <div class="estado-grid">
-      <button class="estado-option realizada"  data-estado="realizada">
+      <button class="estado-option completada" data-estado="completada">
         <span class="estado-icon">✅</span>
-        <span class="estado-label">Realizada</span>
-      </button>
-      <button class="estado-option atrasada"   data-estado="atrasada">
-        <span class="estado-icon">⏰</span>
-        <span class="estado-label">Atrasada</span>
-      </button>
-      <button class="estado-option en_proceso" data-estado="en_proceso">
-        <span class="estado-icon">🔄</span>
-        <span class="estado-label">En proceso</span>
+        <span class="estado-label">Completada</span>
       </button>
       <button class="estado-option no_asistio" data-estado="no_asistio">
         <span class="estado-icon">❌</span>
         <span class="estado-label">No asistió</span>
-      </button>
-      <button class="estado-option cancelada"  data-estado="cancelada" style="grid-column:span 2">
-        <span class="estado-icon">🚫</span>
-        <span class="estado-label">Cancelada</span>
       </button>
     </div>
 
@@ -205,7 +189,7 @@
       .from('citas')
       .select(`
         id, fecha, hora_inicio, hora_fin, duracion_total, estado, notas, origen,
-        clientes(id, nombre, telefono, email, alergias, notas),
+        clientes(id, nombre),
         servicios(id, nombre, descripcion, precio, duracion_min)
       `)
       .eq('id', citaId)
@@ -231,14 +215,12 @@
 
     // Estado banner
     const colors = {
-      pendiente:  ['#AD74C3', '#F8EDFB'],
-      confirmada: ['#3b82f6', '#eff6ff'],
-      en_proceso: ['#d97706', '#fffbeb'],
-      realizada:  ['#16a34a', '#f0fdf4'],
-      atrasada:   ['#d97706', '#fffbeb'],
-      no_asistio: ['#dc2626', '#fef2f2'],
-      cancelada:  ['#6b7280', '#f9fafb'],
-      reagendada: ['#8b5cf6', '#f5f3ff'],
+      pendiente:         ['#AD74C3', '#F8EDFB'],
+      confirmada:        ['#3b82f6', '#eff6ff'],
+      completada:        ['#16a34a', '#f0fdf4'],
+      no_asistio:        ['#dc2626', '#fef2f2'],
+      cancelada_cliente: ['#ea580c', '#fff7ed'],
+      cancelada_admin:   ['#6b7280', '#f9fafb'],
     }
     const [textColor, bgColor] = colors[estado] || colors.pendiente
     const banner = document.getElementById('estado-banner')
@@ -249,20 +231,10 @@
     chip.style.fontSize = '0.82rem'
     document.getElementById('det-estado-label').style.color = textColor
 
-    // Cliente
+    // Cliente — el staff solo ve el nombre; el contacto lo gestiona administración
     const clienteIni = iniciales(c.clientes?.nombre || '', '')
     document.getElementById('cliente-avatar').textContent = clienteIni
     document.getElementById('det-cliente-nombre').textContent = c.clientes?.nombre || '—'
-    document.getElementById('det-cliente-telefono').textContent = c.clientes?.telefono || '—'
-
-    // WhatsApp
-    const tel = (c.clientes?.telefono || '').replace(/\D/g, '')
-    if (tel) {
-      const msg = encodeURIComponent(`Hola ${c.clientes?.nombre || ''}, te escribo del Spa Serenità para confirmar tu cita de ${c.servicios?.nombre || 'servicio'} del ${formatFecha(c.fecha)}.`)
-      document.getElementById('link-whatsapp').href = `https://wa.me/57${tel}?text=${msg}`
-    } else {
-      document.getElementById('link-whatsapp').style.display = 'none'
-    }
 
     // Servicio
     document.getElementById('det-servicio').textContent = c.servicios?.nombre || '—'
@@ -274,9 +246,8 @@
       ? `$${Number(c.servicios.precio).toLocaleString('es-CO')}`
       : '—'
 
-    // Notas
-    const notas = c.notas || c.clientes?.notas
-    document.getElementById('det-notas').textContent = notas || 'Sin notas'
+    // Notas internas de la cita
+    document.getElementById('det-notas').textContent = c.notas || 'Sin notas'
 
     // Modal: marcar estado actual
     document.getElementById('modal-cliente-nombre').textContent = c.clientes?.nombre || 'esta cita'
