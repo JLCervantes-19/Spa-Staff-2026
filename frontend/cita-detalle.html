@@ -18,10 +18,11 @@
 
 <!-- TOP NAV -->
 <nav class="top-nav">
-  <div style="display:flex;align-items:center;gap:12px">
-    <a href="/citas.html" class="btn-icon" aria-label="Volver">
-      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
-    </a>
+  <div style="display:flex;align-items:center;gap:12px;min-width:0">
+    <button class="btn-inicio" onclick="window.location.assign('/dashboard.html')" aria-label="Volver al inicio">
+      <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+      Inicio
+    </button>
     <div class="top-nav-brand">
       Detalle de cita
       <span>Serenità Staff</span>
@@ -214,13 +215,14 @@
     document.getElementById('cita-content').classList.remove('hidden')
 
     // Estado banner
+    // Sincronizado con los tokens --estado-* (SISTEMA WEB/design-tokens.css)
     const colors = {
       pendiente:         ['#AD74C3', '#F8EDFB'],
-      confirmada:        ['#3b82f6', '#eff6ff'],
+      confirmada:        ['#2563eb', '#eff6ff'],
       completada:        ['#16a34a', '#f0fdf4'],
       no_asistio:        ['#dc2626', '#fef2f2'],
-      cancelada_cliente: ['#ea580c', '#fff7ed'],
-      cancelada_admin:   ['#6b7280', '#f9fafb'],
+      cancelada_cliente: ['#c2410c', '#fff7ed'],
+      cancelada_admin:   ['#64748b', '#f1f5f9'],
     }
     const [textColor, bgColor] = colors[estado] || colors.pendiente
     const banner = document.getElementById('estado-banner')

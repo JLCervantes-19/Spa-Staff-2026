@@ -18,9 +18,15 @@
 
 <!-- TOP NAV -->
 <nav class="top-nav">
-  <div class="top-nav-brand">
-    Mis citas
-    <span>Serenità Staff</span>
+  <div style="display:flex;align-items:center;gap:12px;min-width:0">
+    <button class="btn-inicio" onclick="window.location.assign('/dashboard.html')" aria-label="Volver al inicio">
+      <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+      Inicio
+    </button>
+    <div class="top-nav-brand">
+      Mis citas
+      <span>Serenità Staff</span>
+    </div>
   </div>
   <div class="top-nav-actions">
     <button id="btn-logout" class="btn-icon" aria-label="Cerrar sesión">
@@ -51,7 +57,8 @@
 
     <!-- FILTROS DE FECHA -->
     <div class="filter-bar mb-12">
-      <button class="filter-chip active" data-fecha="hoy">Hoy</button>
+      <button class="filter-chip active" data-fecha="proximas">Próximas</button>
+      <button class="filter-chip" data-fecha="hoy">Hoy</button>
       <button class="filter-chip" data-fecha="semana">Esta semana</button>
       <button class="filter-chip" data-fecha="mes">Este mes</button>
       <button class="filter-chip" data-fecha="todas">Todas</button>
@@ -144,7 +151,10 @@
   if (!empleada) { window.location.href = '/index.html'; throw new Error() }
 
   // Estado de filtros
-  let filtroFecha  = 'hoy'
+  // Por defecto se muestran las citas PRÓXIMAS (hoy en adelante): con el
+  // filtro "hoy" las citas de otros días quedaban invisibles y parecía
+  // que no se cargaban ("Sin citas" aunque el inicio sí las mostraba)
+  let filtroFecha  = 'proximas'
   let filtroEstado = 'todos'
   let vistaActual  = 'lista'
   let todasCitas   = []
@@ -174,7 +184,10 @@
     let resultado = todasCitas
 
     // Filtro de fecha
-    if (filtroFecha === 'hoy') {
+    if (filtroFecha === 'proximas') {
+      const hoy = todayISO()
+      resultado = resultado.filter(c => c.fecha >= hoy)
+    } else if (filtroFecha === 'hoy') {
       const hoy = todayISO()
       resultado = resultado.filter(c => c.fecha === hoy)
     } else if (filtroFecha === 'semana') {
@@ -361,7 +374,7 @@
               const estado = c.estado || 'pendiente'
               return `
                 <a href="/cita-detalle.html?id=${c.id}" style="text-decoration:none">
-                  <div class="timeline-cita-card ${estado}" style="border-left-color:${ESTADOS[estado]?.color || '#9ca3af'}">
+                  <div class="timeline-cita-card ${estado}" style="border-left-color:${ESTADOS[estado]?.color || '#64748b'}">
                     <p style="font-family:var(--font-display);font-size:0.95rem;color:var(--text-dark)">${c.clientes?.nombre || '—'}</p>
                     <p style="font-size:0.75rem;color:var(--text-medium)">${c.servicios?.nombre || '—'} · ${formatHora(c.hora_inicio)}</p>
                   </div>

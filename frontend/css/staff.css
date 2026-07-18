@@ -25,20 +25,20 @@
   --shadow-soft: 0 8px 32px rgba(173, 116, 195, 0.15);
   --shadow-card: 0 4px 20px rgba(82, 37, 102, 0.1);
 
-  /* Estados de citas */
-  --estado-pendiente:   #AD74C3;
-  --estado-confirmada:  #3b82f6;
-  --estado-completada:  #22c55e;
-  --estado-no-asistio:  #ef4444;
-  --estado-cancelada-c: #f97316;
-  --estado-cancelada-a: #9ca3af;
-
-  --estado-pendiente-bg:   rgba(173, 116, 195, 0.12);
-  --estado-confirmada-bg:  rgba(59, 130, 246, 0.12);
-  --estado-completada-bg:  rgba(34, 197, 94, 0.12);
-  --estado-no-asistio-bg:  rgba(239, 68, 68, 0.12);
-  --estado-cancelada-c-bg: rgba(249, 115, 22, 0.12);
-  --estado-cancelada-a-bg: rgba(156, 163, 175, 0.12);
+  /* Estados de cita — fuente canónica: SISTEMA WEB/design-tokens.css
+     (idénticos en spa.css, admin.css y staff.css) */
+  --estado-pendiente:      #AD74C3;
+  --estado-confirmada:     #2563eb;
+  --estado-completada:     #16a34a;
+  --estado-no-asistio:     #dc2626;
+  --estado-cancelada-c:    #c2410c;
+  --estado-cancelada-a:    #64748b;
+  --estado-pendiente-bg:   #F8EDFB;
+  --estado-confirmada-bg:  #eff6ff;
+  --estado-completada-bg:  #f0fdf4;
+  --estado-no-asistio-bg:  #fef2f2;
+  --estado-cancelada-c-bg: #fff7ed;
+  --estado-cancelada-a-bg: #f1f5f9;
 
   /* Layout */
   --nav-height: 64px;
@@ -105,6 +105,28 @@ input, textarea, select { font-family: var(--font-body); }
   transition: var(--transition);
 }
 .btn-icon:hover { background: rgba(255,255,255,0.2); }
+
+/* Botón de regreso al inicio — visible en el top-nav de cada vista */
+.btn-inicio {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 14px;
+  border-radius: 999px;
+  border: 1px solid rgba(255,255,255,0.25);
+  background: rgba(255,255,255,0.12);
+  color: var(--white);
+  font-family: var(--font-body);
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: var(--transition);
+  flex-shrink: 0;
+}
+.btn-inicio:hover  { background: rgba(255,255,255,0.22); }
+.btn-inicio:active { background: rgba(255,255,255,0.3); }
 
 /* ——— BOTTOM NAV ——————————————————————————————————————————— */
 .bottom-nav {

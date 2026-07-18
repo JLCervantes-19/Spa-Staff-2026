@@ -3,13 +3,15 @@
 // ============================================================
 
 // Estados canónicos del sistema (sincronizados con el CHECK de la tabla citas)
+// Colores sincronizados con los tokens --estado-* de staff.css
+// (fuente canónica: SISTEMA WEB/design-tokens.css)
 export const ESTADOS = {
   pendiente:         { label: 'Pendiente',           icon: '📋', color: '#AD74C3' },
-  confirmada:        { label: 'Confirmada',          icon: '🔵', color: '#3b82f6' },
-  completada:        { label: 'Completada',          icon: '✅', color: '#22c55e' },
-  no_asistio:        { label: 'No asistió',          icon: '❌', color: '#ef4444' },
-  cancelada_cliente: { label: 'Cancelada (cliente)', icon: '🚫', color: '#f97316' },
-  cancelada_admin:   { label: 'Cancelada (admin)',   icon: '🚫', color: '#9ca3af' },
+  confirmada:        { label: 'Confirmada',          icon: '🔵', color: '#2563eb' },
+  completada:        { label: 'Completada',          icon: '✅', color: '#16a34a' },
+  no_asistio:        { label: 'No asistió',          icon: '❌', color: '#dc2626' },
+  cancelada_cliente: { label: 'Cancelada (cliente)', icon: '🚫', color: '#c2410c' },
+  cancelada_admin:   { label: 'Cancelada (admin)',   icon: '🚫', color: '#64748b' },
 }
 
 export function formatFecha(fecha) {

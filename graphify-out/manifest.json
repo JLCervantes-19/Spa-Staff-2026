@@ -1,7 +1,7 @@
 {
   "/Users/macuser/Desktop/LANDING PROYECTS/Spa_OhDiosas/SISTEMA WEB/staff-app/server.js": {
-    "mtime": 1779922454.5753748,
-    "hash": "6f73753a0290c6a8b2b9c1ac34daf4fa"
+    "mtime": 1779994505.4586737,
+    "hash": "eba16c01143afaec7a052d1616e12821"
   },
   "/Users/macuser/Desktop/LANDING PROYECTS/Spa_OhDiosas/SISTEMA WEB/staff-app/database/schema_staff.sql": {
     "mtime": 1779583956.9833744,
@@ -12,12 +12,12 @@
     "hash": "45d7e01c752df3f7b7c9852a03b18c43"
   },
   "/Users/macuser/Desktop/LANDING PROYECTS/Spa_OhDiosas/SISTEMA WEB/staff-app/frontend/js/auth.js": {
-    "mtime": 1779591426.6832154,
-    "hash": "d54c077cde1881a086de4109df430427"
+    "mtime": 1780130114.2392008,
+    "hash": "0f75a181b11bedf4d74f203583d4798e"
   },
   "/Users/macuser/Desktop/LANDING PROYECTS/Spa_OhDiosas/SISTEMA WEB/staff-app/frontend/js/utils.js": {
-    "mtime": 1779584161.6059792,
-    "hash": "6ec3a875419e411bd76416496d92d98b"
+    "mtime": 1784267258.184342,
+    "hash": "a8fb44152d59ce5bc543a581b4432306"
   },
   "/Users/macuser/Desktop/LANDING PROYECTS/Spa_OhDiosas/SISTEMA WEB/staff-app/frontend/js/supabase-client.js": {
     "mtime": 1779584114.4778738,
@@ -32,28 +32,28 @@
     "hash": "eddfaea284b73950c95fbc712051822b"
   },
   "/Users/macuser/Desktop/LANDING PROYECTS/Spa_OhDiosas/SISTEMA WEB/staff-app/README.md": {
-    "mtime": 1779656495.6494896,
-    "hash": "13eafffb935b1021b1ce28cad4320ca4"
+    "mtime": 1779928401.3024633,
+    "hash": "e8116405aaf906eb01864f49c97af3b7"
   },
   "/Users/macuser/Desktop/LANDING PROYECTS/Spa_OhDiosas/SISTEMA WEB/staff-app/CLAUDE.md": {
-    "mtime": 1779921493.7272024,
-    "hash": "5b57f88408bb225aad2df302080ac0bb"
+    "mtime": 1784337059.13118,
+    "hash": "8bb5b5e292d9b42b35211e8d64725cc1"
   },
   "/Users/macuser/Desktop/LANDING PROYECTS/Spa_OhDiosas/SISTEMA WEB/staff-app/frontend/index.html": {
     "mtime": 1779584197.7471974,
     "hash": "097f373cb3e1e90666057e4a4925c531"
   },
   "/Users/macuser/Desktop/LANDING PROYECTS/Spa_OhDiosas/SISTEMA WEB/staff-app/frontend/dashboard.html": {
-    "mtime": 1779665119.391259,
-    "hash": "24826b776fecfb9622051a36103c2178"
+    "mtime": 1784266813.5476942,
+    "hash": "b760ff1cab61530381fc5ce7e4650141"
   },
   "/Users/macuser/Desktop/LANDING PROYECTS/Spa_OhDiosas/SISTEMA WEB/staff-app/frontend/citas.html": {
-    "mtime": 1779664938.3988185,
-    "hash": "cab246aaf6e588ef4d4c0de4d192a063"
+    "mtime": 1784267703.362217,
+    "hash": "5576cadebcabd7bd5fbd0228b4928b42"
   },
   "/Users/macuser/Desktop/LANDING PROYECTS/Spa_OhDiosas/SISTEMA WEB/staff-app/frontend/cita-detalle.html": {
-    "mtime": 1779584412.6100368,
-    "hash": "37924cfbfb727a13e4e3af46ffde54a7"
+    "mtime": 1784266640.214089,
+    "hash": "7fc55e5ae020f6c157bd3d9d07c5ec87"
   },
   "/Users/macuser/Desktop/LANDING PROYECTS/Spa_OhDiosas/SISTEMA WEB/staff-app/frontend/perfil.html": {
     "mtime": 1779584495.319164,

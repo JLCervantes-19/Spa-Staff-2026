@@ -4,127 +4,43 @@
   "graph": {
     "hyperedges": [
       {
-        "id": "frontend_js_modules",
-        "label": "Frontend JS Module Trio (supabase-client, auth, utils)",
+        "id": "hyperedge_estado_flujo",
+        "label": "Flujo de estandarizaci\u00f3n de estados de cita a trav\u00e9s de las p\u00e1ginas del staff-app",
         "nodes": [
-          "frontend_supabase_client",
-          "frontend_auth",
-          "frontend_utils"
-        ],
-        "relation": "form",
-        "confidence": "EXTRACTED",
-        "confidence_score": 0.95,
-        "source_file": "frontend/js/auth.js"
-      },
-      {
-        "id": "protected_pages",
-        "label": "Protected Pages requiring Auth Guard",
-        "nodes": [
-          "page_dashboard",
-          "page_citas",
-          "page_cita_detalle",
-          "page_perfil"
-        ],
-        "relation": "implement",
-        "confidence": "EXTRACTED",
-        "confidence_score": 1.0,
-        "source_file": "frontend/js/auth.js"
-      },
-      {
-        "id": "supabase_rls_tables",
-        "label": "Supabase Tables with Staff RLS Policies",
-        "nodes": [
-          "db_schema",
-          "concept_rls",
-          "frontend_supabase_client"
-        ],
-        "relation": "implement",
-        "confidence": "EXTRACTED",
-        "confidence_score": 0.95,
-        "source_file": "database/schema_staff.sql"
-      },
-      {
-        "id": "pwa_components",
-        "label": "PWA Infrastructure (SW + manifest + mobile-first pages)",
-        "nodes": [
-          "frontend_sw",
-          "page_index",
-          "page_dashboard",
-          "page_citas",
-          "page_perfil"
+          "dashboard_html",
+          "citas_html",
+          "citadetalle_html"
         ],
         "relation": "participate_in",
         "confidence": "INFERRED",
         "confidence_score": 0.85,
-        "source_file": "frontend/sw.js"
+        "source_file": "frontend/citas.html"
       },
       {
-        "id": "server_side_supabase",
-        "label": "Server-side Supabase Service Role Stack",
+        "id": "hyperedge_least_privilege",
+        "label": "Patr\u00f3n de dise\u00f1o de m\u00ednimo privilegio en cita-detalle.html",
         "nodes": [
-          "api_index",
-          "server_js",
-          "config_supabase"
+          "citadetalle_html",
+          "citadetalle_modal_estado",
+          "citadetalle_least_privilege"
         ],
         "relation": "implement",
-        "confidence": "EXTRACTED",
-        "confidence_score": 1.0,
-        "source_file": "api/index.js"
+        "confidence": "INFERRED",
+        "confidence_score": 0.85,
+        "source_file": "frontend/cita-detalle.html"
       },
       {
-        "id": "staff_app_brand_icons_set",
-        "label": "Staff App PWA Brand Icons Set",
+        "id": "hyperedge_shared_modules",
+        "label": "M\u00f3dulos JS compartidos consumidos por las tres p\u00e1ginas del staff-app",
         "nodes": [
-          "icon_192",
-          "icon_512",
-          "icon_maskable_192",
-          "icon_maskable_512"
-        ],
-        "relation": "implement",
-        "confidence": "EXTRACTED",
-        "confidence_score": 1.0,
-        "source_file": "frontend/icons/icon-512.png"
-      },
-      {
-        "id": "spa_oh_diosas_brand_palette",
-        "label": "Spa Oh Diosas Brand Color Palette (Green + Gold + Off-White)",
-        "nodes": [
-          "brand_color_forest_green",
-          "brand_color_warm_gold",
-          "brand_color_off_white"
+          "auth_js",
+          "supabase_client_js",
+          "utils_js_estados"
         ],
         "relation": "form",
-        "confidence": "EXTRACTED",
-        "confidence_score": 0.95,
-        "source_file": "frontend/icons/icon-512.png"
-      },
-      {
-        "id": "standard_vs_maskable_icon_pair_192",
-        "label": "192px Standard vs Maskable Icon Pair",
-        "nodes": [
-          "icon_192",
-          "icon_maskable_192",
-          "icon_layout_two_tone_split",
-          "maskable_icon_design"
-        ],
-        "relation": "participate_in",
         "confidence": "INFERRED",
-        "confidence_score": 0.95,
-        "source_file": "frontend/icons/icon-maskable-192.png"
-      },
-      {
-        "id": "standard_vs_maskable_icon_pair_512",
-        "label": "512px Standard vs Maskable Icon Pair",
-        "nodes": [
-          "icon_512",
-          "icon_maskable_512",
-          "icon_layout_two_tone_split",
-          "maskable_icon_design"
-        ],
-        "relation": "participate_in",
-        "confidence": "INFERRED",
-        "confidence_score": 0.95,
-        "source_file": "frontend/icons/icon-maskable-512.png"
+        "confidence_score": 0.75,
+        "source_file": "README.md"
       }
     ]
   },
@@ -134,351 +50,351 @@
       "file_type": "code",
       "source_file": "server.js",
       "source_location": "L1",
-      "id": "server_js",
-      "community": 2,
-      "norm_label": "server.js"
+      "community": 4,
+      "norm_label": "server.js",
+      "id": "server_js"
     },
     {
       "label": "__filename",
       "file_type": "code",
       "source_file": "server.js",
       "source_location": "L7",
-      "id": "staff_app_server_filename",
-      "community": 2,
-      "norm_label": "__filename"
+      "community": 4,
+      "norm_label": "__filename",
+      "id": "staff_app_server_filename"
     },
     {
       "label": "__dirname",
       "file_type": "code",
       "source_file": "server.js",
       "source_location": "L8",
-      "id": "staff_app_server_dirname",
-      "community": 2,
-      "norm_label": "__dirname"
+      "community": 4,
+      "norm_label": "__dirname",
+      "id": "staff_app_server_dirname"
     },
     {
       "label": "app",
       "file_type": "code",
       "source_file": "server.js",
       "source_location": "L10",
-      "id": "staff_app_server_app",
-      "community": 2,
-      "norm_label": "app"
+      "community": 4,
+      "norm_label": "app",
+      "id": "staff_app_server_app"
     },
     {
       "label": "sw.js",
       "file_type": "code",
       "source_file": "frontend/sw.js",
       "source_location": "L1",
-      "id": "frontend_sw_js",
-      "community": 6,
-      "norm_label": "sw.js"
+      "community": 7,
+      "norm_label": "sw.js",
+      "id": "frontend_sw_js"
     },
     {
       "label": "STATIC_ASSETS",
       "file_type": "code",
       "source_file": "frontend/sw.js",
       "source_location": "L4",
-      "id": "frontend_sw_static_assets",
-      "community": 6,
-      "norm_label": "static_assets"
+      "community": 7,
+      "norm_label": "static_assets",
+      "id": "frontend_sw_static_assets"
     },
     {
       "label": "url",
       "file_type": "code",
       "source_file": "frontend/sw.js",
       "source_location": "L23",
-      "id": "frontend_sw_url",
-      "community": 6,
-      "norm_label": "url"
+      "community": 7,
+      "norm_label": "url",
+      "id": "frontend_sw_url"
     },
     {
       "label": "clone",
       "file_type": "code",
       "source_file": "frontend/sw.js",
       "source_location": "L43",
-      "id": "frontend_sw_clone",
-      "community": 6,
-      "norm_label": "clone"
+      "community": 7,
+      "norm_label": "clone",
+      "id": "frontend_sw_clone"
     },
     {
       "label": "auth.js",
       "file_type": "code",
       "source_file": "frontend/js/auth.js",
       "source_location": "L1",
-      "id": "frontend_js_auth_js",
       "community": 0,
-      "norm_label": "auth.js"
+      "norm_label": "auth.js",
+      "id": "frontend_js_auth_js"
     },
     {
       "label": "getAttempts()",
       "file_type": "code",
       "source_file": "frontend/js/auth.js",
-      "source_location": "L11",
-      "id": "js_auth_getattempts",
+      "source_location": "L19",
       "community": 0,
-      "norm_label": "getattempts()"
+      "norm_label": "getattempts()",
+      "id": "js_auth_getattempts"
     },
     {
       "label": "recordAttempt()",
       "file_type": "code",
       "source_file": "frontend/js/auth.js",
-      "source_location": "L19",
-      "id": "js_auth_recordattempt",
+      "source_location": "L27",
       "community": 0,
-      "norm_label": "recordattempt()"
+      "norm_label": "recordattempt()",
+      "id": "js_auth_recordattempt"
     },
     {
       "label": "clearAttempts()",
       "file_type": "code",
       "source_file": "frontend/js/auth.js",
-      "source_location": "L31",
-      "id": "js_auth_clearattempts",
+      "source_location": "L39",
       "community": 0,
-      "norm_label": "clearattempts()"
+      "norm_label": "clearattempts()",
+      "id": "js_auth_clearattempts"
     },
     {
       "label": "isRateLimited()",
       "file_type": "code",
       "source_file": "frontend/js/auth.js",
-      "source_location": "L35",
-      "id": "js_auth_isratelimited",
+      "source_location": "L41",
       "community": 0,
-      "norm_label": "isratelimited()"
+      "norm_label": "isratelimited()",
+      "id": "js_auth_isratelimited"
     },
     {
       "label": "login()",
       "file_type": "code",
       "source_file": "frontend/js/auth.js",
-      "source_location": "L42",
-      "id": "js_auth_login",
+      "source_location": "L229",
       "community": 0,
-      "norm_label": "login()"
+      "norm_label": "login()",
+      "id": "js_auth_login"
     },
     {
       "label": "logout()",
       "file_type": "code",
       "source_file": "frontend/js/auth.js",
-      "source_location": "L76",
-      "id": "js_auth_logout",
+      "source_location": "L266",
       "community": 0,
-      "norm_label": "logout()"
+      "norm_label": "logout()",
+      "id": "js_auth_logout"
     },
     {
       "label": "getSession()",
       "file_type": "code",
       "source_file": "frontend/js/auth.js",
-      "source_location": "L85",
-      "id": "js_auth_getsession",
+      "source_location": "L277",
       "community": 0,
-      "norm_label": "getsession()"
+      "norm_label": "getsession()",
+      "id": "js_auth_getsession"
     },
     {
       "label": "getEmpleadaProfile()",
       "file_type": "code",
       "source_file": "frontend/js/auth.js",
-      "source_location": "L91",
-      "id": "js_auth_getempleadaprofile",
+      "source_location": "L283",
       "community": 0,
-      "norm_label": "getempleadaprofile()"
+      "norm_label": "getempleadaprofile()",
+      "id": "js_auth_getempleadaprofile"
     },
     {
       "label": "requireAuth()",
       "file_type": "code",
       "source_file": "frontend/js/auth.js",
-      "source_location": "L106",
-      "id": "js_auth_requireauth",
+      "source_location": "L298",
       "community": 0,
-      "norm_label": "requireauth()"
+      "norm_label": "requireauth()",
+      "id": "js_auth_requireauth"
     },
     {
       "label": "redirectIfAuth()",
       "file_type": "code",
       "source_file": "frontend/js/auth.js",
-      "source_location": "L116",
-      "id": "js_auth_redirectifauth",
+      "source_location": "L316",
       "community": 0,
-      "norm_label": "redirectifauth()"
+      "norm_label": "redirectifauth()",
+      "id": "js_auth_redirectifauth"
     },
     {
       "label": "cambiarPassword()",
       "file_type": "code",
       "source_file": "frontend/js/auth.js",
-      "source_location": "L124",
-      "id": "js_auth_cambiarpassword",
+      "source_location": "L329",
       "community": 0,
-      "norm_label": "cambiarpassword()"
+      "norm_label": "cambiarpassword()",
+      "id": "js_auth_cambiarpassword"
     },
     {
       "label": "utils.js",
       "file_type": "code",
       "source_file": "frontend/js/utils.js",
       "source_location": "L1",
-      "id": "frontend_js_utils_js",
-      "community": 1,
-      "norm_label": "utils.js"
+      "community": 2,
+      "norm_label": "utils.js",
+      "id": "frontend_js_utils_js"
     },
     {
       "label": "ESTADOS",
       "file_type": "code",
       "source_file": "frontend/js/utils.js",
-      "source_location": "L5",
-      "id": "js_utils_estados",
-      "community": 1,
-      "norm_label": "estados"
+      "source_location": "L6",
+      "community": 2,
+      "norm_label": "estados",
+      "id": "js_utils_estados"
     },
     {
       "label": "formatFecha()",
       "file_type": "code",
       "source_file": "frontend/js/utils.js",
-      "source_location": "L13",
-      "id": "js_utils_formatfecha",
-      "community": 1,
-      "norm_label": "formatfecha()"
+      "source_location": "L15",
+      "community": 2,
+      "norm_label": "formatfecha()",
+      "id": "js_utils_formatfecha"
     },
     {
       "label": "formatFechaCorta()",
       "file_type": "code",
       "source_file": "frontend/js/utils.js",
-      "source_location": "L19",
-      "id": "js_utils_formatfechacorta",
-      "community": 1,
-      "norm_label": "formatfechacorta()"
+      "source_location": "L21",
+      "community": 2,
+      "norm_label": "formatfechacorta()",
+      "id": "js_utils_formatfechacorta"
     },
     {
       "label": "formatHora()",
       "file_type": "code",
       "source_file": "frontend/js/utils.js",
-      "source_location": "L25",
-      "id": "js_utils_formathora",
-      "community": 1,
-      "norm_label": "formathora()"
+      "source_location": "L27",
+      "community": 2,
+      "norm_label": "formathora()",
+      "id": "js_utils_formathora"
     },
     {
       "label": "iniciales()",
       "file_type": "code",
       "source_file": "frontend/js/utils.js",
-      "source_location": "L34",
-      "id": "js_utils_iniciales",
-      "community": 1,
-      "norm_label": "iniciales()"
+      "source_location": "L36",
+      "community": 2,
+      "norm_label": "iniciales()",
+      "id": "js_utils_iniciales"
     },
     {
       "label": "sanitizeText()",
       "file_type": "code",
       "source_file": "frontend/js/utils.js",
-      "source_location": "L40",
-      "id": "js_utils_sanitizetext",
-      "community": 1,
-      "norm_label": "sanitizetext()"
+      "source_location": "L42",
+      "community": 2,
+      "norm_label": "sanitizetext()",
+      "id": "js_utils_sanitizetext"
     },
     {
       "label": "isToday()",
       "file_type": "code",
       "source_file": "frontend/js/utils.js",
-      "source_location": "L47",
-      "id": "js_utils_istoday",
-      "community": 1,
-      "norm_label": "istoday()"
+      "source_location": "L56",
+      "community": 2,
+      "norm_label": "istoday()",
+      "id": "js_utils_istoday"
     },
     {
       "label": "isThisWeek()",
       "file_type": "code",
       "source_file": "frontend/js/utils.js",
-      "source_location": "L53",
-      "id": "js_utils_isthisweek",
-      "community": 1,
-      "norm_label": "isthisweek()"
+      "source_location": "L61",
+      "community": 2,
+      "norm_label": "isthisweek()",
+      "id": "js_utils_isthisweek"
     },
     {
       "label": "isThisMonth()",
       "file_type": "code",
       "source_file": "frontend/js/utils.js",
-      "source_location": "L66",
-      "id": "js_utils_isthismonth",
-      "community": 1,
-      "norm_label": "isthismonth()"
+      "source_location": "L74",
+      "community": 2,
+      "norm_label": "isthismonth()",
+      "id": "js_utils_isthismonth"
     },
     {
       "label": "todayISO()",
       "file_type": "code",
       "source_file": "frontend/js/utils.js",
-      "source_location": "L73",
-      "id": "js_utils_todayiso",
-      "community": 1,
-      "norm_label": "todayiso()"
+      "source_location": "L81",
+      "community": 2,
+      "norm_label": "todayiso()",
+      "id": "js_utils_todayiso"
     },
     {
       "label": "showToast()",
       "file_type": "code",
       "source_file": "frontend/js/utils.js",
-      "source_location": "L79",
-      "id": "js_utils_showtoast",
-      "community": 1,
-      "norm_label": "showtoast()"
+      "source_location": "L88",
+      "community": 2,
+      "norm_label": "showtoast()",
+      "id": "js_utils_showtoast"
     },
     {
       "label": "avatarHTML()",
       "file_type": "code",
       "source_file": "frontend/js/utils.js",
-      "source_location": "L97",
-      "id": "js_utils_avatarhtml",
-      "community": 1,
-      "norm_label": "avatarhtml()"
+      "source_location": "L106",
+      "community": 2,
+      "norm_label": "avatarhtml()",
+      "id": "js_utils_avatarhtml"
     },
     {
       "label": "avatarInitialesHTML()",
       "file_type": "code",
       "source_file": "frontend/js/utils.js",
-      "source_location": "L104",
-      "id": "js_utils_avatarinitialeshtml",
-      "community": 1,
-      "norm_label": "avatarinitialeshtml()"
+      "source_location": "L113",
+      "community": 2,
+      "norm_label": "avatarinitialeshtml()",
+      "id": "js_utils_avatarinitialeshtml"
     },
     {
       "label": "supabase-client.js",
       "file_type": "code",
       "source_file": "frontend/js/supabase-client.js",
       "source_location": "L1",
-      "id": "frontend_js_supabase_client_js",
       "community": 0,
-      "norm_label": "supabase-client.js"
+      "norm_label": "supabase-client.js",
+      "id": "frontend_js_supabase_client_js"
     },
     {
       "label": "supabase",
       "file_type": "code",
       "source_file": "frontend/js/supabase-client.js",
       "source_location": "L9",
-      "id": "js_supabase_client_supabase",
       "community": 0,
-      "norm_label": "supabase"
+      "norm_label": "supabase",
+      "id": "js_supabase_client_supabase"
     },
     {
       "label": "supabase.js",
       "file_type": "code",
       "source_file": "config/supabase.js",
       "source_location": "L1",
-      "id": "config_supabase_js",
-      "community": 2,
-      "norm_label": "supabase.js"
+      "community": 4,
+      "norm_label": "supabase.js",
+      "id": "config_supabase_js"
     },
     {
       "label": "getSupabaseClient()",
       "file_type": "code",
       "source_file": "config/supabase.js",
       "source_location": "L5",
-      "id": "config_supabase_getsupabaseclient",
-      "community": 2,
-      "norm_label": "getsupabaseclient()"
+      "community": 4,
+      "norm_label": "getsupabaseclient()",
+      "id": "config_supabase_getsupabaseclient"
     },
     {
       "label": "index.js",
       "file_type": "code",
       "source_file": "api/index.js",
       "source_location": "L1",
-      "id": "api_index_js",
-      "community": 2,
-      "norm_label": "index.js"
+      "community": 4,
+      "norm_label": "index.js",
+      "id": "api_index_js"
     },
     {
       "label": "API Entry Point (api/index.js)",
@@ -489,9 +405,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "api_index",
-      "community": 2,
-      "norm_label": "api entry point (api/index.js)"
+      "community": 4,
+      "norm_label": "api entry point (api/index.js)",
+      "id": "api_index"
     },
     {
       "label": "Supabase Server Client (config/supabase.js)",
@@ -502,9 +418,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "config_supabase",
-      "community": 2,
-      "norm_label": "supabase server client (config/supabase.js)"
+      "community": 4,
+      "norm_label": "supabase server client (config/supabase.js)",
+      "id": "config_supabase"
     },
     {
       "label": "Supabase Browser Client (frontend/js/supabase-client.js)",
@@ -515,9 +431,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "frontend_supabase_client",
       "community": 3,
-      "norm_label": "supabase browser client (frontend/js/supabase-client.js)"
+      "norm_label": "supabase browser client (frontend/js/supabase-client.js)",
+      "id": "frontend_supabase_client"
     },
     {
       "label": "Auth Helpers (frontend/js/auth.js)",
@@ -528,9 +444,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "frontend_auth",
       "community": 3,
-      "norm_label": "auth helpers (frontend/js/auth.js)"
+      "norm_label": "auth helpers (frontend/js/auth.js)",
+      "id": "frontend_auth"
     },
     {
       "label": "Shared Utilities (frontend/js/utils.js)",
@@ -541,9 +457,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "frontend_utils",
       "community": 3,
-      "norm_label": "shared utilities (frontend/js/utils.js)"
+      "norm_label": "shared utilities (frontend/js/utils.js)",
+      "id": "frontend_utils"
     },
     {
       "label": "Service Worker PWA (frontend/sw.js)",
@@ -554,9 +470,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "frontend_sw",
-      "community": 5,
-      "norm_label": "service worker pwa (frontend/sw.js)"
+      "community": 6,
+      "norm_label": "service worker pwa (frontend/sw.js)",
+      "id": "frontend_sw"
     },
     {
       "label": "Login Page (frontend/index.html)",
@@ -567,9 +483,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "page_index",
       "community": 3,
-      "norm_label": "login page (frontend/index.html)"
+      "norm_label": "login page (frontend/index.html)",
+      "id": "page_index"
     },
     {
       "label": "Dashboard Page (frontend/dashboard.html)",
@@ -580,9 +496,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "page_dashboard",
       "community": 3,
-      "norm_label": "dashboard page (frontend/dashboard.html)"
+      "norm_label": "dashboard page (frontend/dashboard.html)",
+      "id": "page_dashboard"
     },
     {
       "label": "Citas Page (frontend/citas.html)",
@@ -593,9 +509,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "page_citas",
       "community": 3,
-      "norm_label": "citas page (frontend/citas.html)"
+      "norm_label": "citas page (frontend/citas.html)",
+      "id": "page_citas"
     },
     {
       "label": "Cita Detalle Page (frontend/cita-detalle.html)",
@@ -606,9 +522,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "page_cita_detalle",
       "community": 3,
-      "norm_label": "cita detalle page (frontend/cita-detalle.html)"
+      "norm_label": "cita detalle page (frontend/cita-detalle.html)",
+      "id": "page_cita_detalle"
     },
     {
       "label": "Perfil Page (frontend/perfil.html)",
@@ -619,9 +535,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "page_perfil",
       "community": 3,
-      "norm_label": "perfil page (frontend/perfil.html)"
+      "norm_label": "perfil page (frontend/perfil.html)",
+      "id": "page_perfil"
     },
     {
       "label": "Staff DB Schema & RLS Policies (database/schema_staff.sql)",
@@ -632,9 +548,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "db_schema",
-      "community": 5,
-      "norm_label": "staff db schema & rls policies (database/schema_staff.sql)"
+      "community": 6,
+      "norm_label": "staff db schema & rls policies (database/schema_staff.sql)",
+      "id": "db_schema"
     },
     {
       "label": "Staff App README",
@@ -645,9 +561,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "doc_readme",
-      "community": 5,
-      "norm_label": "staff app readme"
+      "community": 6,
+      "norm_label": "staff app readme",
+      "id": "doc_readme"
     },
     {
       "label": "Staff App CLAUDE.md Config",
@@ -658,9 +574,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "doc_claude",
-      "community": 2,
-      "norm_label": "staff app claude.md config"
+      "community": 4,
+      "norm_label": "staff app claude.md config",
+      "id": "doc_claude"
     },
     {
       "label": "PWA \u2014 Progressive Web App (mobile-first staff portal)",
@@ -671,9 +587,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "concept_pwa",
-      "community": 5,
-      "norm_label": "pwa \u2014 progressive web app (mobile-first staff portal)"
+      "community": 6,
+      "norm_label": "pwa \u2014 progressive web app (mobile-first staff portal)",
+      "id": "concept_pwa"
     },
     {
       "label": "Row Level Security \u2014 cada empleada solo ve sus propios datos",
@@ -684,9 +600,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "concept_rls",
-      "community": 5,
-      "norm_label": "row level security \u2014 cada empleada solo ve sus propios datos"
+      "community": 6,
+      "norm_label": "row level security \u2014 cada empleada solo ve sus propios datos",
+      "id": "concept_rls"
     },
     {
       "label": "Client-side Rate Limiting \u2014 m\u00e1x 10 intentos de login / 15 min",
@@ -697,9 +613,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "concept_rate_limiting",
-      "community": 5,
-      "norm_label": "client-side rate limiting \u2014 max 10 intentos de login / 15 min"
+      "community": 6,
+      "norm_label": "client-side rate limiting \u2014 max 10 intentos de login / 15 min",
+      "id": "concept_rate_limiting"
     },
     {
       "label": "Supabase Realtime \u2014 suscripci\u00f3n postgres_changes en citas",
@@ -710,9 +626,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "concept_realtime",
       "community": 3,
-      "norm_label": "supabase realtime \u2014 suscripcion postgres_changes en citas"
+      "norm_label": "supabase realtime \u2014 suscripcion postgres_changes en citas",
+      "id": "concept_realtime"
     },
     {
       "label": "Estados de Cita \u2014 pendiente, realizada, atrasada, no_asistio, cancelada",
@@ -723,9 +639,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "concept_estados_citas",
       "community": 3,
-      "norm_label": "estados de cita \u2014 pendiente, realizada, atrasada, no_asistio, cancelada"
+      "norm_label": "estados de cita \u2014 pendiente, realizada, atrasada, no_asistio, cancelada",
+      "id": "concept_estados_citas"
     },
     {
       "label": "Auth Guard Pattern \u2014 requireAuth / redirectIfAuth protegen rutas",
@@ -736,9 +652,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "concept_auth_guard",
       "community": 3,
-      "norm_label": "auth guard pattern \u2014 requireauth / redirectifauth protegen rutas"
+      "norm_label": "auth guard pattern \u2014 requireauth / redirectifauth protegen rutas",
+      "id": "concept_auth_guard"
     },
     {
       "label": "Service Worker Cache Strategy \u2014 CSS cache-first, HTML/Supabase network-first",
@@ -749,9 +665,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "concept_service_worker_cache",
-      "community": 5,
-      "norm_label": "service worker cache strategy \u2014 css cache-first, html/supabase network-first"
+      "community": 6,
+      "norm_label": "service worker cache strategy \u2014 css cache-first, html/supabase network-first",
+      "id": "concept_service_worker_cache"
     },
     {
       "label": "Supabase Project \u2014 whouejjrpjcvoueyajbu (BD_Spa's_Startup)",
@@ -762,9 +678,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "concept_supabase_project",
-      "community": 2,
-      "norm_label": "supabase project \u2014 whouejjrpjcvoueyajbu (bd_spa's_startup)"
+      "community": 4,
+      "norm_label": "supabase project \u2014 whouejjrpjcvoueyajbu (bd_spa's_startup)",
+      "id": "concept_supabase_project"
     },
     {
       "label": "Vercel Deployment \u2014 jhan-cervantes-projects/spa-staff-2026",
@@ -775,9 +691,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "concept_vercel_deploy",
-      "community": 2,
-      "norm_label": "vercel deployment \u2014 jhan-cervantes-projects/spa-staff-2026"
+      "community": 4,
+      "norm_label": "vercel deployment \u2014 jhan-cervantes-projects/spa-staff-2026",
+      "id": "concept_vercel_deploy"
     },
     {
       "label": "Tres vistas de citas \u2014 Lista, Calendario, Agenda/Timeline",
@@ -788,9 +704,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "concept_three_views",
       "community": 3,
-      "norm_label": "tres vistas de citas \u2014 lista, calendario, agenda/timeline"
+      "norm_label": "tres vistas de citas \u2014 lista, calendario, agenda/timeline",
+      "id": "concept_three_views"
     },
     {
       "label": "WhatsApp Contact Link \u2014 empleada puede contactar cliente desde cita-detalle",
@@ -801,9 +717,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "concept_whatsapp_contact",
       "community": 3,
-      "norm_label": "whatsapp contact link \u2014 empleada puede contactar cliente desde cita-detalle"
+      "norm_label": "whatsapp contact link \u2014 empleada puede contactar cliente desde cita-detalle",
+      "id": "concept_whatsapp_contact"
     },
     {
       "label": "Service Role Key \u2014 solo en servidor (config/supabase.js), nunca en frontend",
@@ -814,9 +730,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "concept_service_role_key",
-      "community": 2,
-      "norm_label": "service role key \u2014 solo en servidor (config/supabase.js), nunca en frontend"
+      "community": 4,
+      "norm_label": "service role key \u2014 solo en servidor (config/supabase.js), nunca en frontend",
+      "id": "concept_service_role_key"
     },
     {
       "label": "PWA Icon 192x192",
@@ -827,9 +743,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "icon_192",
-      "community": 4,
-      "norm_label": "pwa icon 192x192"
+      "community": 5,
+      "norm_label": "pwa icon 192x192",
+      "id": "icon_192"
     },
     {
       "label": "PWA Icon 512x512",
@@ -840,9 +756,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "icon_512",
-      "community": 4,
-      "norm_label": "pwa icon 512x512"
+      "community": 5,
+      "norm_label": "pwa icon 512x512",
+      "id": "icon_512"
     },
     {
       "label": "PWA Maskable Icon 192x192",
@@ -853,9 +769,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "icon_maskable_192",
-      "community": 4,
-      "norm_label": "pwa maskable icon 192x192"
+      "community": 5,
+      "norm_label": "pwa maskable icon 192x192",
+      "id": "icon_maskable_192"
     },
     {
       "label": "PWA Maskable Icon 512x512",
@@ -866,9 +782,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "icon_maskable_512",
-      "community": 4,
-      "norm_label": "pwa maskable icon 512x512"
+      "community": 5,
+      "norm_label": "pwa maskable icon 512x512",
+      "id": "icon_maskable_512"
     },
     {
       "label": "Brand Color: Forest Green (#2D4A2D approx.)",
@@ -879,9 +795,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "brand_color_forest_green",
-      "community": 4,
-      "norm_label": "brand color: forest green (#2d4a2d approx.)"
+      "community": 5,
+      "norm_label": "brand color: forest green (#2d4a2d approx.)",
+      "id": "brand_color_forest_green"
     },
     {
       "label": "Brand Color: Warm Gold / Sandy Tan (#C9A96E approx.)",
@@ -892,9 +808,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "brand_color_warm_gold",
-      "community": 4,
-      "norm_label": "brand color: warm gold / sandy tan (#c9a96e approx.)"
+      "community": 5,
+      "norm_label": "brand color: warm gold / sandy tan (#c9a96e approx.)",
+      "id": "brand_color_warm_gold"
     },
     {
       "label": "Brand Color: Off-White / Cream Background (#F5F3EE approx.)",
@@ -905,9 +821,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "brand_color_off_white",
-      "community": 4,
-      "norm_label": "brand color: off-white / cream background (#f5f3ee approx.)"
+      "community": 5,
+      "norm_label": "brand color: off-white / cream background (#f5f3ee approx.)",
+      "id": "brand_color_off_white"
     },
     {
       "label": "Staff App PWA Icon Design System",
@@ -918,9 +834,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "pwa_icon_design_system",
-      "community": 4,
-      "norm_label": "staff app pwa icon design system"
+      "community": 5,
+      "norm_label": "staff app pwa icon design system",
+      "id": "pwa_icon_design_system"
     },
     {
       "label": "Spa Oh Diosas Brand Identity",
@@ -931,9 +847,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "brand_identity_spa_oh_diosas",
-      "community": 4,
-      "norm_label": "spa oh diosas brand identity"
+      "community": 5,
+      "norm_label": "spa oh diosas brand identity",
+      "id": "brand_identity_spa_oh_diosas"
     },
     {
       "label": "Icon Layout: Two-Tone Horizontal Split (Green upper / Gold lower)",
@@ -944,9 +860,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "icon_layout_two_tone_split",
-      "community": 4,
-      "norm_label": "icon layout: two-tone horizontal split (green upper / gold lower)"
+      "community": 5,
+      "norm_label": "icon layout: two-tone horizontal split (green upper / gold lower)",
+      "id": "icon_layout_two_tone_split"
     },
     {
       "label": "Maskable Icon Design: Centered Rectangle on Off-White Canvas",
@@ -957,9 +873,310 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "maskable_icon_design",
-      "community": 4,
-      "norm_label": "maskable icon design: centered rectangle on off-white canvas"
+      "community": 5,
+      "norm_label": "maskable icon design: centered rectangle on off-white canvas",
+      "id": "maskable_icon_design"
+    },
+    {
+      "label": "isSessionExpired()",
+      "file_type": "code",
+      "source_file": "frontend/js/auth.js",
+      "source_location": "L48",
+      "id": "js_auth_issessionexpired",
+      "community": 0,
+      "norm_label": "issessionexpired()"
+    },
+    {
+      "label": "showInactivityWarning()",
+      "file_type": "code",
+      "source_file": "frontend/js/auth.js",
+      "source_location": "L62",
+      "id": "js_auth_showinactivitywarning",
+      "community": 0,
+      "norm_label": "showinactivitywarning()"
+    },
+    {
+      "label": "_clearWarning()",
+      "file_type": "code",
+      "source_file": "frontend/js/auth.js",
+      "source_location": "L164",
+      "id": "js_auth_clearwarning",
+      "community": 0,
+      "norm_label": "_clearwarning()"
+    },
+    {
+      "label": "dismissWarningIfActive()",
+      "file_type": "code",
+      "source_file": "frontend/js/auth.js",
+      "source_location": "L171",
+      "id": "js_auth_dismisswarningifactive",
+      "community": 0,
+      "norm_label": "dismisswarningifactive()"
+    },
+    {
+      "label": "startSessionGuard()",
+      "file_type": "code",
+      "source_file": "frontend/js/auth.js",
+      "source_location": "L178",
+      "id": "js_auth_startsessionguard",
+      "community": 0,
+      "norm_label": "startsessionguard()"
+    },
+    {
+      "label": "hoyBogota()",
+      "file_type": "code",
+      "source_file": "frontend/js/utils.js",
+      "source_location": "L52",
+      "id": "js_utils_hoybogota",
+      "community": 2,
+      "norm_label": "hoybogota()"
+    },
+    {
+      "label": "Oh Diosas \u2014 Staff App (README)",
+      "file_type": "document",
+      "source_file": "README.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "readme_staff_app",
+      "community": 1,
+      "norm_label": "oh diosas \u2014 staff app (readme)"
+    },
+    {
+      "label": "Tabla de estados de citas en README (5 estados: pendiente, realizada, atrasada, no_asistio, cancelada)",
+      "file_type": "document",
+      "source_file": "README.md",
+      "source_location": "Estados de citas",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "readme_estados_citas_tabla",
+      "community": 1,
+      "norm_label": "tabla de estados de citas en readme (5 estados: pendiente, realizada, atrasada, no_asistio, cancelada)"
+    },
+    {
+      "label": "Secci\u00f3n Seguridad del README (RLS por empleada, service_role key solo servidor, rate limiting login, Service Worker offline, headers CSP)",
+      "file_type": "rationale",
+      "source_file": "README.md",
+      "source_location": "Seguridad",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "readme_seguridad",
+      "community": 1,
+      "norm_label": "seccion seguridad del readme (rls por empleada, service_role key solo servidor, rate limiting login, service worker offline, headers csp)"
+    },
+    {
+      "label": "Gu\u00eda de despliegue manual en Vercel para staff-app (spa-staff-2026)",
+      "file_type": "document",
+      "source_file": "README.md",
+      "source_location": "Despliegue manual en Vercel",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "readme_deploy_vercel",
+      "community": 1,
+      "norm_label": "guia de despliegue manual en vercel para staff-app (spa-staff-2026)"
+    },
+    {
+      "label": "Configuraci\u00f3n Supabase en CLAUDE.md de staff-app (project_id whouejjrpjcvoueyajbu)",
+      "file_type": "document",
+      "source_file": "CLAUDE.md",
+      "source_location": "Base de Datos Supabase",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "claudemd_supabase_config",
+      "community": 1,
+      "norm_label": "configuracion supabase en claude.md de staff-app (project_id whouejjrpjcvoueyajbu)"
+    },
+    {
+      "label": "Configuraci\u00f3n Vercel en CLAUDE.md de staff-app (proyecto spa-staff-2026)",
+      "file_type": "document",
+      "source_file": "CLAUDE.md",
+      "source_location": "Vercel \u2014 Despliegue",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "claudemd_vercel_config",
+      "community": 1,
+      "norm_label": "configuracion vercel en claude.md de staff-app (proyecto spa-staff-2026)"
+    },
+    {
+      "label": "Workflow n8n referenciado en CLAUDE.md de staff-app (ID DbBMJfV5hulsPVdR \u2014 difiere del ID 58vtbwK4zbdspKMQ citado en el CLAUDE.md global)",
+      "file_type": "document",
+      "source_file": "CLAUDE.md",
+      "source_location": "n8n \u2014 Automatizaciones",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "claudemd_n8n_workflow",
+      "community": 8,
+      "norm_label": "workflow n8n referenciado en claude.md de staff-app (id dbbmjfv5hulspvdr \u2014 difiere del id 58vtbwk4zbdspkmq citado en el claude.md global)"
+    },
+    {
+      "label": "dashboard.html \u2014 portal de inicio de la empleada (resumen del d\u00eda, pr\u00f3xima cita)",
+      "file_type": "code",
+      "source_file": "frontend/dashboard.html",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "dashboard_html",
+      "community": 1,
+      "norm_label": "dashboard.html \u2014 portal de inicio de la empleada (resumen del dia, proxima cita)"
+    },
+    {
+      "label": "Correcci\u00f3n de bug de zona horaria en dashboard.html: se reemplaz\u00f3 toISOString() (UTC) por c\u00e1lculo en America/Bogota para determinar 'hoy', evitando que desde las 7pm hora Colombia se mostrara el d\u00eda siguiente",
+      "file_type": "rationale",
+      "source_file": "frontend/dashboard.html",
+      "source_location": "script: c\u00e1lculo de 'hoy'",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "dashboard_timezone_fix",
+      "community": 1,
+      "norm_label": "correccion de bug de zona horaria en dashboard.html: se reemplazo toisostring() (utc) por calculo en america/bogota para determinar 'hoy', evitando que desde las 7pm hora colombia se mostrara el dia siguiente"
+    },
+    {
+      "label": "citas.html \u2014 Mis citas (vistas lista, calendario y agenda/timeline)",
+      "file_type": "code",
+      "source_file": "frontend/citas.html",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "citas_html",
+      "community": 1,
+      "norm_label": "citas.html \u2014 mis citas (vistas lista, calendario y agenda/timeline)"
+    },
+    {
+      "label": "Chips de filtro de estado en citas.html: Todos, Pendientes, Confirmadas, Completadas, No asisti\u00f3, y chip agrupado 'Canceladas' (cancelada_cliente + cancelada_admin)",
+      "file_type": "code",
+      "source_file": "frontend/citas.html",
+      "source_location": "FILTROS DE ESTADO",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "citas_estado_filtros",
+      "community": 1,
+      "norm_label": "chips de filtro de estado en citas.html: todos, pendientes, confirmadas, completadas, no asistio, y chip agrupado 'canceladas' (cancelada_cliente + cancelada_admin)"
+    },
+    {
+      "label": "cita-detalle.html \u2014 Detalle de cita y cambio de estado",
+      "file_type": "code",
+      "source_file": "frontend/cita-detalle.html",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "citadetalle_html",
+      "community": 1,
+      "norm_label": "cita-detalle.html \u2014 detalle de cita y cambio de estado"
+    },
+    {
+      "label": "Modal 'Cambiar estado' en cita-detalle.html: reducido a solo 2 opciones (Completada, No asisti\u00f3); comentario expl\u00edcito indica que las cancelaciones las gestiona admin o cliente, no el staff",
+      "file_type": "code",
+      "source_file": "frontend/cita-detalle.html",
+      "source_location": "MODAL CAMBIAR ESTADO",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "citadetalle_modal_estado",
+      "community": 1,
+      "norm_label": "modal 'cambiar estado' en cita-detalle.html: reducido a solo 2 opciones (completada, no asistio); comentario explicito indica que las cancelaciones las gestiona admin o cliente, no el staff"
+    },
+    {
+      "label": "Principio de m\u00ednimo privilegio aplicado en cita-detalle.html: se elimin\u00f3 el acceso de la empleada a tel\u00e9fono, email y bot\u00f3n 'Contactar por WhatsApp' del cliente; solo ve nombre, servicio, hora y notas internas ('Si necesitas contactar al cliente, comun\u00edcate con administraci\u00f3n')",
+      "file_type": "rationale",
+      "source_file": "frontend/cita-detalle.html",
+      "source_location": "DATOS DEL CLIENTE",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "citadetalle_least_privilege",
+      "community": 1,
+      "norm_label": "principio de minimo privilegio aplicado en cita-detalle.html: se elimino el acceso de la empleada a telefono, email y boton 'contactar por whatsapp' del cliente; solo ve nombre, servicio, hora y notas internas ('si necesitas contactar al cliente, comunicate con administracion')"
+    },
+    {
+      "label": "Estandarizaci\u00f3n de estados de cita a 6 valores (pendiente, confirmada, completada, no_asistio, cancelada_cliente, cancelada_admin), reemplazando un sistema anterior de 8 estados (inclu\u00eda en_proceso, realizada, atrasada, cancelada, reagendada)",
+      "file_type": "rationale",
+      "source_file": "frontend/citas.html",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "estados_citas_estandarizados",
+      "community": 1,
+      "norm_label": "estandarizacion de estados de cita a 6 valores (pendiente, confirmada, completada, no_asistio, cancelada_cliente, cancelada_admin), reemplazando un sistema anterior de 8 estados (incluia en_proceso, realizada, atrasada, cancelada, reagendada)"
+    },
+    {
+      "label": "utils.js \u2014 m\u00f3dulo compartido: ESTADOS (labels/colores), formatFecha, formatHora, isToday, isThisWeek, todayISO, avatarHTML, iniciales, sanitizeText, showToast",
+      "file_type": "code",
+      "source_file": "frontend/js/utils.js",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "utils_js_estados",
+      "community": 1,
+      "norm_label": "utils.js \u2014 modulo compartido: estados (labels/colores), formatfecha, formathora, istoday, isthisweek, todayiso, avatarhtml, iniciales, sanitizetext, showtoast"
+    },
+    {
+      "label": "supabase-client.js \u2014 cliente Supabase del frontend (anon key hardcoded, seguro por dise\u00f1o v\u00eda RLS)",
+      "file_type": "code",
+      "source_file": "frontend/js/supabase-client.js",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "supabase_client_js",
+      "community": 1,
+      "norm_label": "supabase-client.js \u2014 cliente supabase del frontend (anon key hardcoded, seguro por diseno via rls)"
+    },
+    {
+      "label": "auth.js \u2014 requireAuth, logout, getEmpleadaProfile (guard de sesi\u00f3n y perfil de la empleada)",
+      "file_type": "code",
+      "source_file": "frontend/js/auth.js",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "auth_js",
+      "community": 1,
+      "norm_label": "auth.js \u2014 requireauth, logout, getempleadaprofile (guard de sesion y perfil de la empleada)"
+    },
+    {
+      "label": "Tabla Supabase 'citas' (columnas: id, fecha, hora_inicio, hora_fin, estado, notas, empleado_id; relaciones a clientes y servicios) \u2014 compartida entre dashboard, citas y cita-detalle",
+      "file_type": "document",
+      "source_file": "frontend/dashboard.html",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "citas_table_supabase",
+      "community": 1,
+      "norm_label": "tabla supabase 'citas' (columnas: id, fecha, hora_inicio, hora_fin, estado, notas, empleado_id; relaciones a clientes y servicios) \u2014 compartida entre dashboard, citas y cita-detalle"
     }
   ],
   "links": [
@@ -969,9 +1186,9 @@
       "source_file": "server.js",
       "source_location": "L7",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "server_js",
-      "target": "staff_app_server_filename",
-      "confidence_score": 1.0
+      "target": "staff_app_server_filename"
     },
     {
       "relation": "contains",
@@ -979,9 +1196,9 @@
       "source_file": "server.js",
       "source_location": "L8",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "server_js",
-      "target": "staff_app_server_dirname",
-      "confidence_score": 1.0
+      "target": "staff_app_server_dirname"
     },
     {
       "relation": "contains",
@@ -989,9 +1206,9 @@
       "source_file": "server.js",
       "source_location": "L10",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "server_js",
-      "target": "staff_app_server_app",
-      "confidence_score": 1.0
+      "target": "staff_app_server_app"
     },
     {
       "relation": "imports_from",
@@ -1000,9 +1217,9 @@
       "source_file": "api/index.js",
       "source_location": "L2",
       "weight": 1.0,
-      "source": "api_index_js",
-      "target": "server_js",
-      "confidence_score": 1.0
+      "confidence_score": 1.0,
+      "source": "server_js",
+      "target": "api_index_js"
     },
     {
       "relation": "calls",
@@ -1011,8 +1228,8 @@
       "source_file": "api/index.js",
       "source_location": "line 2",
       "weight": 1.0,
-      "source": "api_index",
-      "target": "server_js"
+      "source": "server_js",
+      "target": "api_index"
     },
     {
       "relation": "references",
@@ -1030,9 +1247,9 @@
       "source_file": "frontend/sw.js",
       "source_location": "L4",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "frontend_sw_js",
-      "target": "frontend_sw_static_assets",
-      "confidence_score": 1.0
+      "target": "frontend_sw_static_assets"
     },
     {
       "relation": "contains",
@@ -1040,9 +1257,9 @@
       "source_file": "frontend/sw.js",
       "source_location": "L23",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "frontend_sw_js",
-      "target": "frontend_sw_url",
-      "confidence_score": 1.0
+      "target": "frontend_sw_url"
     },
     {
       "relation": "contains",
@@ -1050,9 +1267,9 @@
       "source_file": "frontend/sw.js",
       "source_location": "L43",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "frontend_sw_js",
-      "target": "frontend_sw_clone",
-      "confidence_score": 1.0
+      "target": "frontend_sw_clone"
     },
     {
       "relation": "imports_from",
@@ -1061,9 +1278,9 @@
       "source_file": "frontend/js/auth.js",
       "source_location": "L4",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "frontend_js_auth_js",
-      "target": "frontend_js_supabase_client_js",
-      "confidence_score": 1.0
+      "target": "frontend_js_supabase_client_js"
     },
     {
       "relation": "imports",
@@ -1072,19 +1289,9 @@
       "source_file": "frontend/js/auth.js",
       "source_location": "L4",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "frontend_js_auth_js",
-      "target": "js_supabase_client_supabase",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "frontend/js/auth.js",
-      "source_location": "L11",
-      "weight": 1.0,
-      "source": "frontend_js_auth_js",
-      "target": "js_auth_getattempts",
-      "confidence_score": 1.0
+      "target": "js_supabase_client_supabase"
     },
     {
       "relation": "contains",
@@ -1092,175 +1299,279 @@
       "source_file": "frontend/js/auth.js",
       "source_location": "L19",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "frontend_js_auth_js",
-      "target": "js_auth_recordattempt",
+      "target": "js_auth_getattempts"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/js/auth.js",
+      "source_location": "L27",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "frontend_js_auth_js",
+      "target": "js_auth_recordattempt"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/js/auth.js",
+      "source_location": "L39",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "frontend_js_auth_js",
+      "target": "js_auth_clearattempts"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/js/auth.js",
+      "source_location": "L41",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "frontend_js_auth_js",
+      "target": "js_auth_isratelimited"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/js/auth.js",
+      "source_location": "L229",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "frontend_js_auth_js",
+      "target": "js_auth_login"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/js/auth.js",
+      "source_location": "L266",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "frontend_js_auth_js",
+      "target": "js_auth_logout"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/js/auth.js",
+      "source_location": "L277",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "frontend_js_auth_js",
+      "target": "js_auth_getsession"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/js/auth.js",
+      "source_location": "L283",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "frontend_js_auth_js",
+      "target": "js_auth_getempleadaprofile"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/js/auth.js",
+      "source_location": "L298",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "frontend_js_auth_js",
+      "target": "js_auth_requireauth"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/js/auth.js",
+      "source_location": "L316",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "frontend_js_auth_js",
+      "target": "js_auth_redirectifauth"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/js/auth.js",
+      "source_location": "L329",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "frontend_js_auth_js",
+      "target": "js_auth_cambiarpassword"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/js/auth.js",
+      "source_location": "L48",
+      "weight": 1.0,
+      "source": "frontend_js_auth_js",
+      "target": "js_auth_issessionexpired",
       "confidence_score": 1.0
     },
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "frontend/js/auth.js",
-      "source_location": "L31",
+      "source_location": "L62",
       "weight": 1.0,
       "source": "frontend_js_auth_js",
-      "target": "js_auth_clearattempts",
+      "target": "js_auth_showinactivitywarning",
       "confidence_score": 1.0
     },
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "frontend/js/auth.js",
-      "source_location": "L35",
+      "source_location": "L164",
       "weight": 1.0,
       "source": "frontend_js_auth_js",
-      "target": "js_auth_isratelimited",
+      "target": "js_auth_clearwarning",
       "confidence_score": 1.0
     },
     {
       "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/js/auth.js",
+      "source_location": "L171",
+      "weight": 1.0,
+      "source": "frontend_js_auth_js",
+      "target": "js_auth_dismisswarningifactive",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/js/auth.js",
+      "source_location": "L178",
+      "weight": 1.0,
+      "source": "frontend_js_auth_js",
+      "target": "js_auth_startsessionguard",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/js/auth.js",
+      "source_location": "L28",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "js_auth_getattempts",
+      "target": "js_auth_recordattempt"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "frontend/js/auth.js",
       "source_location": "L42",
       "weight": 1.0,
-      "source": "frontend_js_auth_js",
-      "target": "js_auth_login",
-      "confidence_score": 1.0
+      "confidence_score": 1.0,
+      "source": "js_auth_getattempts",
+      "target": "js_auth_isratelimited"
     },
     {
-      "relation": "contains",
+      "relation": "calls",
+      "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "frontend/js/auth.js",
-      "source_location": "L76",
+      "source_location": "L236",
       "weight": 1.0,
-      "source": "frontend_js_auth_js",
-      "target": "js_auth_logout",
-      "confidence_score": 1.0
+      "confidence_score": 1.0,
+      "source": "js_auth_recordattempt",
+      "target": "js_auth_login"
     },
     {
-      "relation": "contains",
+      "relation": "calls",
+      "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "frontend/js/auth.js",
-      "source_location": "L85",
+      "source_location": "L240",
       "weight": 1.0,
-      "source": "frontend_js_auth_js",
-      "target": "js_auth_getsession",
-      "confidence_score": 1.0
+      "confidence_score": 1.0,
+      "source": "js_auth_clearattempts",
+      "target": "js_auth_login"
     },
     {
-      "relation": "contains",
+      "relation": "calls",
+      "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "frontend/js/auth.js",
-      "source_location": "L91",
+      "source_location": "L267",
       "weight": 1.0,
-      "source": "frontend_js_auth_js",
-      "target": "js_auth_getempleadaprofile",
-      "confidence_score": 1.0
+      "confidence_score": 1.0,
+      "source": "js_auth_clearattempts",
+      "target": "js_auth_logout"
     },
     {
-      "relation": "contains",
+      "relation": "calls",
+      "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "frontend/js/auth.js",
-      "source_location": "L106",
+      "source_location": "L230",
       "weight": 1.0,
-      "source": "frontend_js_auth_js",
+      "confidence_score": 1.0,
+      "source": "js_auth_isratelimited",
+      "target": "js_auth_login"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/js/auth.js",
+      "source_location": "L306",
+      "weight": 1.0,
+      "source": "js_auth_logout",
       "target": "js_auth_requireauth",
       "confidence_score": 1.0
     },
     {
-      "relation": "contains",
+      "relation": "calls",
+      "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "frontend/js/auth.js",
-      "source_location": "L116",
+      "source_location": "L321",
       "weight": 1.0,
-      "source": "frontend_js_auth_js",
+      "source": "js_auth_logout",
       "target": "js_auth_redirectifauth",
       "confidence_score": 1.0
     },
     {
-      "relation": "contains",
+      "relation": "calls",
+      "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "frontend/js/auth.js",
-      "source_location": "L124",
+      "source_location": "L299",
       "weight": 1.0,
-      "source": "frontend_js_auth_js",
-      "target": "js_auth_cambiarpassword",
-      "confidence_score": 1.0
+      "confidence_score": 1.0,
+      "source": "js_auth_getsession",
+      "target": "js_auth_requireauth"
     },
     {
       "relation": "calls",
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "frontend/js/auth.js",
-      "source_location": "L20",
+      "source_location": "L317",
       "weight": 1.0,
-      "source": "js_auth_recordattempt",
-      "target": "js_auth_getattempts",
-      "confidence_score": 1.0
+      "confidence_score": 1.0,
+      "source": "js_auth_getsession",
+      "target": "js_auth_redirectifauth"
     },
     {
       "relation": "calls",
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "frontend/js/auth.js",
-      "source_location": "L36",
-      "weight": 1.0,
-      "source": "js_auth_isratelimited",
-      "target": "js_auth_getattempts",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "EXTRACTED",
-      "source_file": "frontend/js/auth.js",
-      "source_location": "L49",
-      "weight": 1.0,
-      "source": "js_auth_login",
-      "target": "js_auth_recordattempt",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "EXTRACTED",
-      "source_file": "frontend/js/auth.js",
-      "source_location": "L53",
-      "weight": 1.0,
-      "source": "js_auth_login",
-      "target": "js_auth_clearattempts",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "EXTRACTED",
-      "source_file": "frontend/js/auth.js",
-      "source_location": "L77",
-      "weight": 1.0,
-      "source": "js_auth_logout",
-      "target": "js_auth_clearattempts",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "EXTRACTED",
-      "source_file": "frontend/js/auth.js",
-      "source_location": "L43",
-      "weight": 1.0,
-      "source": "js_auth_login",
-      "target": "js_auth_isratelimited",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "EXTRACTED",
-      "source_file": "frontend/js/auth.js",
-      "source_location": "L107",
+      "source_location": "L305",
       "weight": 1.0,
       "source": "js_auth_requireauth",
-      "target": "js_auth_getsession",
+      "target": "js_auth_issessionexpired",
       "confidence_score": 1.0
     },
     {
@@ -1268,140 +1579,194 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "frontend/js/auth.js",
-      "source_location": "L117",
+      "source_location": "L311",
+      "weight": 1.0,
+      "source": "js_auth_requireauth",
+      "target": "js_auth_startsessionguard",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/js/auth.js",
+      "source_location": "L320",
       "weight": 1.0,
       "source": "js_auth_redirectifauth",
-      "target": "js_auth_getsession",
+      "target": "js_auth_issessionexpired",
       "confidence_score": 1.0
     },
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "frontend/js/utils.js",
-      "source_location": "L5",
+      "source_location": "L6",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "frontend_js_utils_js",
-      "target": "js_utils_estados",
-      "confidence_score": 1.0
+      "target": "js_utils_estados"
     },
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "frontend/js/utils.js",
-      "source_location": "L13",
+      "source_location": "L15",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "frontend_js_utils_js",
-      "target": "js_utils_formatfecha",
-      "confidence_score": 1.0
+      "target": "js_utils_formatfecha"
     },
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "frontend/js/utils.js",
-      "source_location": "L19",
+      "source_location": "L21",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "frontend_js_utils_js",
-      "target": "js_utils_formatfechacorta",
-      "confidence_score": 1.0
+      "target": "js_utils_formatfechacorta"
     },
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "frontend/js/utils.js",
-      "source_location": "L25",
+      "source_location": "L27",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "frontend_js_utils_js",
-      "target": "js_utils_formathora",
-      "confidence_score": 1.0
+      "target": "js_utils_formathora"
     },
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "frontend/js/utils.js",
-      "source_location": "L34",
+      "source_location": "L36",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "frontend_js_utils_js",
-      "target": "js_utils_iniciales",
-      "confidence_score": 1.0
+      "target": "js_utils_iniciales"
     },
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "frontend/js/utils.js",
-      "source_location": "L40",
+      "source_location": "L42",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "frontend_js_utils_js",
-      "target": "js_utils_sanitizetext",
-      "confidence_score": 1.0
+      "target": "js_utils_sanitizetext"
     },
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "frontend/js/utils.js",
-      "source_location": "L47",
+      "source_location": "L56",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "frontend_js_utils_js",
-      "target": "js_utils_istoday",
-      "confidence_score": 1.0
+      "target": "js_utils_istoday"
     },
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "frontend/js/utils.js",
-      "source_location": "L53",
+      "source_location": "L61",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "frontend_js_utils_js",
-      "target": "js_utils_isthisweek",
-      "confidence_score": 1.0
+      "target": "js_utils_isthisweek"
     },
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "frontend/js/utils.js",
-      "source_location": "L66",
+      "source_location": "L74",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "frontend_js_utils_js",
-      "target": "js_utils_isthismonth",
-      "confidence_score": 1.0
+      "target": "js_utils_isthismonth"
     },
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "frontend/js/utils.js",
-      "source_location": "L73",
+      "source_location": "L81",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "frontend_js_utils_js",
+      "target": "js_utils_todayiso"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/js/utils.js",
+      "source_location": "L88",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "frontend_js_utils_js",
+      "target": "js_utils_showtoast"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/js/utils.js",
+      "source_location": "L106",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "frontend_js_utils_js",
+      "target": "js_utils_avatarhtml"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/js/utils.js",
+      "source_location": "L113",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "frontend_js_utils_js",
+      "target": "js_utils_avatarinitialeshtml"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/js/utils.js",
+      "source_location": "L52",
       "weight": 1.0,
       "source": "frontend_js_utils_js",
+      "target": "js_utils_hoybogota",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/js/utils.js",
+      "source_location": "L114",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "js_utils_iniciales",
+      "target": "js_utils_avatarinitialeshtml"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/js/utils.js",
+      "source_location": "L58",
+      "weight": 1.0,
+      "source": "js_utils_istoday",
       "target": "js_utils_todayiso",
       "confidence_score": 1.0
     },
     {
-      "relation": "contains",
+      "relation": "calls",
+      "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "frontend/js/utils.js",
-      "source_location": "L79",
+      "source_location": "L64",
       "weight": 1.0,
-      "source": "frontend_js_utils_js",
-      "target": "js_utils_showtoast",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "frontend/js/utils.js",
-      "source_location": "L97",
-      "weight": 1.0,
-      "source": "frontend_js_utils_js",
-      "target": "js_utils_avatarhtml",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "frontend/js/utils.js",
-      "source_location": "L104",
-      "weight": 1.0,
-      "source": "frontend_js_utils_js",
-      "target": "js_utils_avatarinitialeshtml",
+      "source": "js_utils_isthisweek",
+      "target": "js_utils_hoybogota",
       "confidence_score": 1.0
     },
     {
@@ -1409,10 +1774,10 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "frontend/js/utils.js",
-      "source_location": "L105",
+      "source_location": "L77",
       "weight": 1.0,
-      "source": "js_utils_avatarinitialeshtml",
-      "target": "js_utils_iniciales",
+      "source": "js_utils_isthismonth",
+      "target": "js_utils_hoybogota",
       "confidence_score": 1.0
     },
     {
@@ -1420,11 +1785,22 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "frontend/js/utils.js",
-      "source_location": "L99",
+      "source_location": "L82",
       "weight": 1.0,
+      "source": "js_utils_todayiso",
+      "target": "js_utils_hoybogota",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/js/utils.js",
+      "source_location": "L108",
+      "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "js_utils_avatarhtml",
-      "target": "js_utils_avatarinitialeshtml",
-      "confidence_score": 1.0
+      "target": "js_utils_avatarinitialeshtml"
     },
     {
       "relation": "contains",
@@ -1432,9 +1808,9 @@
       "source_file": "frontend/js/supabase-client.js",
       "source_location": "L9",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "frontend_js_supabase_client_js",
-      "target": "js_supabase_client_supabase",
-      "confidence_score": 1.0
+      "target": "js_supabase_client_supabase"
     },
     {
       "relation": "contains",
@@ -1442,9 +1818,9 @@
       "source_file": "config/supabase.js",
       "source_location": "L5",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "config_supabase_js",
-      "target": "config_supabase_getsupabaseclient",
-      "confidence_score": 1.0
+      "target": "config_supabase_getsupabaseclient"
     },
     {
       "relation": "imports_from",
@@ -1453,9 +1829,9 @@
       "source_file": "api/index.js",
       "source_location": "L1",
       "weight": 1.0,
-      "source": "api_index_js",
-      "target": "config_supabase_js",
-      "confidence_score": 1.0
+      "confidence_score": 1.0,
+      "source": "config_supabase_js",
+      "target": "api_index_js"
     },
     {
       "relation": "calls",
@@ -1474,8 +1850,8 @@
       "source_file": "config/supabase.js",
       "source_location": null,
       "weight": 1.0,
-      "source": "concept_service_role_key",
-      "target": "config_supabase"
+      "source": "config_supabase",
+      "target": "concept_service_role_key"
     },
     {
       "relation": "references",
@@ -1494,8 +1870,8 @@
       "source_file": "frontend/js/auth.js",
       "source_location": "line 4",
       "weight": 1.0,
-      "source": "frontend_auth",
-      "target": "frontend_supabase_client"
+      "source": "frontend_supabase_client",
+      "target": "frontend_auth"
     },
     {
       "relation": "calls",
@@ -1504,8 +1880,8 @@
       "source_file": "frontend/dashboard.html",
       "source_location": "script import",
       "weight": 1.0,
-      "source": "page_dashboard",
-      "target": "frontend_supabase_client"
+      "source": "frontend_supabase_client",
+      "target": "page_dashboard"
     },
     {
       "relation": "calls",
@@ -1514,8 +1890,8 @@
       "source_file": "frontend/citas.html",
       "source_location": "script import",
       "weight": 1.0,
-      "source": "page_citas",
-      "target": "frontend_supabase_client"
+      "source": "frontend_supabase_client",
+      "target": "page_citas"
     },
     {
       "relation": "calls",
@@ -1524,8 +1900,8 @@
       "source_file": "frontend/cita-detalle.html",
       "source_location": "script import",
       "weight": 1.0,
-      "source": "page_cita_detalle",
-      "target": "frontend_supabase_client"
+      "source": "frontend_supabase_client",
+      "target": "page_cita_detalle"
     },
     {
       "relation": "calls",
@@ -1534,8 +1910,8 @@
       "source_file": "frontend/perfil.html",
       "source_location": "script import",
       "weight": 1.0,
-      "source": "page_perfil",
-      "target": "frontend_supabase_client"
+      "source": "frontend_supabase_client",
+      "target": "page_perfil"
     },
     {
       "relation": "references",
@@ -1554,8 +1930,8 @@
       "source_file": "frontend/index.html",
       "source_location": "script import",
       "weight": 1.0,
-      "source": "page_index",
-      "target": "frontend_auth"
+      "source": "frontend_auth",
+      "target": "page_index"
     },
     {
       "relation": "calls",
@@ -1564,8 +1940,8 @@
       "source_file": "frontend/dashboard.html",
       "source_location": "script import",
       "weight": 1.0,
-      "source": "page_dashboard",
-      "target": "frontend_auth"
+      "source": "frontend_auth",
+      "target": "page_dashboard"
     },
     {
       "relation": "calls",
@@ -1574,8 +1950,8 @@
       "source_file": "frontend/citas.html",
       "source_location": "script import",
       "weight": 1.0,
-      "source": "page_citas",
-      "target": "frontend_auth"
+      "source": "frontend_auth",
+      "target": "page_citas"
     },
     {
       "relation": "calls",
@@ -1584,8 +1960,8 @@
       "source_file": "frontend/cita-detalle.html",
       "source_location": "script import",
       "weight": 1.0,
-      "source": "page_cita_detalle",
-      "target": "frontend_auth"
+      "source": "frontend_auth",
+      "target": "page_cita_detalle"
     },
     {
       "relation": "calls",
@@ -1594,8 +1970,8 @@
       "source_file": "frontend/perfil.html",
       "source_location": "script import",
       "weight": 1.0,
-      "source": "page_perfil",
-      "target": "frontend_auth"
+      "source": "frontend_auth",
+      "target": "page_perfil"
     },
     {
       "relation": "implements",
@@ -1624,8 +2000,8 @@
       "source_file": "frontend/dashboard.html",
       "source_location": "script import",
       "weight": 1.0,
-      "source": "page_dashboard",
-      "target": "frontend_utils"
+      "source": "frontend_utils",
+      "target": "page_dashboard"
     },
     {
       "relation": "calls",
@@ -1634,8 +2010,8 @@
       "source_file": "frontend/citas.html",
       "source_location": "script import",
       "weight": 1.0,
-      "source": "page_citas",
-      "target": "frontend_utils"
+      "source": "frontend_utils",
+      "target": "page_citas"
     },
     {
       "relation": "calls",
@@ -1644,8 +2020,8 @@
       "source_file": "frontend/cita-detalle.html",
       "source_location": "script import",
       "weight": 1.0,
-      "source": "page_cita_detalle",
-      "target": "frontend_utils"
+      "source": "frontend_utils",
+      "target": "page_cita_detalle"
     },
     {
       "relation": "calls",
@@ -1654,8 +2030,8 @@
       "source_file": "frontend/perfil.html",
       "source_location": "script import",
       "weight": 1.0,
-      "source": "page_perfil",
-      "target": "frontend_utils"
+      "source": "frontend_utils",
+      "target": "page_perfil"
     },
     {
       "relation": "implements",
@@ -1684,8 +2060,8 @@
       "source_file": "frontend/sw.js",
       "source_location": null,
       "weight": 1.0,
-      "source": "concept_service_worker_cache",
-      "target": "frontend_sw"
+      "source": "frontend_sw",
+      "target": "concept_service_worker_cache"
     },
     {
       "relation": "references",
@@ -1704,8 +2080,8 @@
       "source_file": "frontend/dashboard.html",
       "source_location": null,
       "weight": 1.0,
-      "source": "concept_realtime",
-      "target": "page_dashboard"
+      "source": "page_dashboard",
+      "target": "concept_realtime"
     },
     {
       "relation": "references",
@@ -1744,8 +2120,8 @@
       "source_file": "frontend/citas.html",
       "source_location": null,
       "weight": 1.0,
-      "source": "concept_realtime",
-      "target": "page_citas"
+      "source": "page_citas",
+      "target": "concept_realtime"
     },
     {
       "relation": "rationale_for",
@@ -1754,8 +2130,8 @@
       "source_file": "frontend/citas.html",
       "source_location": null,
       "weight": 1.0,
-      "source": "concept_three_views",
-      "target": "page_citas"
+      "source": "page_citas",
+      "target": "concept_three_views"
     },
     {
       "relation": "references",
@@ -1764,8 +2140,8 @@
       "source_file": "frontend/cita-detalle.html",
       "source_location": "back nav link",
       "weight": 1.0,
-      "source": "page_cita_detalle",
-      "target": "page_citas"
+      "source": "page_citas",
+      "target": "page_cita_detalle"
     },
     {
       "relation": "rationale_for",
@@ -1774,8 +2150,8 @@
       "source_file": "frontend/cita-detalle.html",
       "source_location": null,
       "weight": 1.0,
-      "source": "concept_whatsapp_contact",
-      "target": "page_cita_detalle"
+      "source": "page_cita_detalle",
+      "target": "concept_whatsapp_contact"
     },
     {
       "relation": "implements",
@@ -1874,8 +2250,8 @@
       "source_file": "frontend/icons/icon-maskable-192.png",
       "source_location": null,
       "weight": 1.0,
-      "source": "icon_maskable_192",
-      "target": "icon_192"
+      "source": "icon_192",
+      "target": "icon_maskable_192"
     },
     {
       "relation": "implements",
@@ -1904,8 +2280,8 @@
       "source_file": "frontend/icons/icon-maskable-512.png",
       "source_location": null,
       "weight": 1.0,
-      "source": "icon_maskable_512",
-      "target": "icon_512"
+      "source": "icon_512",
+      "target": "icon_maskable_512"
     },
     {
       "relation": "implements",
@@ -1954,8 +2330,8 @@
       "source_file": "frontend/icons/icon-512.png",
       "source_location": null,
       "weight": 1.0,
-      "source": "icon_layout_two_tone_split",
-      "target": "brand_color_forest_green"
+      "source": "brand_color_forest_green",
+      "target": "icon_layout_two_tone_split"
     },
     {
       "relation": "references",
@@ -1964,8 +2340,8 @@
       "source_file": "frontend/icons/icon-maskable-192.png",
       "source_location": null,
       "weight": 1.0,
-      "source": "maskable_icon_design",
-      "target": "brand_color_forest_green"
+      "source": "brand_color_forest_green",
+      "target": "maskable_icon_design"
     },
     {
       "relation": "rationale_for",
@@ -1984,8 +2360,8 @@
       "source_file": "frontend/icons/icon-512.png",
       "source_location": null,
       "weight": 1.0,
-      "source": "icon_layout_two_tone_split",
-      "target": "brand_color_warm_gold"
+      "source": "brand_color_warm_gold",
+      "target": "icon_layout_two_tone_split"
     },
     {
       "relation": "rationale_for",
@@ -2004,8 +2380,8 @@
       "source_file": "frontend/icons/icon-maskable-192.png",
       "source_location": null,
       "weight": 1.0,
-      "source": "maskable_icon_design",
-      "target": "brand_color_off_white"
+      "source": "brand_color_off_white",
+      "target": "maskable_icon_design"
     },
     {
       "relation": "rationale_for",
@@ -2016,132 +2392,399 @@
       "weight": 0.95,
       "source": "pwa_icon_design_system",
       "target": "brand_identity_spa_oh_diosas"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/js/auth.js",
+      "source_location": "L172",
+      "weight": 1.0,
+      "source": "js_auth_clearwarning",
+      "target": "js_auth_dismisswarningifactive",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "README.md",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "readme_staff_app",
+      "target": "readme_deploy_vercel"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "README.md",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "readme_staff_app",
+      "target": "readme_seguridad"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "README.md",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "readme_staff_app",
+      "target": "readme_estados_citas_tabla"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "README.md",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "readme_staff_app",
+      "target": "citas_table_supabase"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "README.md",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "readme_staff_app",
+      "target": "auth_js"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "README.md",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "readme_staff_app",
+      "target": "supabase_client_js"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "README.md",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "readme_staff_app",
+      "target": "utils_js_estados"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "README.md",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "readme_staff_app",
+      "target": "dashboard_html"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "README.md",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "readme_staff_app",
+      "target": "citas_html"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "README.md",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "readme_staff_app",
+      "target": "citadetalle_html"
+    },
+    {
+      "relation": "conceptually_related_to",
+      "confidence": "AMBIGUOUS",
+      "confidence_score": 0.3,
+      "source_file": "README.md",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "readme_estados_citas_tabla",
+      "target": "estados_citas_estandarizados"
+    },
+    {
+      "relation": "semantically_similar_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.75,
+      "source_file": "README.md",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "readme_seguridad",
+      "target": "citadetalle_least_privilege"
+    },
+    {
+      "relation": "conceptually_related_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.75,
+      "source_file": "CLAUDE.md",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "claudemd_supabase_config",
+      "target": "claudemd_vercel_config"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "CLAUDE.md",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "claudemd_supabase_config",
+      "target": "citas_table_supabase"
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "frontend/dashboard.html",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "dashboard_html",
+      "target": "auth_js"
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "frontend/dashboard.html",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "dashboard_html",
+      "target": "supabase_client_js"
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "frontend/dashboard.html",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "dashboard_html",
+      "target": "utils_js_estados"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "frontend/dashboard.html",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "dashboard_html",
+      "target": "citas_table_supabase"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "frontend/dashboard.html",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "dashboard_html",
+      "target": "dashboard_timezone_fix"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "frontend/dashboard.html",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "dashboard_html",
+      "target": "estados_citas_estandarizados"
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "frontend/citas.html",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "citas_html",
+      "target": "auth_js"
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "frontend/citas.html",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "citas_html",
+      "target": "supabase_client_js"
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "frontend/citas.html",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "citas_html",
+      "target": "utils_js_estados"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "frontend/citas.html",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "citas_html",
+      "target": "citas_table_supabase"
+    },
+    {
+      "relation": "implements",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "frontend/citas.html",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "citas_html",
+      "target": "citas_estado_filtros"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "frontend/citas.html",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "citas_estado_filtros",
+      "target": "estados_citas_estandarizados"
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "frontend/cita-detalle.html",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "citadetalle_html",
+      "target": "auth_js"
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "frontend/cita-detalle.html",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "citadetalle_html",
+      "target": "supabase_client_js"
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "frontend/cita-detalle.html",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "citadetalle_html",
+      "target": "utils_js_estados"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "frontend/cita-detalle.html",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "citadetalle_html",
+      "target": "citas_table_supabase"
+    },
+    {
+      "relation": "implements",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "frontend/cita-detalle.html",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "citadetalle_html",
+      "target": "citadetalle_modal_estado"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "frontend/cita-detalle.html",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "citadetalle_html",
+      "target": "citadetalle_least_privilege"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "frontend/cita-detalle.html",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "citadetalle_modal_estado",
+      "target": "citadetalle_least_privilege"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "frontend/cita-detalle.html",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "citadetalle_modal_estado",
+      "target": "estados_citas_estandarizados"
     }
   ],
   "hyperedges": [
     {
-      "id": "frontend_js_modules",
-      "label": "Frontend JS Module Trio (supabase-client, auth, utils)",
+      "id": "hyperedge_estado_flujo",
+      "label": "Flujo de estandarizaci\u00f3n de estados de cita a trav\u00e9s de las p\u00e1ginas del staff-app",
       "nodes": [
-        "frontend_supabase_client",
-        "frontend_auth",
-        "frontend_utils"
-      ],
-      "relation": "form",
-      "confidence": "EXTRACTED",
-      "confidence_score": 0.95,
-      "source_file": "frontend/js/auth.js"
-    },
-    {
-      "id": "protected_pages",
-      "label": "Protected Pages requiring Auth Guard",
-      "nodes": [
-        "page_dashboard",
-        "page_citas",
-        "page_cita_detalle",
-        "page_perfil"
-      ],
-      "relation": "implement",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "frontend/js/auth.js"
-    },
-    {
-      "id": "supabase_rls_tables",
-      "label": "Supabase Tables with Staff RLS Policies",
-      "nodes": [
-        "db_schema",
-        "concept_rls",
-        "frontend_supabase_client"
-      ],
-      "relation": "implement",
-      "confidence": "EXTRACTED",
-      "confidence_score": 0.95,
-      "source_file": "database/schema_staff.sql"
-    },
-    {
-      "id": "pwa_components",
-      "label": "PWA Infrastructure (SW + manifest + mobile-first pages)",
-      "nodes": [
-        "frontend_sw",
-        "page_index",
-        "page_dashboard",
-        "page_citas",
-        "page_perfil"
+        "dashboard_html",
+        "citas_html",
+        "citadetalle_html"
       ],
       "relation": "participate_in",
       "confidence": "INFERRED",
       "confidence_score": 0.85,
-      "source_file": "frontend/sw.js"
+      "source_file": "frontend/citas.html"
     },
     {
-      "id": "server_side_supabase",
-      "label": "Server-side Supabase Service Role Stack",
+      "id": "hyperedge_least_privilege",
+      "label": "Patr\u00f3n de dise\u00f1o de m\u00ednimo privilegio en cita-detalle.html",
       "nodes": [
-        "api_index",
-        "server_js",
-        "config_supabase"
+        "citadetalle_html",
+        "citadetalle_modal_estado",
+        "citadetalle_least_privilege"
       ],
       "relation": "implement",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "api/index.js"
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "frontend/cita-detalle.html"
     },
     {
-      "id": "staff_app_brand_icons_set",
-      "label": "Staff App PWA Brand Icons Set",
+      "id": "hyperedge_shared_modules",
+      "label": "M\u00f3dulos JS compartidos consumidos por las tres p\u00e1ginas del staff-app",
       "nodes": [
-        "icon_192",
-        "icon_512",
-        "icon_maskable_192",
-        "icon_maskable_512"
-      ],
-      "relation": "implement",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "frontend/icons/icon-512.png"
-    },
-    {
-      "id": "spa_oh_diosas_brand_palette",
-      "label": "Spa Oh Diosas Brand Color Palette (Green + Gold + Off-White)",
-      "nodes": [
-        "brand_color_forest_green",
-        "brand_color_warm_gold",
-        "brand_color_off_white"
+        "auth_js",
+        "supabase_client_js",
+        "utils_js_estados"
       ],
       "relation": "form",
-      "confidence": "EXTRACTED",
-      "confidence_score": 0.95,
-      "source_file": "frontend/icons/icon-512.png"
-    },
-    {
-      "id": "standard_vs_maskable_icon_pair_192",
-      "label": "192px Standard vs Maskable Icon Pair",
-      "nodes": [
-        "icon_192",
-        "icon_maskable_192",
-        "icon_layout_two_tone_split",
-        "maskable_icon_design"
-      ],
-      "relation": "participate_in",
       "confidence": "INFERRED",
-      "confidence_score": 0.95,
-      "source_file": "frontend/icons/icon-maskable-192.png"
-    },
-    {
-      "id": "standard_vs_maskable_icon_pair_512",
-      "label": "512px Standard vs Maskable Icon Pair",
-      "nodes": [
-        "icon_512",
-        "icon_maskable_512",
-        "icon_layout_two_tone_split",
-        "maskable_icon_design"
-      ],
-      "relation": "participate_in",
-      "confidence": "INFERRED",
-      "confidence_score": 0.95,
-      "source_file": "frontend/icons/icon-maskable-512.png"
+      "confidence_score": 0.75,
+      "source_file": "README.md"
     }
   ],
-  "built_at_commit": "0c8135a6b544c6f2734d0310fd8c84494e0cdf58"
+  "built_at_commit": "b4e83c2ecada4502786060f5c4bced1d8f007672"
 }

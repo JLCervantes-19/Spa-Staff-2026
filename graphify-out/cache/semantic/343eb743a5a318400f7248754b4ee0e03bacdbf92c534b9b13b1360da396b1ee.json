@@ -1,0 +1,1 @@
+{"nodes": [{"id": "auth_js", "label": "auth.js \u2014 requireAuth, logout, getEmpleadaProfile (guard de sesi\u00f3n y perfil de la empleada)", "file_type": "code", "source_file": "frontend/js/auth.js", "source_location": null, "source_url": null, "captured_at": null, "author": null, "contributor": null}], "edges": [], "hyperedges": []}
