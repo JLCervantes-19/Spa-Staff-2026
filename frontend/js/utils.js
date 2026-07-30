@@ -104,6 +104,59 @@ export function showToast(msg, type = 'default') {
   })
 }
 
+// ——— Modal helper ————————————————————————————————————————————
+export function openModal(id)  { document.getElementById(id)?.classList.add('open') }
+export function closeModal(id) { document.getElementById(id)?.classList.remove('open') }
+
+// type: 'danger' (eliminar) | 'warning' (editar/modificar) | 'success' (crear/agregar)
+const CONFIRM_ICONS = {
+  danger:  `<polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2"/>`,
+  warning: `<path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4Z"/>`,
+  success: `<path d="M12 5v14M5 12h14"/>`,
+}
+const CONFIRM_BTN_CLASS = { danger: 'btn-danger', warning: 'btn-primary', success: 'btn-primary' }
+
+export function confirmAction({ title, text, btnLabel = 'Confirmar', type = 'warning', onConfirm }) {
+  let overlay = document.getElementById('confirm-overlay')
+  if (!overlay) {
+    overlay = document.createElement('div')
+    overlay.id = 'confirm-overlay'
+    overlay.innerHTML = `
+      <div class="modal confirm-modal">
+        <div class="modal-body">
+          <div class="confirm-icon" id="confirm-icon"></div>
+          <p class="confirm-title" id="confirm-title"></p>
+          <p class="confirm-text" id="confirm-text"></p>
+        </div>
+        <div class="modal-footer">
+          <button class="btn-secondary" id="confirm-cancel">Cancelar</button>
+          <button id="confirm-ok"></button>
+        </div>
+      </div>
+    `
+    document.body.appendChild(overlay)
+    overlay.addEventListener('click', e => { if (e.target === overlay) overlay.classList.remove('open') })
+    document.getElementById('confirm-cancel').addEventListener('click', () => overlay.classList.remove('open'))
+  }
+  document.getElementById('confirm-title').textContent = title
+  document.getElementById('confirm-text').textContent  = text || ''
+
+  const iconEl = document.getElementById('confirm-icon')
+  iconEl.className = `confirm-icon ${type}`
+  iconEl.innerHTML = `<svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">${CONFIRM_ICONS[type] || CONFIRM_ICONS.warning}</svg>`
+
+  const btn = document.getElementById('confirm-ok')
+  const fresh = btn.cloneNode(true)
+  btn.parentNode.replaceChild(fresh, btn)
+  fresh.className = CONFIRM_BTN_CLASS[type] || 'btn-primary'
+  fresh.textContent = btnLabel
+  fresh.addEventListener('click', async () => {
+    overlay.classList.remove('open')
+    await onConfirm()
+  })
+  overlay.classList.add('open')
+}
+
 // Render iniciales avatar
 export function avatarHTML(empleada, size = 48) {
   if (empleada?.foto_url) {

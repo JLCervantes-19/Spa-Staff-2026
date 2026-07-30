@@ -190,7 +190,7 @@
 <script type="module">
   import { requireAuth, logout, getEmpleadaProfile, cambiarPassword } from '/js/auth.js'
   import { supabase } from '/js/supabase-client.js'
-  import { iniciales, sanitizeText, showToast } from '/js/utils.js'
+  import { iniciales, sanitizeText, showToast, confirmAction } from '/js/utils.js'
 
   const session = await requireAuth()
   if (!session) throw new Error()
@@ -252,28 +252,37 @@
     document.getElementById('bio-display').classList.remove('hidden')
   })
 
-  document.getElementById('btn-guardar-bio').addEventListener('click', async () => {
+  document.getElementById('btn-guardar-bio').addEventListener('click', () => {
     const desc = sanitizeText(document.getElementById('input-descripcion').value.trim())
     const btn = document.getElementById('btn-guardar-bio')
-    btn.disabled = true; btn.textContent = 'Guardando…'
 
-    const { error } = await supabase
-      .from('empleados')
-      .update({ descripcion: desc })
-      .eq('id', empleada.id)
+    confirmAction({
+      title: '¿Guardar cambios en tu bio?',
+      text: 'Los clientes verán esta descripción en tu perfil.',
+      btnLabel: 'Guardar cambios',
+      type: 'warning',
+      onConfirm: async () => {
+        btn.disabled = true; btn.textContent = 'Guardando…'
 
-    if (error) {
-      showToast('Error al guardar. Intenta de nuevo.', 'error')
-      btn.disabled = false; btn.textContent = 'Guardar'
-      return
-    }
+        const { error } = await supabase
+          .from('empleados')
+          .update({ descripcion: desc })
+          .eq('id', empleada.id)
 
-    empleada.descripcion = desc
-    document.getElementById('bio-form').classList.add('hidden')
-    document.getElementById('bio-display').classList.remove('hidden')
-    renderPerfil()
-    showToast('Bio actualizada', 'success')
-    btn.disabled = false; btn.textContent = 'Guardar'
+        if (error) {
+          showToast('Error al guardar. Intenta de nuevo.', 'error')
+          btn.disabled = false; btn.textContent = 'Guardar'
+          return
+        }
+
+        empleada.descripcion = desc
+        document.getElementById('bio-form').classList.add('hidden')
+        document.getElementById('bio-display').classList.remove('hidden')
+        renderPerfil()
+        showToast('Bio actualizada', 'success')
+        btn.disabled = false; btn.textContent = 'Guardar'
+      }
+    })
   })
 
   // ——— Editar foto URL ———————————————————————————————————
@@ -297,7 +306,7 @@
     document.getElementById('btn-editar-fotourl').textContent = 'Editar'
   })
 
-  document.getElementById('btn-guardar-foto').addEventListener('click', async () => {
+  document.getElementById('btn-guardar-foto').addEventListener('click', () => {
     const url = document.getElementById('input-fotourl').value.trim()
     // Validar que sea URL válida o vacía
     if (url && !/^https?:\/\/.+/.test(url)) {
@@ -305,26 +314,35 @@
       return
     }
     const btn = document.getElementById('btn-guardar-foto')
-    btn.disabled = true; btn.textContent = 'Guardando…'
 
-    const { error } = await supabase
-      .from('empleados')
-      .update({ foto_url: url || null })
-      .eq('id', empleada.id)
+    confirmAction({
+      title: '¿Guardar nueva foto de perfil?',
+      text: 'Esta será tu foto visible para el equipo y, si aplica, para las clientas.',
+      btnLabel: 'Guardar cambios',
+      type: 'warning',
+      onConfirm: async () => {
+        btn.disabled = true; btn.textContent = 'Guardando…'
 
-    if (error) {
-      showToast('Error al guardar. Intenta de nuevo.', 'error')
-      btn.disabled = false; btn.textContent = 'Guardar'
-      return
-    }
+        const { error } = await supabase
+          .from('empleados')
+          .update({ foto_url: url || null })
+          .eq('id', empleada.id)
 
-    empleada.foto_url = url || null
-    document.getElementById('fotourl-form').classList.add('hidden')
-    document.getElementById('fotourl-display').classList.remove('hidden')
-    document.getElementById('btn-editar-fotourl').textContent = 'Editar'
-    renderPerfil()
-    showToast('Foto actualizada', 'success')
-    btn.disabled = false; btn.textContent = 'Guardar'
+        if (error) {
+          showToast('Error al guardar. Intenta de nuevo.', 'error')
+          btn.disabled = false; btn.textContent = 'Guardar'
+          return
+        }
+
+        empleada.foto_url = url || null
+        document.getElementById('fotourl-form').classList.add('hidden')
+        document.getElementById('fotourl-display').classList.remove('hidden')
+        document.getElementById('btn-editar-fotourl').textContent = 'Editar'
+        renderPerfil()
+        showToast('Foto actualizada', 'success')
+        btn.disabled = false; btn.textContent = 'Guardar'
+      }
+    })
   })
 
   // ——— Cambiar contraseña ————————————————————————————————
