@@ -6,6 +6,12 @@ Aplicacion mobile-first (PWA) para las empleadas del spa Oh Diosas. Cada emplead
 
 ---
 
+## Multi-tenant
+
+Esta app sirve a **todas las empresas del sistema desde un único despliegue** — no se redespliega por cada empresa nueva. La empresa de cada empleada la determina su propia fila en `empleados` (columna `empresa_id`); RLS filtra el resto automáticamente. Manual completo de cómo dar de alta una empresa nueva: `SpaOhDiosas/README.md`.
+
+---
+
 ## Estructura del proyecto
 
 ```
