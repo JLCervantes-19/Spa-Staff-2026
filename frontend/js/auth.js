@@ -286,7 +286,7 @@ export async function getEmpleadaProfile() {
 
   const { data, error } = await supabase
     .from('empleados')
-    .select('id, nombre, apellido, email, telefono, descripcion, foto_url, especialidades, activo, color, created_at')
+    .select('id, nombre, apellido, email, telefono, descripcion, foto_url, especialidades, activo, color, created_at, empresa_id')
     .eq('auth_user_id', user.id)
     .single()
 
