@@ -54,6 +54,9 @@ body {
   color: var(--text-dark);
   -webkit-font-smoothing: antialiased;
   min-height: 100vh;
+}
+/* El padding para el bottom-nav solo aplica en páginas que lo tienen (dashboard, citas, perfil, etc.) */
+body:has(.bottom-nav) {
   padding-bottom: var(--bottom-nav-height);
 }
 img { max-width: 100%; height: auto; display: block; }
