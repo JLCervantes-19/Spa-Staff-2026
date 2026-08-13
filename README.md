@@ -2,7 +2,25 @@
 
 Aplicacion mobile-first (PWA) para las empleadas del spa Oh Diosas. Cada empleada inicia sesion con su cuenta Supabase Auth y ve unicamente sus propias citas del dia. Comparte la base de datos con el sitio principal y el admin dashboard.
 
-**Stack:** Node.js 24 · Express 4 (servidor estatico) · Supabase Auth · Vanilla JS ES Modules · PWA · Vercel
+**Stack:** Node.js 24 · Express 4 (servidor estatico, sin API propia — todo pasa por Supabase client-side) · Supabase Auth · Vanilla JS ES Modules · PWA · Vercel
+
+---
+
+## Identidad visual
+
+Usa la paleta oficial de marca (púrpura/lila + dorado) **sin cambios** — a diferencia de `admin-dashboard`, que tiene su propia identidad (dorado + carbón) a propósito. Fuente canónica en `SISTEMA WEB/design-tokens.css`.
+
+| Token | Valor | Uso |
+|---|---|---|
+| `--purple-dark` | `#522566` | Top-nav, botones primarios |
+| `--purple-medium` | `#7A3A8E` | Hover, texto secundario |
+| `--lilac` | `#AD74C3` | Acento principal |
+| `--lilac-pale` | `#F8EDFB` | Fondos suaves |
+| `--gold` | `#C9A961` | Detalles, avatares |
+
+Los colores de **estado de cita** son idénticos a las otras 2 apps (ver tabla más abajo) — contrato compartido, no se tocan.
+
+**Tipografía:** `Cormorant Garamond` (titulares) · `Jost` (texto) · `Cinzel` (detalles, mayúsculas espaciadas).
 
 ---
 
@@ -223,7 +241,7 @@ PORT=3000
 
 ## Crear empleadas con acceso
 
-Las empleadas se crean desde el **Admin Dashboard** (`empleadas.html`). El dashboard pide nombre, apellido, telefono, email y contrasena inicial, luego crea automaticamente el usuario en Supabase Auth.
+Las empleadas se crean desde el **Admin Dashboard** (`empleadas.html`). El dashboard pide nombre, apellido, telefono, email y contrasena inicial, luego crea automaticamente el usuario en Supabase Auth. La contrasena debe tener minimo 8 caracteres y al menos 1 mayuscula (misma politica que los admins, validada en el formulario y en la Edge Function).
 
 **Para crear manualmente** (si el dashboard no esta disponible):
 
@@ -252,13 +270,25 @@ WHERE email = 'email@dela.empleada';
 
 ## Estados de citas
 
+> **Nota:** este es el modelo vigente (6 estados). Si ves documentacion vieja con `realizada`/`atrasada`/`cancelada` (5-8 estados), esta desactualizada — el sistema migro hace tiempo al modelo de abajo, identico en las 3 apps.
+
 | Estado | Significado |
 |--------|-------------|
-| `pendiente` | Programada, sin accion aun |
-| `realizada` | Servicio completado |
-| `atrasada` | Hay retraso |
+| `pendiente` | Programada, sin empleada asignada aun |
+| `confirmada` | Programada, con empleada asignada |
+| `completada` | Servicio realizado |
 | `no_asistio` | El cliente no se presento |
-| `cancelada` | Cita cancelada |
+| `cancelada_cliente` | Cancelada por el cliente |
+| `cancelada_admin` | Cancelada por el admin |
+
+### Reglas de negocio — cambio de estado (staff)
+
+Una empleada solo puede cambiar el estado de una cita:
+- **el mismo dia** de la cita (no pasadas ni futuras)
+- **una sola vez**, y solo mientras siga `pendiente`/`confirmada` — una vez marcada `completada` o `no_asistio`, queda fija; si se equivoco, lo reporta a administracion para que lo corrija desde el dashboard
+- solo hacia `completada` o `no_asistio` — las cancelaciones las gestiona el admin o el cliente, no el staff
+
+Estas reglas estan reforzadas en **dos capas**: el frontend (`cita-detalle.html`, oculta el control si no aplica) y la politica RLS `empleada_update_estado_cita` sobre `citas` — no dependen solo del frontend.
 
 ---
 
