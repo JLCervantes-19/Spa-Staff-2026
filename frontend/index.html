@@ -16,7 +16,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Jost:wght@300;400;500;600&family=Cinzel:wght@400;600&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="/css/staff.css" />
 </head>
-<body>
+<body class="login-page-body">
 
 <div class="login-page">
   <!-- Anillos decorativos -->
@@ -90,6 +90,15 @@
 
 <script type="module">
   import { login, redirectIfAuth } from '/js/auth.js'
+
+  // Alto real del viewport visible (se achica cuando aparece el teclado en iOS/Android)
+  function setAppHeight() {
+    const h = window.visualViewport ? window.visualViewport.height : window.innerHeight
+    document.documentElement.style.setProperty('--app-height', h + 'px')
+  }
+  setAppHeight()
+  window.visualViewport?.addEventListener('resize', setAppHeight)
+  window.addEventListener('resize', setAppHeight)
 
   // Si ya hay sesión, ir al dashboard
   redirectIfAuth()
