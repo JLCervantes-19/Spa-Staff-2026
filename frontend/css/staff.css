@@ -634,8 +634,13 @@ input, textarea, select { font-family: var(--font-body); }
 .empty-icon { opacity: 0.25; }
 
 /* ——— LOGIN ————————————————————————————————————————————————— */
+body:has(.login-page) {
+  min-height: 100vh;   /* fallback para navegadores sin soporte de dvh */
+  min-height: 100dvh;  /* el body también debe encoger, si no vuelve a dejar espacio sobrante */
+}
 .login-page {
-  min-height: 100vh;
+  min-height: 100vh;   /* fallback para navegadores sin soporte de dvh */
+  min-height: 100dvh;  /* se ajusta al viewport visible real (encoge cuando aparece el teclado en iOS) */
   background: linear-gradient(150deg, var(--purple-dark) 0%, var(--purple-medium) 55%, var(--lilac) 100%);
   display: flex; flex-direction: column; align-items: center; justify-content: center;
   padding: 24px; position: relative; overflow: hidden;
