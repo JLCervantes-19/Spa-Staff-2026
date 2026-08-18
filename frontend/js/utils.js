@@ -100,7 +100,7 @@ export function showToast(msg, type = 'default') {
   clearTimeout(toastTimer)
   requestAnimationFrame(() => {
     el.classList.add('show')
-    toastTimer = setTimeout(() => el.classList.remove('show'), 3000)
+    toastTimer = setTimeout(() => el.classList.remove('show'), 5500)
   })
 }
 
