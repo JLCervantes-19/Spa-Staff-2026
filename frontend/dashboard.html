@@ -159,6 +159,12 @@
   // Cargar citas (fecha en zona horaria de Bogotá — no usar toISOString)
   const ahoraBog = new Date(new Date().toLocaleString('en-US', { timeZone: 'America/Bogota' }))
   const hoy = `${ahoraBog.getFullYear()}-${String(ahoraBog.getMonth() + 1).padStart(2, '0')}-${String(ahoraBog.getDate()).padStart(2, '0')}`
+  // El dashboard solo necesita "esta semana en adelante" (hoy/semana/pendientes/próxima
+  // cita son todas de hoy hacia el futuro, salvo el arranque de la semana actual).
+  // Antes traía TODO el historial de citas de la empleada sin límite de fecha.
+  const desde = new Date(ahoraBog)
+  desde.setDate(desde.getDate() - 7)
+  const fechaDesde = `${desde.getFullYear()}-${String(desde.getMonth() + 1).padStart(2, '0')}-${String(desde.getDate()).padStart(2, '0')}`
   const { data: citas } = await supabase
     .from('citas')
     .select(`
@@ -167,6 +173,7 @@
       servicios(id, nombre, duracion_min)
     `)
     .eq('empleado_id', empleada.id)
+    .gte('fecha', fechaDesde)
     .order('fecha', { ascending: true })
     .order('hora_inicio', { ascending: true })
 
